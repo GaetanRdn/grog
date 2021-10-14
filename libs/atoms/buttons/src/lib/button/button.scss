@@ -1,0 +1,51 @@
+@mixin adr-button($config) {
+  $typography: map-get($config, typography);
+  $colors: map-get($config, colors);
+
+  .adr-button {
+    appearance: none;
+    padding: 0.25rem 0.75rem;
+  }
+
+  @each $size in small, medium, large {
+    $typo: map-get($typography, button-#{$size});
+    $font-size: map-get($typo, font-size);
+
+    .adr-#{$size} {
+      font-size: $font-size;
+      font-family: map-get($typo, font-family);
+      font-weight: map-get($typo, font-weight);
+      border-radius: 0.25 * $font-size;
+    }
+  }
+
+  @each $color in primary, accent, warn {
+    $color-config: map-get($colors, $color);
+    $light-config: map-get($colors, $color + '-light');
+    $dark-config: map-get($colors, $color + '-dark');
+
+    .adr-#{$color} {
+      &:not(.adr-outlined) {
+        color: map-get($color-config, color);
+        background-color: map-get($color-config, background-color);
+        border: none;
+
+        &:hover {
+          color: map-get($dark-config, color);
+          background-color: map-get($dark-config, background-color);
+        }
+      }
+
+      &.adr-outlined {
+        color: map-get($color-config, background-color);
+        background-color: map-get($color-config, color);
+        border: 1px solid map-get($color-config, border-color);
+
+        &:hover {
+          color: map-get($light-config, color);
+          background-color: map-get($light-config, background-color);
+        }
+      }
+    }
+  }
+}

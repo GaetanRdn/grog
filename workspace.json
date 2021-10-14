@@ -1,6 +1,146 @@
 {
   "version": 2,
   "projects": {
+    "atoms-buttons": {
+      "projectType": "library",
+      "root": "libs/atoms/buttons",
+      "sourceRoot": "libs/atoms/buttons/src",
+      "prefix": "grorg",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/atoms/buttons"],
+          "options": {
+            "project": "libs/atoms/buttons/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/atoms/buttons/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/atoms/buttons/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/atoms/buttons"],
+          "options": {
+            "jestConfig": "libs/atoms/buttons/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/atoms/buttons/src/**/*.ts",
+              "libs/atoms/buttons/src/**/*.html"
+            ]
+          }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/atoms/buttons/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/atoms-buttons",
+            "config": {
+              "configFolder": "libs/atoms/buttons/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        }
+      }
+    },
+    "atoms-buttons-e2e": {
+      "root": "apps/atoms-buttons-e2e",
+      "sourceRoot": "apps/atoms-buttons-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/atoms-buttons-e2e/cypress.json",
+            "devServerTarget": "atoms-buttons:storybook",
+            "tsConfig": "apps/atoms-buttons-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "atoms-buttons:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/atoms-buttons-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "atoms-forms": {
+      "projectType": "library",
+      "root": "libs/atoms/forms",
+      "sourceRoot": "libs/atoms/forms/src",
+      "prefix": "grorg",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/atoms/forms"],
+          "options": {
+            "project": "libs/atoms/forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/atoms/forms/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/atoms/forms/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/atoms/forms"],
+          "options": {
+            "jestConfig": "libs/atoms/forms/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/atoms/forms/src/**/*.ts",
+              "libs/atoms/forms/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "decorators": {
       "projectType": "library",
       "root": "libs/decorators",
@@ -37,6 +177,88 @@
             "lintFilePatterns": [
               "libs/decorators/src/**/*.ts",
               "libs/decorators/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "styles": {
+      "projectType": "library",
+      "root": "libs/styles",
+      "sourceRoot": "libs/styles/src",
+      "prefix": "grorg",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/styles"],
+          "options": {
+            "project": "libs/styles/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/styles/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/styles/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/styles"],
+          "options": {
+            "jestConfig": "libs/styles/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/styles/src/**/*.ts",
+              "libs/styles/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "tests": {
+      "projectType": "library",
+      "root": "libs/tests",
+      "sourceRoot": "libs/tests/src",
+      "prefix": "grorg",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/tests"],
+          "options": {
+            "project": "libs/tests/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/tests/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/tests/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tests"],
+          "options": {
+            "jestConfig": "libs/tests/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tests/src/**/*.ts",
+              "libs/tests/src/**/*.html"
             ]
           }
         }

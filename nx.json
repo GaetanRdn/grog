@@ -14,7 +14,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
       }
     }
   },
@@ -27,7 +33,23 @@
     ]
   },
   "projects": {
+    "atoms-buttons": {
+      "tags": []
+    },
+    "atoms-buttons-e2e": {
+      "tags": [],
+      "implicitDependencies": ["atoms-buttons"]
+    },
+    "atoms-forms": {
+      "tags": []
+    },
     "decorators": {
+      "tags": []
+    },
+    "styles": {
+      "tags": []
+    },
+    "tests": {
       "tags": []
     }
   }

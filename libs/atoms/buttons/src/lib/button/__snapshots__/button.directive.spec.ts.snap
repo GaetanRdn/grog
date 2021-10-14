@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonDirective Color cases when color is accent then check snapshot 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-medium adr-accent"
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Color cases when color is primary then check snapshot 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-medium adr-primary"
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Color cases when color is warn then check snapshot 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-medium adr-warn"
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Default should create default button 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-medium adr-primary"
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Outlined cases should create 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-medium adr-outlined adr-primary"
+  outlined=""
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Size cases when size is large then check snapshot 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-large adr-primary"
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Size cases when size is medium then check snapshot 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-medium adr-primary"
+>
+  Click Me
+</button>
+`;
+
+exports[`ButtonDirective Size cases when size is small then check snapshot 1`] = `
+<button
+  adrbutton=""
+  class="adr-button adr-small adr-primary"
+>
+  Click Me
+</button>
+`;

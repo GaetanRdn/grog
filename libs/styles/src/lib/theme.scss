@@ -1,0 +1,13 @@
+@use 'src/components/atoms/button/button';
+@use 'src/components/atoms/forms/autocomplete/autocomplete.component';
+@use 'src/components/atoms/forms/checkbox/checkbox.component';
+@use 'src/components/atoms/forms/input/input';
+@use 'src/components/atoms/forms/label/label.component';
+
+@mixin ad-theme($config) {
+  @include button.adr-button($config);
+  @include autocomplete.adr-autocomplete($config);
+  @include checkbox.adr-checkbox($config);
+  @include input.adr-input($config);
+  @include label.adr-label($config);
+}
