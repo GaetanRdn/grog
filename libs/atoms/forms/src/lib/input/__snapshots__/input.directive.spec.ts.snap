@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputDirective Basic input Check default state 1`] = `
+<input
+  adrinput=""
+  class="adr-input"
+/>
+`;
+
+exports[`InputDirective Basic input check class on focus 1`] = `
+<input
+  adrinput=""
+  class="adr-input adr-focused"
+/>
+`;
+
+exports[`InputDirective Basic input should set value value1 1`] = `
+<input
+  adrinput=""
+  class="adr-input"
+  value="value1"
+/>
+`;
+
+exports[`InputDirective Basic input should set value value2 1`] = `
+<input
+  adrinput=""
+  class="adr-input"
+  value="value2"
+/>
+`;
+
+exports[`InputDirective Basic input should update parent value on change, expect value1 1`] = `
+<input
+  adrinput=""
+  class="adr-input"
+  value="value1"
+/>
+`;
+
+exports[`InputDirective Basic input should update parent value on change, expect value2 1`] = `
+<input
+  adrinput=""
+  class="adr-input"
+  value="value2"
+/>
+`;
+
+exports[`InputDirective Basic input when focused then check class on blur 1`] = `
+<input
+  adrinput=""
+  class="adr-input"
+/>
+`;
+
+exports[`InputDirective Disabled input when focus then check dont have focused class 1`] = `
+<input
+  adrinput=""
+  class="adr-input adr-disabled"
+  disabled=""
+/>
+`;
+
+exports[`InputDirective ReactiveForm input check class on focus 1`] = `
+<input
+  adrinput=""
+  class="adr-input ng-pristine ng-valid adr-focused ng-touched"
+/>
+`;
+
+exports[`InputDirective ReactiveForm input should create with formControl 1`] = `
+<input
+  adrinput=""
+  class="adr-input ng-untouched ng-pristine ng-valid"
+/>
+`;
+
+exports[`InputDirective ReactiveForm input should set value from formControl 1`] = `
+<input
+  adrinput=""
+  class="adr-input ng-untouched ng-pristine ng-valid"
+  value="test"
+/>
+`;
+
+exports[`InputDirective ReactiveForm input should set value to formControl 1`] = `
+<input
+  adrinput=""
+  class="adr-input ng-valid ng-touched ng-dirty"
+  value="toto"
+/>
+`;
+
+exports[`InputDirective ReactiveForm input when control is disabled then check 1`] = `
+<input
+  adrinput=""
+  class="adr-input ng-untouched ng-pristine adr-disabled"
+  disabled=""
+/>
+`;
+
+exports[`InputDirective Readonly input do not emit change 1`] = `
+<input
+  adrinput=""
+  class="adr-input adr-readonly"
+  readonly=""
+/>
+`;
+
+exports[`InputDirective Readonly input when focus then check dont have focused class 1`] = `
+<input
+  adrinput=""
+  class="adr-input adr-readonly"
+  readonly=""
+/>
+`;

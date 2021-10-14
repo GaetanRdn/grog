@@ -73,33 +73,6 @@
         }
       }
     },
-    "atoms-buttons-e2e": {
-      "root": "apps/atoms-buttons-e2e",
-      "sourceRoot": "apps/atoms-buttons-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/atoms-buttons-e2e/cypress.json",
-            "devServerTarget": "atoms-buttons:storybook",
-            "tsConfig": "apps/atoms-buttons-e2e/tsconfig.json"
-          },
-          "configurations": {
-            "ci": {
-              "devServerTarget": "atoms-buttons:storybook:ci"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/atoms-buttons-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "atoms-forms": {
       "projectType": "library",
       "root": "libs/atoms/forms",
@@ -137,6 +110,37 @@
               "libs/atoms/forms/src/**/*.ts",
               "libs/atoms/forms/src/**/*.html"
             ]
+          }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/atoms/forms/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/atoms-forms",
+            "config": {
+              "configFolder": "libs/atoms/forms/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       }

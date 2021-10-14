@@ -1,0 +1,30 @@
+@use '../../styles/src/lib/utils';
+
+@mixin adr-checkbox($config) {
+  adr-checkbox {
+    @include utils.set-typography($config, input);
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:not(.adr-disabled, .adr-readonly) {
+      @include utils.reverse-color-values($config, primary);
+
+      &:hover,
+      &:focus {
+        @include utils.reverse-color-values($config, primary-dark);
+      }
+    }
+
+    &.adr-disabled,
+    &.adr-readonly {
+      @include utils.reverse-color-values($config, disabled);
+    }
+
+    input[type='checkbox' i] {
+      height: 1rem;
+      width: 1rem;
+      cursor: inherit;
+    }
+  }
+}

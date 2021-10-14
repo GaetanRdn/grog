@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LabelComponent should create with content test 1`] = `
+<adr-label>
+  test
+</adr-label>
+`;
+
+exports[`LabelComponent should create with content toto 1`] = `
+<adr-label>
+  toto
+</adr-label>
+`;

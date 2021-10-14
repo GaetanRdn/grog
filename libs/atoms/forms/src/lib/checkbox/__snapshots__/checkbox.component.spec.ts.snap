@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxComponent Basic checkbox should create with value 2 1`] = `
+<adr-checkbox
+  value="2"
+>
+  <input
+    type="checkbox"
+    value="2"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Basic
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent Basic checkbox should create with value val1 1`] = `
+<adr-checkbox
+  value="val1"
+>
+  <input
+    type="checkbox"
+    value="val1"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Basic
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent Basic checkbox should emit null on uncheck 1`] = `
+<adr-checkbox
+  value="val"
+>
+  <input
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Basic
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent Basic checkbox should emit value on check 1`] = `
+<adr-checkbox
+  checked="true"
+  class="adr-checked"
+  value="val"
+>
+  <input
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Basic
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent Disabled checkbox check does not emit value 1`] = `
+<adr-checkbox
+  class="adr-disabled"
+  disabled="true"
+  value="val"
+>
+  <input
+    disabled=""
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Disabled
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent ReactiveForm checkbox check is touched on change 1`] = `
+<adr-checkbox
+  class="ng-valid ng-touched ng-dirty"
+  value="val"
+>
+  <input
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Reactive
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent ReactiveForm checkbox should create checked 1`] = `
+<adr-checkbox
+  checked="true"
+  class="adr-checked ng-untouched ng-pristine ng-valid"
+  value="val"
+>
+  <input
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Reactive
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent ReactiveForm checkbox should create disabled 1`] = `
+<adr-checkbox
+  checked="true"
+  class="adr-checked ng-untouched ng-pristine adr-disabled"
+  disabled="true"
+  value="val"
+>
+  <input
+    disabled=""
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Reactive
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent ReactiveForm checkbox should create unchecked 1`] = `
+<adr-checkbox
+  class="ng-untouched ng-pristine ng-valid"
+  value="val"
+>
+  <input
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    Reactive
+  </span>
+</adr-checkbox>
+`;
+
+exports[`CheckboxComponent Readonly checkbox check does not emit value 1`] = `
+<adr-checkbox
+  class="adr-readonly"
+  readonly="true"
+  value="val"
+>
+  <input
+    readonly=""
+    type="checkbox"
+    value="val"
+  />
+  <span
+    class="adr-checkbox-label"
+  >
+    ReadOnly
+  </span>
+</adr-checkbox>
+`;

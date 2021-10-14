@@ -36,10 +36,6 @@
     "atoms-buttons": {
       "tags": []
     },
-    "atoms-buttons-e2e": {
-      "tags": [],
-      "implicitDependencies": ["atoms-buttons"]
-    },
     "atoms-forms": {
       "tags": []
     },

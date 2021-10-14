@@ -1,0 +1,292 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutocompleteComponent Basic should create 1`] = `
+<adr-autocomplete>
+  <input
+    adrinput=""
+    class="adr-input"
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Basic when click on option then panel is closed 1`] = `
+<adr-autocomplete>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value=""
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Basic when click outside then options panel is closed 1`] = `
+<adr-autocomplete>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Basic when focus then options panel is open 1`] = `
+<adr-autocomplete
+  class="adr-opened"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Soren"
+  />
+  
+  <div
+    class="adr-autocomplete-options"
+  >
+    
+    <span
+      class="adr-option"
+    >
+      Gaetan
+    </span>
+    <span
+      class="adr-option adr-selected"
+    >
+      Soren
+    </span>
+  </div>
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Basic when input value then displayed options are filtered 1`] = `
+<adr-autocomplete
+  class="adr-opened"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="g"
+  />
+  
+  <div
+    class="adr-autocomplete-options"
+  >
+    
+    <span
+      class="adr-option"
+    >
+      Gaetan
+    </span>
+  </div>
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Disabled should create 1`] = `
+<adr-autocomplete
+  class="adr-disabled"
+  disabled="true"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-disabled"
+    disabled=""
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Disabled should not open on focus 1`] = `
+<adr-autocomplete
+  class="adr-disabled"
+  disabled="true"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-disabled"
+    disabled=""
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Objects as values should create 1`] = `
+<adr-autocomplete
+  class="adr-opened"
+  required="true"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Soren"
+  />
+  
+  <div
+    class="adr-autocomplete-options"
+  >
+    
+    <span
+      class="adr-option"
+    >
+      Soren
+    </span>
+    <span
+      class="adr-option"
+    >
+      Gaetan
+    </span>
+  </div>
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Open on input should not open on focus 1`] = `
+<adr-autocomplete
+  openon="input"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Open on input should open on input with value 1`] = `
+<adr-autocomplete
+  class="adr-opened"
+  openon="input"
+>
+  <input
+    adrinput=""
+    class="adr-input"
+    value="s"
+  />
+  
+  <div
+    class="adr-autocomplete-options"
+  >
+    
+    <span
+      class="adr-option adr-selected"
+    >
+      Soren
+    </span>
+  </div>
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Reactive form should be disabled 1`] = `
+<adr-autocomplete
+  class="ng-untouched ng-pristine adr-disabled"
+  disabled="true"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-disabled"
+    disabled=""
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Reactive form should create 1`] = `
+<adr-autocomplete
+  class="ng-untouched ng-pristine ng-valid"
+>
+  <input
+    adrinput=""
+    class="adr-input"
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Reactive form should update control on select 1`] = `
+<adr-autocomplete
+  class="ng-untouched ng-pristine ng-valid adr-opened"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Soren"
+  />
+  
+  <div
+    class="adr-autocomplete-options"
+  >
+    
+    <span
+      class="adr-option adr-selected"
+    >
+      Soren
+    </span>
+    <span
+      class="adr-option"
+    >
+      Gaetan
+    </span>
+  </div>
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Reactive form should update control on select 2`] = `
+<adr-autocomplete
+  class="ng-valid ng-touched ng-dirty"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Gaetan"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Required should create 1`] = `
+<adr-autocomplete
+  required="true"
+>
+  <input
+    adrinput=""
+    class="adr-input"
+    value="Soren"
+  />
+  
+</adr-autocomplete>
+`;
+
+exports[`AutocompleteComponent Required when required and click on selected option then value does not change 1`] = `
+<adr-autocomplete
+  class="adr-opened"
+  required="true"
+>
+  <input
+    adrinput=""
+    class="adr-input adr-focused"
+    value="Soren"
+  />
+  
+  <div
+    class="adr-autocomplete-options"
+  >
+    
+    <span
+      class="adr-option"
+    >
+      Gaetan
+    </span>
+    <span
+      class="adr-option adr-selected"
+    >
+      Soren
+    </span>
+  </div>
+</adr-autocomplete>
+`;

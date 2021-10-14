@@ -1,11 +1,23 @@
 module.exports = {
   stories: [],
-  addons: ['@storybook/addon-essentials'],
-  // uncomment the property below if you want to apply some webpack config globally
-  // webpackFinal: async (config, { configType }) => {
-  //   // Make whatever fine-grained changes you need that should apply to all storybook configs
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-actions',
+    '@storybook/addon-jest',
+    '@storybook/addon-storysource'
+  ],
+  webpackFinal: async (config) => {
+    // Workaround for @storybook/addon-jest on Webpack 5
+    config.resolve = {
+      ...config.resolve,
+      alias: {
+        ...config.resolve.alias,
+        path: require.resolve('path-browserify'),
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify')
+      }
+    };
 
-  //   // Return the altered config
-  //   return config;
-  // },
+    return config;
+  }
 };

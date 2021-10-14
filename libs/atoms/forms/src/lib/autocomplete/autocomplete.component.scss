@@ -1,0 +1,48 @@
+@use 'utils';
+
+@mixin adr-autocomplete($config) {
+  adr-autocomplete {
+    flex: 1;
+
+    &.adr-opened {
+      .adr-input {
+        border-bottom-right-radius: unset;
+        border-bottom-left-radius: unset;
+      }
+    }
+
+    .adr-autocomplete-options {
+      @include utils.set-typography($config, label);
+      @include utils.set-color-values($config, primary);
+      position: absolute;
+      display: flex;
+      flex-flow: column;
+      align-items: stretch;
+      width: 100%;
+      cursor: pointer;
+      border-left-width: 2px;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
+      border-style: inset;
+      border-bottom-right-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+
+      &:last-child {
+        border-bottom-right-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+
+      .adr-option {
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          @include utils.set-color-values($config, primary-dark);
+        }
+
+        &.adr-selected {
+          @include utils.set-color-values($config, primary-light);
+        }
+      }
+    }
+  }
+}
