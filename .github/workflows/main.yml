@@ -28,8 +28,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install environment
-        run: npm install
-      - name: Linter
-        run: npm run ng lint
-      - name: Tests coverage
-        run: npm run test:cov
+        run: npm ci
+      - uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: lint,test,build
+          affected: true
