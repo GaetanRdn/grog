@@ -40,6 +40,7 @@ jobs:
       - name: npm install
         run: |
           npm ci
+          npm i nx
         env:
           CI: true
 
