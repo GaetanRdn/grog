@@ -36,11 +36,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build, and test
+
+      - name: npm install
         run: |
           npm ci
-          npm run build --
-          npm run test
-          npm run lint
         env:
           CI: true
+
+      - name: Nx lint, test & build
+        uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: lint,test,build
+          all: 'true'
