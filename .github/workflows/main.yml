@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: mansagroup/nrwl-nx-action@v2
+      - run: npm ci
         with:
           targets: lint,test,build
           affected: true
