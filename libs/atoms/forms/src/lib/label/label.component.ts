@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 
 @Component({
-  selector: 'adr-label',
+  selector: 'gro-label',
   template: `<ng-content></ng-content>`,
 })
 export class LabelComponent {}

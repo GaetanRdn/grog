@@ -35,11 +35,11 @@ const AUTOCOMPLETE_VALUE_ACCESSOR: Provider = {
 };
 
 @Component({
-  selector: 'adr-autocomplete',
+  selector: 'gro-autocomplete',
   // standalone: true,
   host: {
-    '[class.adr-opened]': 'isOpen',
-    '[class.adr-disabled]': 'disabled',
+    '[class.gro-opened]': 'isOpen',
+    '[class.gro-disabled]': 'disabled',
     '[attr.required]': 'required || null',
     '[attr.disabled]': 'disabled || null',
   },
@@ -55,7 +55,7 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
 
   @Input()
   @CoerceBoolean()
-  public required: boolean = false;
+  public required = false;
 
   @Input()
   public openOn: OpenOn = 'focus';
@@ -92,7 +92,7 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
     return this.value !== null ? this.displayOptionFn(this.value) : '';
   }
 
-  private _isOpen: boolean = false;
+  private _isOpen = false;
 
   get isOpen(): boolean {
     return this._isOpen;
@@ -104,11 +104,11 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
   ) {}
 
   @Input()
-  public displayOptionFn: DisplayFn<T> = (option: T): string =>
-    option as unknown as string;
+  public createOptionFn?: CreateOptionFn<T>;
 
   @Input()
-  public createOptionFn?: CreateOptionFn<T>;
+  public displayOptionFn: DisplayFn<T> = (option: T): string =>
+    option as unknown as string;
 
   @Input()
   public identityFn: IdentityFn<T> = (value: T): any => value;
@@ -179,11 +179,7 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
 
   public createOption(target: EventTarget | null): void {
     const value: string = (target as HTMLInputElement).value;
-    console.log(
-      typeof this.createOptionFn === 'function',
-      value.length,
-      this._displayedValues$.getValue().length
-    );
+
     if (
       typeof this.createOptionFn === 'function' &&
       value.length !== 0 &&
@@ -193,9 +189,13 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
     }
   }
 
-  protected _onChange: (_: T | null) => void = (_: T | null): void => {};
+  protected _onChange: (_: T | null) => void = (_: T | null): void => {
+    // default if no ngControl
+  };
 
-  protected _onTouched: () => void = (): void => {};
+  protected _onTouched: () => void = (): void => {
+    // default if no ngControl
+  };
 
   private propagateChange(value: T | null): void {
     this.value = value;

@@ -17,10 +17,11 @@ export function Log(params?: LoggerParams) {
     outputs: params?.outputs === undefined ? defaultParams.outputs : params.outputs,
   };
 
-  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  return function(target: Function, propertyKey: string, descriptor: PropertyDescriptor) {
     const original = descriptor.value;
 
-    descriptor.value = function(...args: any[]) {
+    descriptor.value = function(...args: never[]) {
       if (options.inputs) {
         console[options.type]('Logged inputs:', args);
       }

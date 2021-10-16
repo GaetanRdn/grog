@@ -7,7 +7,8 @@
  * @param excludeProps list of properties to exclude
  */
 export function AutoUnsubscribe(excludeProps: string[] = []) {
-  return function(constructor: any) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  return function(constructor: Function) {
     const original = constructor.prototype.ngOnDestroy;
 
     constructor.prototype.ngOnDestroy = function() {
@@ -19,7 +20,7 @@ export function AutoUnsubscribe(excludeProps: string[] = []) {
       }
 
       if (original && typeof original === 'function') {
-        original.apply(this, arguments);
+        original.apply(this);
       }
     };
   };

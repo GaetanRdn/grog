@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { InputDirective } from '@grorg/atoms-forms';
+import { InputDirective } from './input.directive';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/angular';
 
 // noinspection AngularMissingOrInvalidDeclarationInModule
 @Component({
-  selector: 'adr-input-dummy',
+  selector: 'gro-input-dummy',
   template: ` <input
-    adrInput
+    groInput
     [disabled]="disabled"
     [readonly]="readonly"
     [value]="value"
@@ -20,10 +20,10 @@ class InputDummyComponent {
   public value: any;
 
   @Input()
-  public readonly: boolean = false;
+  public readonly = false;
 
   @Input()
-  public disabled: boolean = false;
+  public disabled = false;
 
   @Output()
   public valueChange: EventEmitter<any> = new EventEmitter<any>();

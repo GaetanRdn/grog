@@ -1,7 +1,7 @@
 import { Component, DebugElement, OnDestroy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { InputDirective } from '@grorg/atoms-forms';
+import { InputDirective } from './input.directive';
 import { TemplateLookup } from '@grorg/tests';
 
 describe('InputDirective', () => {
@@ -70,7 +70,7 @@ describe('InputDirective', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      let input: DebugElement = templateLookup.get('input');
+      const input: DebugElement = templateLookup.get('input');
       input.triggerEventHandler('focus', input.nativeElement);
       templateLookup.detectChanges();
 
@@ -80,7 +80,7 @@ describe('InputDirective', () => {
 
     test('when focused then check class on blur', () => {
       // GIVEN
-      let input: DebugElement = templateLookup.get('input');
+      const input: DebugElement = templateLookup.get('input');
       input.triggerEventHandler('focus', input.nativeElement);
       templateLookup.detectChanges();
 
@@ -94,7 +94,7 @@ describe('InputDirective', () => {
 
     test('check OnDestroy', () => {
       // GIVEN
-      let input: InputDirective = templateLookup
+      const input: InputDirective = templateLookup
         .get('input')
         .injector.get(InputDirective);
       jest.spyOn(input.valueChange, 'unsubscribe');
@@ -133,7 +133,7 @@ describe('InputDirective', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      let input: DebugElement = templateLookup.get('input');
+      const input: DebugElement = templateLookup.get('input');
       input.triggerEventHandler('focus', input.nativeElement);
       templateLookup.detectChanges();
 
@@ -168,7 +168,7 @@ describe('InputDirective', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      let input: DebugElement = templateLookup.get('input');
+      const input: DebugElement = templateLookup.get('input');
       input.triggerEventHandler('focus', input.nativeElement);
       templateLookup.detectChanges();
 
@@ -231,7 +231,7 @@ describe('InputDirective', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      let input: DebugElement = templateLookup.get('input');
+      const input: DebugElement = templateLookup.get('input');
       input.triggerEventHandler('focus', input.nativeElement);
       templateLookup.detectChanges();
 
@@ -256,34 +256,34 @@ const triggerInputValue = (
   templateLookup: TemplateLookup<unknown>,
   value: any
 ): void => {
-  let input: DebugElement = templateLookup.get('input');
+  const input: DebugElement = templateLookup.get('input');
   input.nativeElement.value = value;
   input.triggerEventHandler('input', { target: input.nativeElement });
 };
 
 @Component({
-  template: `<input adrInput [(value)]="value" />`,
+  template: `<input groInput [(value)]="value" />`,
 })
 class BasicComponent {
   public value!: string;
 }
 
 @Component({
-  template: `<input adrInput readonly [(value)]="value" />`,
+  template: `<input groInput readonly [(value)]="value" />`,
 })
 class ReadonlyComponent {
   public value = null;
 }
 
 @Component({
-  template: `<input adrInput disabled [(value)]="value" />`,
+  template: `<input groInput disabled [(value)]="value" />`,
 })
 class DisabledComponent {
   public value = null;
 }
 
 @Component({
-  template: `<input adrInput [formControl]="control" />`,
+  template: `<input groInput [formControl]="control" />`,
 })
 class FormControlComponent {
   public control: FormControl = new FormControl();

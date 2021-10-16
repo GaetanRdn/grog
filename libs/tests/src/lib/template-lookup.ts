@@ -17,7 +17,7 @@ export class TemplateLookup<T> {
     this.fixture.detectChanges();
   }
 
-  public get(selectorOrType: string | Type<any>): DebugElement {
+  public get(selectorOrType: string | Type<unknown>): DebugElement {
     let predicate: Predicate<DebugElement>;
 
     if (typeof selectorOrType === "string") {
@@ -33,7 +33,7 @@ export class TemplateLookup<T> {
     return this.get(selectorOrType).componentInstance;
   }
 
-  public query<T extends HTMLElement>(selectorOrType: string | Type<any>): T {
+  public query<T extends HTMLElement>(selectorOrType: string | Type<unknown>): T {
     return this.get(selectorOrType).nativeElement;
   }
 }

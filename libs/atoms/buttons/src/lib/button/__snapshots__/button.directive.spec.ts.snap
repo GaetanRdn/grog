@@ -2,8 +2,8 @@
 
 exports[`ButtonDirective Color cases when color is accent then check snapshot 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-medium adr-accent"
+  class="gro-button gro-medium gro-accent"
+  grobutton=""
 >
   Click Me
 </button>
@@ -11,8 +11,8 @@ exports[`ButtonDirective Color cases when color is accent then check snapshot 1`
 
 exports[`ButtonDirective Color cases when color is primary then check snapshot 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-medium adr-primary"
+  class="gro-button gro-medium gro-primary"
+  grobutton=""
 >
   Click Me
 </button>
@@ -20,8 +20,8 @@ exports[`ButtonDirective Color cases when color is primary then check snapshot 1
 
 exports[`ButtonDirective Color cases when color is warn then check snapshot 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-medium adr-warn"
+  class="gro-button gro-medium gro-warn"
+  grobutton=""
 >
   Click Me
 </button>
@@ -29,8 +29,8 @@ exports[`ButtonDirective Color cases when color is warn then check snapshot 1`] 
 
 exports[`ButtonDirective Default should create default button 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-medium adr-primary"
+  class="gro-button gro-medium gro-primary"
+  grobutton=""
 >
   Click Me
 </button>
@@ -38,8 +38,8 @@ exports[`ButtonDirective Default should create default button 1`] = `
 
 exports[`ButtonDirective Outlined cases should create 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-medium adr-outlined adr-primary"
+  class="gro-button gro-medium gro-outlined gro-primary"
+  grobutton=""
   outlined=""
 >
   Click Me
@@ -48,8 +48,8 @@ exports[`ButtonDirective Outlined cases should create 1`] = `
 
 exports[`ButtonDirective Size cases when size is large then check snapshot 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-large adr-primary"
+  class="gro-button gro-large gro-primary"
+  grobutton=""
 >
   Click Me
 </button>
@@ -57,8 +57,8 @@ exports[`ButtonDirective Size cases when size is large then check snapshot 1`] =
 
 exports[`ButtonDirective Size cases when size is medium then check snapshot 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-medium adr-primary"
+  class="gro-button gro-medium gro-primary"
+  grobutton=""
 >
   Click Me
 </button>
@@ -66,8 +66,8 @@ exports[`ButtonDirective Size cases when size is medium then check snapshot 1`] 
 
 exports[`ButtonDirective Size cases when size is small then check snapshot 1`] = `
 <button
-  adrbutton=""
-  class="adr-button adr-small adr-primary"
+  class="gro-button gro-small gro-primary"
+  grobutton=""
 >
   Click Me
 </button>

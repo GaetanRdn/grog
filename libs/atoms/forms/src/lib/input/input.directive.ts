@@ -15,12 +15,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
 
 @Directive({
-  selector: 'input[adrInput]',
+  selector: 'input[groInput]',
   host: {
-    class: 'adr-input',
-    '[class.adr-focused]': 'focused || null',
-    '[class.adr-readonly]': 'readonly || null',
-    '[class.adr-disabled]': 'disabled || null'
+    class: 'gro-input',
+    '[class.gro-focused]': 'focused || null',
+    '[class.gro-readonly]': 'readonly || null',
+    '[class.gro-disabled]': 'disabled || null'
   },
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: InputDirective, multi: true }
@@ -37,12 +37,12 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
   @Input()
   @HostBinding('readonly')
   @CoerceBoolean()
-  public readonly: boolean = false;
+  public readonly = false;
 
   @Output()
   public readonly valueChange: EventEmitter<any> = new EventEmitter<any>();
 
-  private _disabled: boolean = false;
+  private _disabled = false;
 
   get disabled(): boolean {
     return this._disabled;
@@ -55,7 +55,7 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
     this._disabled = disabled;
   }
 
-  private _focused: boolean = false;
+  private _focused = false;
 
   get focused(): boolean {
     return this._focused;
@@ -106,9 +106,11 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
   }
 
   protected _onChange = (_: any): void => {
+    // default if no ngControl
   };
 
   protected _onTouched = (): void => {
+    // default if no ngControl
   };
 }
 

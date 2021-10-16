@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { LabelComponent } from '@grorg/atoms-forms';
+import { LabelComponent } from './label.component';
 import { TemplateLookup } from '@grorg/tests';
 
 describe('LabelComponent', () => {
@@ -32,7 +32,7 @@ describe('LabelComponent', () => {
 });
 
 @Component({
-  template: ` <adr-label>{{ label }}</adr-label>`,
+  template: ` <gro-label>{{ label }}</gro-label>`,
 })
 class HostComponent {
   public label!: string;

@@ -1,0 +1,38 @@
+name: Nx Standard Use Case
+on: push
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm ci
+
+      - name: Run Affected Tests
+        run: npx nx affected:test --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5
+
+      - name: Run Affected Lint
+        run: npx nx affected:lint --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5
+
+      - name: Run Affected Build
+        run: npx nx affected:build --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5 --prod

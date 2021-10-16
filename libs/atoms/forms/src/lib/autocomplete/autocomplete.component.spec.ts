@@ -51,7 +51,7 @@ describe('AutocompleteComponent', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      templateLookup.query('.adr-option:last-child').click();
+      templateLookup.query('.gro-option:last-child').click();
       templateLookup.detectChanges();
 
       // THEN
@@ -64,7 +64,7 @@ describe('AutocompleteComponent', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      templateLookup.query('.adr-option').click();
+      templateLookup.query('.gro-option').click();
       templateLookup.detectChanges();
 
       // THEN
@@ -80,7 +80,7 @@ describe('AutocompleteComponent', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      templateLookup.query('.adr-option.adr-selected').click();
+      templateLookup.query('.gro-option.gro-selected').click();
       templateLookup.detectChanges();
 
       // THEN
@@ -143,7 +143,7 @@ describe('AutocompleteComponent', () => {
       templateLookup.detectChanges();
 
       // WHEN
-      templateLookup.query('.adr-option.adr-selected').click();
+      templateLookup.query('.gro-option.gro-selected').click();
       templateLookup.detectChanges();
 
       // THEN
@@ -261,7 +261,7 @@ describe('AutocompleteComponent', () => {
       expect(templateLookup.firstChildElement).toMatchSnapshot();
 
       // WHEN
-      templateLookup.query('.adr-option:not(.adr-selected)').click();
+      templateLookup.query('.gro-option:not(.gro-selected)').click();
       templateLookup.detectChanges();
 
       // THEN
@@ -316,67 +316,67 @@ interface Person {
 }
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
       [options]="options"
       [(value)]="value"
-    ></adr-autocomplete>
+    ></gro-autocomplete>
     <span class="outside"></span>`,
 })
 class HostComponent {
   public options: string[] = ['Soren', 'Gaetan'];
 
-  public value: string = 'Soren';
+  public value = 'Soren';
 }
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
     [options]="options"
     [(value)]="value"
     disabled
-  ></adr-autocomplete>`,
+  ></gro-autocomplete>`,
 })
 class DisabledHostComponent {
   public options: string[] = ['Soren', 'Gaetan'];
 
-  public value: string = 'Soren';
+  public value = 'Soren';
 }
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
     [options]="options"
     [(value)]="value"
     required
-  ></adr-autocomplete>`,
+  ></gro-autocomplete>`,
 })
 class RequiredHostComponent extends HostComponent {}
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
     [options]="options"
     [(value)]="value"
     openOn="input"
-  ></adr-autocomplete>`,
+  ></gro-autocomplete>`,
 })
 class OpenOnInputHostComponent extends HostComponent {}
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
     [options]="options"
     [(value)]="value"
     [createOptionFn]="createOptionFn"
-  ></adr-autocomplete>`,
+  ></gro-autocomplete>`,
 })
 class AddToOptionsIfNotFoundHostComponent extends HostComponent {
   public createOptionFn: CreateOptionFn<string> = (input: string) => input;
 }
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
       [options]="options"
       [(value)]="value"
       [displayOptionFn]="displayFn"
       required
-    ></adr-autocomplete>
+    ></gro-autocomplete>
     <span class="outside"></span>`,
 })
 class ObjectValueHostComponent {
@@ -392,12 +392,12 @@ class ObjectValueHostComponent {
 }
 
 @Component({
-  template: ` <adr-autocomplete
+  template: ` <gro-autocomplete
       [options]="options"
       [formControl]="control"
       [displayOptionFn]="displayFn"
       [identityFn]="identityFn"
-    ></adr-autocomplete>
+    ></gro-autocomplete>
     <span class="outside"></span>`,
 })
 class ReactiveFormHostComponent {

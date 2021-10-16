@@ -2,17 +2,17 @@ import { Directive, Input, NgModule } from '@angular/core';
 import { CoerceBoolean } from '@grorg/decorators';
 
 @Directive({
-  selector: 'button[adrButton]',
+  selector: 'button[groButton]',
   // standalone: true,
   host: {
-    class: 'adr-button',
-    '[class.adr-small]': 'size === "small"',
-    '[class.adr-medium]': 'size === "medium"',
-    '[class.adr-large]': 'size === "large"',
-    '[class.adr-outlined]': 'outlined',
-    '[class.adr-primary]': 'color === "primary"',
-    '[class.adr-accent]': 'color === "accent"',
-    '[class.adr-warn]': 'color === "warn"',
+    class: 'gro-button',
+    '[class.gro-small]': 'size === "small"',
+    '[class.gro-medium]': 'size === "medium"',
+    '[class.gro-large]': 'size === "large"',
+    '[class.gro-outlined]': 'outlined',
+    '[class.gro-primary]': 'color === "primary"',
+    '[class.gro-accent]': 'color === "accent"',
+    '[class.gro-warn]': 'color === "warn"',
   },
 })
 export class ButtonDirective {

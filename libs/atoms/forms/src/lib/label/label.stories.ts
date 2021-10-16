@@ -1,4 +1,4 @@
-import { LabelComponent } from '@grorg/atoms-forms';
+import { LabelComponent } from './label.component';
 import { Meta, Story } from '@storybook/angular';
 
 export default {

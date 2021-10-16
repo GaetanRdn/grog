@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxComponent } from '@grorg/atoms-forms';
+import { CheckboxComponent } from './checkbox.component';
 import { TemplateLookup } from '@grorg/tests';
 
 describe('CheckboxComponent', () => {
@@ -28,7 +28,7 @@ describe('CheckboxComponent', () => {
       );
     });
 
-    test.each(['val1', '2'])('should create with value %s', (value: any) => {
+    test.each(['val1', '2'])('should create with value %s', (value: string) => {
       // GIVEN
       templateLookup.hostComponent.checkboxValue = value;
 
@@ -219,11 +219,11 @@ describe('CheckboxComponent', () => {
 });
 
 @Component({
-  template: `<adr-checkbox
+  template: `<gro-checkbox
     value="{{ checkboxValue }}"
     (valueChange)="currentValue = $event"
     [checked]="checked"
-    >Basic</adr-checkbox
+    >Basic</gro-checkbox
   >`,
 })
 class BasicHostComponent {
@@ -231,22 +231,22 @@ class BasicHostComponent {
 
   public currentValue: any = null;
 
-  public checked: boolean = false;
+  public checked = false;
 }
 
 @Component({
-  template: ` <adr-checkbox [value]="'val'" readOnly>ReadOnly</adr-checkbox>`,
+  template: ` <gro-checkbox [value]="'val'" readOnly>ReadOnly</gro-checkbox>`,
 })
 class ReadonlyHostComponent {}
 
 @Component({
-  template: `<adr-checkbox [value]="'val'" disabled>Disabled</adr-checkbox>`,
+  template: `<gro-checkbox [value]="'val'" disabled>Disabled</gro-checkbox>`,
 })
 class DisabledHostComponent {}
 
 @Component({
-  template: `<adr-checkbox [value]="'val'" [formControl]="control"
-    >Reactive</adr-checkbox
+  template: `<gro-checkbox [value]="'val'" [formControl]="control"
+    >Reactive</gro-checkbox
   >`,
 })
 class ReactiveFormHostComponent {
