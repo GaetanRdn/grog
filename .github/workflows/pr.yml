@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install
-      - run: yarn nx run-many --target=test --all
-      - run: yarn nx run-many --target=lint --all
-      - run: yarn nx run-many --target=build --all --prod
+      - run: npm ci
+      - run: npx nx run-many --target=test --all
+      - run: npx nx run-many --target=lint --all
+      - run: npx nx run-many --target=build --all --prod
