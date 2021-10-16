@@ -262,28 +262,28 @@ const triggerInputValue = (
 };
 
 @Component({
-  template: `<input adrInput [(value)]="value" />`,
+  template: `<input groInput [(value)]="value" />`,
 })
 class BasicComponent {
   public value!: string;
 }
 
 @Component({
-  template: `<input adrInput readonly [(value)]="value" />`,
+  template: `<input groInput readonly [(value)]="value" />`,
 })
 class ReadonlyComponent {
   public value = null;
 }
 
 @Component({
-  template: `<input adrInput disabled [(value)]="value" />`,
+  template: `<input groInput disabled [(value)]="value" />`,
 })
 class DisabledComponent {
   public value = null;
 }
 
 @Component({
-  template: `<input adrInput [formControl]="control" />`,
+  template: `<input groInput [formControl]="control" />`,
 })
 class FormControlComponent {
   public control: FormControl = new FormControl();

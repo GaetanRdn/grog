@@ -91,14 +91,14 @@ describe('ButtonDirective', () => {
 
 @Component({
   template: `
-      <button adrButton>Click Me</button>`
+      <button groButton>Click Me</button>`
 })
 class DefaultComponent {
 }
 
 @Component({
   template: `
-      <button adrButton size="{{size}}">Click Me</button>`
+      <button groButton size="{{size}}">Click Me</button>`
 })
 class WithSizeComponent {
   public size!: 'small' | 'medium' | 'large';
@@ -106,7 +106,7 @@ class WithSizeComponent {
 
 @Component({
   template: `
-      <button adrButton color="{{color}}">Click Me</button>`
+      <button groButton color="{{color}}">Click Me</button>`
 })
 class WithColorsComponent {
   public color?: 'primary' | 'accent' | 'warn';
@@ -114,7 +114,7 @@ class WithColorsComponent {
 
 @Component({
   template: `
-      <button adrButton outlined>Click Me</button>`
+      <button groButton outlined>Click Me</button>`
 })
 class CoerceOutlinedComponent {
 }

@@ -38,8 +38,8 @@ const AUTOCOMPLETE_VALUE_ACCESSOR: Provider = {
   selector: 'gro-autocomplete',
   // standalone: true,
   host: {
-    '[class.adr-opened]': 'isOpen',
-    '[class.adr-disabled]': 'disabled',
+    '[class.gro-opened]': 'isOpen',
+    '[class.gro-disabled]': 'disabled',
     '[attr.required]': 'required || null',
     '[attr.disabled]': 'disabled || null',
   },
@@ -179,11 +179,7 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
 
   public createOption(target: EventTarget | null): void {
     const value: string = (target as HTMLInputElement).value;
-    console.log(
-      typeof this.createOptionFn === 'function',
-      value.length,
-      this._displayedValues$.getValue().length
-    );
+
     if (
       typeof this.createOptionFn === 'function' &&
       value.length !== 0 &&

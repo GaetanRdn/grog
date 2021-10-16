@@ -6,10 +6,10 @@
   [disabled]="disabled"
   (blur)="createOption($event.target)"
 />
-<div *ngIf="isOpen" class="adr-autocomplete-options">
+<div *ngIf="isOpen" class="gro-autocomplete-options">
   <span
-    class="adr-option"
-    [class.adr-selected]="isSelected(option)"
+    class="gro-option"
+    [class.gro-selected]="isSelected(option)"
     *ngFor="let option of displayedValues$ | async; trackBy: trackByFn"
     (click)="select(option)"
     >{{ displayOptionFn(option) }}</span

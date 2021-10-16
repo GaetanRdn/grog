@@ -32,7 +32,7 @@ describe('LabelComponent', () => {
 });
 
 @Component({
-  template: ` <adr-label>{{ label }}</adr-label>`,
+  template: ` <gro-label>{{ label }}</gro-label>`,
 })
 class HostComponent {
   public label!: string;

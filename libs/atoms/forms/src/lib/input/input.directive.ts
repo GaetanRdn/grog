@@ -17,10 +17,10 @@ import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
 @Directive({
   selector: 'input[groInput]',
   host: {
-    class: 'adr-input',
-    '[class.adr-focused]': 'focused || null',
-    '[class.adr-readonly]': 'readonly || null',
-    '[class.adr-disabled]': 'disabled || null'
+    class: 'gro-input',
+    '[class.gro-focused]': 'focused || null',
+    '[class.gro-readonly]': 'readonly || null',
+    '[class.gro-disabled]': 'disabled || null'
   },
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: InputDirective, multi: true }

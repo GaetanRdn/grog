@@ -2,115 +2,115 @@
 
 exports[`InputDirective Basic input Check default state 1`] = `
 <input
-  adrinput=""
-  class="adr-input"
+  class="gro-input"
+  groinput=""
 />
 `;
 
 exports[`InputDirective Basic input check class on focus 1`] = `
 <input
-  adrinput=""
-  class="adr-input adr-focused"
+  class="gro-input gro-focused"
+  groinput=""
 />
 `;
 
 exports[`InputDirective Basic input should set value value1 1`] = `
 <input
-  adrinput=""
-  class="adr-input"
+  class="gro-input"
+  groinput=""
   value="value1"
 />
 `;
 
 exports[`InputDirective Basic input should set value value2 1`] = `
 <input
-  adrinput=""
-  class="adr-input"
+  class="gro-input"
+  groinput=""
   value="value2"
 />
 `;
 
 exports[`InputDirective Basic input should update parent value on change, expect value1 1`] = `
 <input
-  adrinput=""
-  class="adr-input"
+  class="gro-input"
+  groinput=""
   value="value1"
 />
 `;
 
 exports[`InputDirective Basic input should update parent value on change, expect value2 1`] = `
 <input
-  adrinput=""
-  class="adr-input"
+  class="gro-input"
+  groinput=""
   value="value2"
 />
 `;
 
 exports[`InputDirective Basic input when focused then check class on blur 1`] = `
 <input
-  adrinput=""
-  class="adr-input"
+  class="gro-input"
+  groinput=""
 />
 `;
 
 exports[`InputDirective Disabled input when focus then check dont have focused class 1`] = `
 <input
-  adrinput=""
-  class="adr-input adr-disabled"
+  class="gro-input gro-disabled"
   disabled=""
+  groinput=""
 />
 `;
 
 exports[`InputDirective ReactiveForm input check class on focus 1`] = `
 <input
-  adrinput=""
-  class="adr-input ng-pristine ng-valid ng-touched adr-focused"
+  class="gro-input ng-pristine ng-valid ng-touched gro-focused"
+  groinput=""
 />
 `;
 
 exports[`InputDirective ReactiveForm input should create with formControl 1`] = `
 <input
-  adrinput=""
-  class="adr-input ng-untouched ng-pristine ng-valid"
+  class="gro-input ng-untouched ng-pristine ng-valid"
+  groinput=""
 />
 `;
 
 exports[`InputDirective ReactiveForm input should set value from formControl 1`] = `
 <input
-  adrinput=""
-  class="adr-input ng-untouched ng-pristine ng-valid"
+  class="gro-input ng-untouched ng-pristine ng-valid"
+  groinput=""
   value="test"
 />
 `;
 
 exports[`InputDirective ReactiveForm input should set value to formControl 1`] = `
 <input
-  adrinput=""
-  class="adr-input ng-valid ng-touched ng-dirty"
+  class="gro-input ng-valid ng-touched ng-dirty"
+  groinput=""
   value="toto"
 />
 `;
 
 exports[`InputDirective ReactiveForm input when control is disabled then check 1`] = `
 <input
-  adrinput=""
-  class="adr-input ng-untouched ng-pristine adr-disabled"
+  class="gro-input ng-untouched ng-pristine gro-disabled"
   disabled=""
+  groinput=""
 />
 `;
 
 exports[`InputDirective Readonly input do not emit change 1`] = `
 <input
-  adrinput=""
-  class="adr-input adr-readonly"
+  class="gro-input gro-readonly"
+  groinput=""
   readonly=""
 />
 `;
 
 exports[`InputDirective Readonly input when focus then check dont have focused class 1`] = `
 <input
-  adrinput=""
-  class="adr-input adr-readonly"
+  class="gro-input gro-readonly"
+  groinput=""
   readonly=""
 />
 `;

@@ -219,11 +219,11 @@ describe('CheckboxComponent', () => {
 });
 
 @Component({
-  template: `<adr-checkbox
+  template: `<gro-checkbox
     value="{{ checkboxValue }}"
     (valueChange)="currentValue = $event"
     [checked]="checked"
-    >Basic</adr-checkbox
+    >Basic</gro-checkbox
   >`,
 })
 class BasicHostComponent {
@@ -235,18 +235,18 @@ class BasicHostComponent {
 }
 
 @Component({
-  template: ` <adr-checkbox [value]="'val'" readOnly>ReadOnly</adr-checkbox>`,
+  template: ` <gro-checkbox [value]="'val'" readOnly>ReadOnly</gro-checkbox>`,
 })
 class ReadonlyHostComponent {}
 
 @Component({
-  template: `<adr-checkbox [value]="'val'" disabled>Disabled</adr-checkbox>`,
+  template: `<gro-checkbox [value]="'val'" disabled>Disabled</gro-checkbox>`,
 })
 class DisabledHostComponent {}
 
 @Component({
-  template: `<adr-checkbox [value]="'val'" [formControl]="control"
-    >Reactive</adr-checkbox
+  template: `<gro-checkbox [value]="'val'" [formControl]="control"
+    >Reactive</gro-checkbox
   >`,
 })
 class ReactiveFormHostComponent {
