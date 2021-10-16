@@ -32,4 +32,6 @@ jobs:
       - run: npm ci
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
+        with:
+          main-branch-name: 'master'
       - run: nx affected --target=build --base=${{ env.NX_HEAD }}
