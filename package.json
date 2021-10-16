@@ -6,7 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "build:all": "nx run-many --target=build --all",
-    "build:affected": "nx affected -- --target=build --base=origin/master --parallel",
+    "build:affected": "nx affected --target=build --base=origin/master --prod --parallel",
     "test": "nx test",
     "test:affected": "nx affected -- --target=test --base=origin/master --parallel",
     "lint:affected": "nx affected -- --target=lint --base=origin/master --parallel",
