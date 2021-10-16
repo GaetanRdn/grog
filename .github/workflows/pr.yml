@@ -30,6 +30,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
       - run: npm ci
-      - run: npm run build:affected
-      - run: npm run lint:affected
-      - run: npm run test:affected
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - run: nx affected --target=build --base=${{ env.NX_HEAD }}
