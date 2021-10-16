@@ -42,11 +42,9 @@ exports[`AutocompleteComponent Basic when focus then options panel is open 1`] =
     class="adr-input adr-focused"
     value="Soren"
   />
-  
   <div
     class="adr-autocomplete-options"
   >
-    
     <span
       class="adr-option"
     >
@@ -57,7 +55,9 @@ exports[`AutocompleteComponent Basic when focus then options panel is open 1`] =
     >
       Soren
     </span>
+    
   </div>
+  
 </adr-autocomplete>
 `;
 
@@ -70,17 +70,17 @@ exports[`AutocompleteComponent Basic when input value then displayed options are
     class="adr-input adr-focused"
     value="g"
   />
-  
   <div
     class="adr-autocomplete-options"
   >
-    
     <span
       class="adr-option"
     >
       Gaetan
     </span>
+    
   </div>
+  
 </adr-autocomplete>
 `;
 
@@ -124,11 +124,9 @@ exports[`AutocompleteComponent Objects as values should create 1`] = `
     class="adr-input adr-focused"
     value="Soren"
   />
-  
   <div
     class="adr-autocomplete-options"
   >
-    
     <span
       class="adr-option"
     >
@@ -139,7 +137,9 @@ exports[`AutocompleteComponent Objects as values should create 1`] = `
     >
       Gaetan
     </span>
+    
   </div>
+  
 </adr-autocomplete>
 `;
 
@@ -166,17 +166,17 @@ exports[`AutocompleteComponent Open on input should open on input with value 1`]
     class="adr-input"
     value="s"
   />
-  
   <div
     class="adr-autocomplete-options"
   >
-    
     <span
       class="adr-option adr-selected"
     >
       Soren
     </span>
+    
   </div>
+  
 </adr-autocomplete>
 `;
 
@@ -217,11 +217,9 @@ exports[`AutocompleteComponent Reactive form should update control on select 1`]
     class="adr-input adr-focused"
     value="Soren"
   />
-  
   <div
     class="adr-autocomplete-options"
   >
-    
     <span
       class="adr-option adr-selected"
     >
@@ -232,7 +230,9 @@ exports[`AutocompleteComponent Reactive form should update control on select 1`]
     >
       Gaetan
     </span>
+    
   </div>
+  
 </adr-autocomplete>
 `;
 
@@ -272,11 +272,9 @@ exports[`AutocompleteComponent Required when required and click on selected opti
     class="adr-input adr-focused"
     value="Soren"
   />
-  
   <div
     class="adr-autocomplete-options"
   >
-    
     <span
       class="adr-option"
     >
@@ -287,6 +285,8 @@ exports[`AutocompleteComponent Required when required and click on selected opti
     >
       Soren
     </span>
+    
   </div>
+  
 </adr-autocomplete>
 `;

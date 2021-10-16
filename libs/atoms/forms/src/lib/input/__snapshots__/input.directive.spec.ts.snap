@@ -64,7 +64,7 @@ exports[`InputDirective Disabled input when focus then check dont have focused c
 exports[`InputDirective ReactiveForm input check class on focus 1`] = `
 <input
   adrinput=""
-  class="adr-input ng-pristine ng-valid adr-focused ng-touched"
+  class="adr-input ng-pristine ng-valid ng-touched adr-focused"
 />
 `;
 
