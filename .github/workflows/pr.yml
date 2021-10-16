@@ -24,7 +24,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - run: git fetch origin master
+
       - run: npm ci
-      - run: npx nx run-many --target=test --all
-      - run: npx nx run-many --target=lint --all
-      - run: npx nx run-many --target=build --all --prod
+
+      - name: Run Affected Tests
+        run: npx run affected:test -- --base=remotes/origin/master
+#      - run: npx nx run-many --target=test --all
+#      - run: npx nx run-many --target=lint --all
+#      - run: npx nx run-many --target=build --all --prod
