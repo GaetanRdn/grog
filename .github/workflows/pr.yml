@@ -29,7 +29,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
-      - run: git fetch --no-tags --prune --depth=1 origin master
       - run: npm ci
       - run: npm run build:affected
       - run: npm run lint:affected
