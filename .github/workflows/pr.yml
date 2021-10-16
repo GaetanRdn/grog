@@ -17,8 +17,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v1
-      - uses: bahmutov/npm-install@v1
+      - uses: actions/checkout@v2
+      - run: npm ci
       - run: nx affected -- --target=build --base=origin/master --parallel
       - run: nx affected -- --target=lint --base=origin/master --parallel
       - run: nx affected -- --target=test --base=origin/master --parallel
