@@ -5,11 +5,7 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "build:all": "nx run-many --target=build --all",
-    "build:affected": "nx affected --target=build --base=master --head=HEAD --prod --parallel",
     "test": "nx test",
-    "test:affected": "nx affected -- --target=test --base=master --head=HEAD --parallel",
-    "lint:affected": "nx affected -- --target=lint --base=master --head=HEAD --parallel",
     "postinstall": "ngcc --properties es2015 browser module main"
   },
   "private": true,
