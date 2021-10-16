@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxComponent } from '@grorg/atoms-forms';
+import { CheckboxComponent } from './checkbox.component';
 import { TemplateLookup } from '@grorg/tests';
 
 describe('CheckboxComponent', () => {
@@ -28,7 +28,7 @@ describe('CheckboxComponent', () => {
       );
     });
 
-    test.each(['val1', '2'])('should create with value %s', (value: any) => {
+    test.each(['val1', '2'])('should create with value %s', (value: string) => {
       // GIVEN
       templateLookup.hostComponent.checkboxValue = value;
 
@@ -231,7 +231,7 @@ class BasicHostComponent {
 
   public currentValue: any = null;
 
-  public checked: boolean = false;
+  public checked = false;
 }
 
 @Component({

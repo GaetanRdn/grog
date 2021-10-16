@@ -325,7 +325,7 @@ interface Person {
 class HostComponent {
   public options: string[] = ['Soren', 'Gaetan'];
 
-  public value: string = 'Soren';
+  public value = 'Soren';
 }
 
 @Component({
@@ -338,7 +338,7 @@ class HostComponent {
 class DisabledHostComponent {
   public options: string[] = ['Soren', 'Gaetan'];
 
-  public value: string = 'Soren';
+  public value = 'Soren';
 }
 
 @Component({

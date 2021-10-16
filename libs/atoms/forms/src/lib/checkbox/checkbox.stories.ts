@@ -1,7 +1,7 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/angular';
-import { CheckboxComponent } from '@grorg/atoms-forms';
+import { CheckboxComponent } from './checkbox.component';
 
 export default {
   title: 'atoms/forms/checkbox',
@@ -20,7 +20,7 @@ export default {
 const basicTemplate: Story<CheckboxComponent<string>> = (
   args: CheckboxComponent<string>
 ) => ({
-  template: `<adr-checkbox [value]="value" [checked]="checked" [disabled]="disabled" [readOnly]="readOnly" (valueChange)="valueChange($event)">{{ ngContent }}</adr-checkbox>`,
+  template: `<gro-checkbox [value]="value" [checked]="checked" [disabled]="disabled" [readOnly]="readOnly" (valueChange)="valueChange($event)">{{ ngContent }}</gro-checkbox>`,
   props: {
     ...args,
     valueChange: action('valueChange'),
@@ -41,7 +41,7 @@ const reactiveTemplate: Story<CheckboxComponent<string>> = (
   moduleMetadata: {
     imports: [ReactiveFormsModule],
   },
-  template: `<adr-checkbox [value]="value" [readOnly]="readOnly" [formControl]="control">{{ ngContent }}</adr-checkbox>`,
+  template: `<gro-checkbox [value]="value" [readOnly]="readOnly" [formControl]="control">{{ ngContent }}</gro-checkbox>`,
   props: {
     ...args,
     control: new FormControl(args.value),

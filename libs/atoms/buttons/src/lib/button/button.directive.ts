@@ -2,7 +2,7 @@ import { Directive, Input, NgModule } from '@angular/core';
 import { CoerceBoolean } from '@grorg/decorators';
 
 @Directive({
-  selector: 'button[adrButton]',
+  selector: 'button[groButton]',
   // standalone: true,
   host: {
     class: 'adr-button',

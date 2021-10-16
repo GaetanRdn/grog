@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
 
 @Component({
-  selector: 'adr-checkbox',
+  selector: 'gro-checkbox',
   // s
   host: {
     '[attr.checked]': 'checked || null',
@@ -62,7 +62,7 @@ export class CheckboxComponent<T> implements ControlValueAccessor {
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  public writeValue(obj: any): void {
+  public writeValue(obj: T): void {
     this.checked = obj !== null && obj !== undefined;
   }
 
@@ -79,9 +79,13 @@ export class CheckboxComponent<T> implements ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
 
-  protected _onChange: (_: any) => void = (_: any): void => {};
+  protected _onChange: (_: any) => void = (_: any): void => {
+    // default if no ngControl
+  };
 
-  protected _onTouched: () => void = (): void => {};
+  protected _onTouched: () => void = (): void => {
+    // default if no ngControl
+  };
 
   /**
    * @internal private usage

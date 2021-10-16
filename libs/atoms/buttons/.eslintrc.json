@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "grorg",
+            "prefix": "gro",
             "style": "camelCase"
           }
         ],
@@ -21,10 +21,11 @@
           "error",
           {
             "type": "element",
-            "prefix": "grorg",
+            "prefix": "gro",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-host-metadata-property": 0
       }
     },
     {

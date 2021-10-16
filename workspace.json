@@ -5,7 +5,7 @@
       "projectType": "library",
       "root": "libs/atoms/buttons",
       "sourceRoot": "libs/atoms/buttons/src",
-      "prefix": "grorg",
+      "prefix": "gro",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
@@ -77,7 +77,7 @@
       "projectType": "library",
       "root": "libs/atoms/forms",
       "sourceRoot": "libs/atoms/forms/src",
-      "prefix": "grorg",
+      "prefix": "gro",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
@@ -149,7 +149,7 @@
       "projectType": "library",
       "root": "libs/decorators",
       "sourceRoot": "libs/decorators/src",
-      "prefix": "grorg",
+      "prefix": "gro",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
@@ -190,7 +190,7 @@
       "projectType": "library",
       "root": "libs/styles",
       "sourceRoot": "libs/styles/src",
-      "prefix": "grorg",
+      "prefix": "gro",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
@@ -231,7 +231,7 @@
       "projectType": "library",
       "root": "libs/tests",
       "sourceRoot": "libs/tests/src",
-      "prefix": "grorg",
+      "prefix": "gro",
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
