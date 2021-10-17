@@ -42,6 +42,13 @@
     "decorators": {
       "tags": []
     },
+    "storybook": {
+      "tags": []
+    },
+    "storybook-e2e": {
+      "tags": [],
+      "implicitDependencies": ["storybook"]
+    },
     "styles": {
       "tags": []
     },

@@ -6,7 +6,10 @@ module.exports = {
     '@storybook/addon-jest',
     '@storybook/addon-storysource'
   ],
-  webpackFinal: async (config) => {
+  core: {
+    builder: 'webpack5',
+  },
+  webpackFinal: (config) => {
     // Workaround for @storybook/addon-jest on Webpack 5
     config.resolve = {
       ...config.resolve,
@@ -14,10 +17,10 @@ module.exports = {
         ...config.resolve.alias,
         path: require.resolve('path-browserify'),
         crypto: require.resolve('crypto-browserify'),
-        stream: require.resolve('stream-browserify')
-      }
+        stream: require.resolve('stream-browserify'),
+      },
     };
 
     return config;
-  }
+  },
 };
