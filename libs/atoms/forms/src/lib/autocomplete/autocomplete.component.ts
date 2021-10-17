@@ -16,11 +16,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
-import {
-  InputDirective,
-  InputModule,
-} from '../input/input.directive';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { InputDirective, InputModule } from '../input/input.directive';
 import {
   CreateOptionFn,
   DisplayFn,
@@ -67,8 +64,11 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
   @Output()
   public readonly valueChange: EventEmitter<T | null> = new EventEmitter<T | null>();
 
+  @Input()
+  public createOptionFn?: CreateOptionFn<T>;
+
   @ViewChild(InputDirective, { static: true })
-  private _input!: InputDirective;
+  private _input!: InputDirective<T>;
 
   private _displayedValues$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>(
     this.options
@@ -102,9 +102,6 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
     private _elementRef: ElementRef,
     private _changeDetectorRef: ChangeDetectorRef
   ) {}
-
-  @Input()
-  public createOptionFn?: CreateOptionFn<T>;
 
   @Input()
   public displayOptionFn: DisplayFn<T> = (option: T): string =>
