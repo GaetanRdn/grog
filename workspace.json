@@ -9,7 +9,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/atoms/buttons"],
+          "outputs": [
+            "dist/libs/atoms/buttons"
+          ],
           "options": {
             "project": "libs/atoms/buttons/ng-package.json"
           },
@@ -25,7 +27,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/atoms/buttons"],
+          "outputs": [
+            "coverage/libs/atoms/buttons"
+          ],
           "options": {
             "jestConfig": "libs/atoms/buttons/jest.config.js",
             "passWithNoTests": true
@@ -57,7 +61,9 @@
         },
         "build-storybook": {
           "executor": "@nrwl/storybook:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "uiFramework": "@storybook/angular",
             "outputPath": "dist/storybook/atoms-buttons",
@@ -81,7 +87,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/atoms/forms"],
+          "outputs": [
+            "dist/libs/atoms/forms"
+          ],
           "options": {
             "project": "libs/atoms/forms/ng-package.json"
           },
@@ -97,7 +105,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/atoms/forms"],
+          "outputs": [
+            "coverage/libs/atoms/forms"
+          ],
           "options": {
             "jestConfig": "libs/atoms/forms/jest.config.js",
             "passWithNoTests": true
@@ -129,7 +139,9 @@
         },
         "build-storybook": {
           "executor": "@nrwl/storybook:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "uiFramework": "@storybook/angular",
             "outputPath": "dist/storybook/atoms-forms",
@@ -153,7 +165,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/decorators"],
+          "outputs": [
+            "dist/libs/decorators"
+          ],
           "options": {
             "project": "libs/decorators/ng-package.json"
           },
@@ -169,7 +183,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/decorators"],
+          "outputs": [
+            "coverage/libs/decorators"
+          ],
           "options": {
             "jestConfig": "libs/decorators/jest.config.js",
             "passWithNoTests": true
@@ -194,7 +210,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/storybook"],
+          "outputs": [
+            "dist/libs/storybook"
+          ],
           "options": {
             "project": "libs/storybook/ng-package.json",
             "tsConfig": "libs/storybook/tsconfig.lib.prod.json"
@@ -211,7 +229,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/storybook"],
+          "outputs": [
+            "coverage/libs/storybook"
+          ],
           "options": {
             "jestConfig": "libs/storybook/jest.config.js",
             "passWithNoTests": true
@@ -243,7 +263,9 @@
         },
         "build-storybook": {
           "executor": "@nrwl/storybook:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "uiFramework": "@storybook/angular",
             "outputPath": "dist/storybook/storybook",
@@ -259,33 +281,6 @@
         }
       }
     },
-    "storybook-e2e": {
-      "root": "apps/storybook-e2e",
-      "sourceRoot": "apps/storybook-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/storybook-e2e/cypress.json",
-            "devServerTarget": "storybook:storybook",
-            "tsConfig": "apps/storybook-e2e/tsconfig.json"
-          },
-          "configurations": {
-            "ci": {
-              "devServerTarget": "storybook:storybook:ci"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/storybook-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "styles": {
       "projectType": "library",
       "root": "libs/styles",
@@ -294,7 +289,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/styles"],
+          "outputs": [
+            "dist/libs/styles"
+          ],
           "options": {
             "project": "libs/styles/ng-package.json"
           },
@@ -310,7 +307,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/styles"],
+          "outputs": [
+            "coverage/libs/styles"
+          ],
           "options": {
             "jestConfig": "libs/styles/jest.config.js",
             "passWithNoTests": true
@@ -335,7 +334,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/tests"],
+          "outputs": [
+            "dist/libs/tests"
+          ],
           "options": {
             "project": "libs/tests/ng-package.json"
           },
@@ -351,7 +352,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/tests"],
+          "outputs": [
+            "coverage/libs/tests"
+          ],
           "options": {
             "jestConfig": "libs/tests/jest.config.js",
             "passWithNoTests": true
