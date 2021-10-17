@@ -51,12 +51,7 @@
       "tags": []
     },
     "storybook": {
-      "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "atoms-forms",
-        "atoms-buttons"
-      ]
+      "tags": []
     },
     "styles": {
       "tags": []
