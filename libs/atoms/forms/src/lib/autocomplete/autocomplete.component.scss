@@ -1,8 +1,11 @@
 @use 'utils';
+@use '../input/input';
 
 @mixin gro-autocomplete($config) {
   gro-autocomplete {
     flex: 1;
+
+    @include input.gro-input($config);
 
     &.gro-opened {
       .gro-input {

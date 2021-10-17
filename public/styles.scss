@@ -1,0 +1,103 @@
+@import '../libs/atoms/buttons/src/lib/button/button';
+@import '../libs/atoms/forms/src/lib/autocomplete/autocomplete.component';
+@import '../libs/atoms/forms/src/lib/checkbox/checkbox.component';
+@import '../libs/atoms/forms/src/lib/input/input';
+@import '../libs/atoms/forms/src/lib/label/label.component';
+@import 'colors';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+body {
+  font-size: 16px;
+  height: 100vh;
+  width: 100vw;
+}
+
+$config: (
+  typography: (
+    button-small: (
+      font-family: Roboto,
+      font-size: 12px,
+      font-weight: 700,
+    ),
+    button-medium: (
+      font-family: Roboto,
+      font-size: 16px,
+      font-weight: 400,
+    ),
+    button-large: (
+      font-family: Roboto,
+      font-size: 24px,
+      font-weight: 400,
+    ),
+    input: (
+      font-family: Lato,
+      font-size: 16px,
+      font-weight: 400,
+    ),
+    label: (
+      font-family: Lato,
+      font-size: 14px,
+      font-weight: 400,
+    ),
+  ),
+  colors: (
+    primary: (
+      color: $primary-text,
+      background-color: $primary,
+      border-color: $primary-dark
+    ),
+    primary-light: (
+      color: $primary-light-text,
+      background-color: $primary-light,
+    ),
+    primary-dark: (
+      color: $primary-dark-text,
+      background-color: $primary-dark,
+    ),
+    accent: (
+      color: $accent-text,
+      background-color: $accent,
+      border-color: $accent-dark
+    ),
+    accent-light: (
+      color: $accent-light-text,
+      background-color: $accent-light,
+    ),
+    accent-dark: (
+      color: $accent-dark-text,
+      background-color: $accent-dark,
+    ),
+    warn: (
+      color: $warn-text,
+      background-color: $warn,
+      border-color: $warn-dark
+    ),
+    warn-light: (
+      color: $warn-light-text,
+      background-color: $warn-light,
+    ),
+    warn-dark: (
+      color: $warn-dark-text,
+      background-color: $warn-dark,
+    ),
+    disabled: (
+      color: $disabled-text,
+      background-color: $disabled,
+      border-color: $disabled-border
+    ),
+  ),
+);
+
+@mixin ad-theme($config) {
+  @include gro-button($config);
+  @include gro-autocomplete($config);
+  @include gro-checkbox($config);
+  @include gro-input($config);
+  @include gro-label($config);
+}

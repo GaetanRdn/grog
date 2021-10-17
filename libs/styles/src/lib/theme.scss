@@ -5,7 +5,6 @@
 @use '../../../atoms/forms/src/lib/label/label.component';
 
 @mixin ad-theme($config) {
-  @debug 'toto';
   @include button.gro-button($config);
   @include autocomplete.gro-autocomplete($config);
   @include checkbox.gro-checkbox($config);

@@ -251,6 +251,9 @@
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
+            "staticDir": [
+              "public"
+            ],
             "config": {
               "configFolder": "libs/storybook/.storybook"
             }
@@ -271,7 +274,10 @@
             "outputPath": "dist/storybook/storybook",
             "config": {
               "configFolder": "libs/storybook/.storybook"
-            }
+            },
+            "staticDir": [
+              "public"
+            ]
           },
           "configurations": {
             "ci": {

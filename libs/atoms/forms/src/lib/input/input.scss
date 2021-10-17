@@ -1,4 +1,4 @@
-@use '../../styles/src/lib/utils';
+@use '../../../../../styles/src/lib/utils';
 
 @mixin gro-input($config) {
   $typography: map-get(map-get($config, typography), input);
