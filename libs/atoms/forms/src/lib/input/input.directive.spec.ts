@@ -1,8 +1,8 @@
 import { Component, DebugElement, OnDestroy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { InputDirective } from './input.directive';
 import { TemplateLookup } from '@grorg/tests';
+import { InputDirective } from './input.directive';
 
 describe('InputDirective', () => {
   beforeEach(async () => {
@@ -94,7 +94,7 @@ describe('InputDirective', () => {
 
     test('check OnDestroy', () => {
       // GIVEN
-      const input: InputDirective = templateLookup
+      const input: InputDirective<string> = templateLookup
         .get('input')
         .injector.get(InputDirective);
       jest.spyOn(input.valueChange, 'unsubscribe');
@@ -159,8 +159,8 @@ describe('InputDirective', () => {
       templateLookup.detectChanges();
 
       // THEN
-      // expect(templateLookup.firstChildElement).toMatchSnapshot();
-      // expect(templateLookup.hostComponent.value).toBeNull();
+      expect(templateLookup.firstChildElement).toMatchSnapshot();
+      expect(templateLookup.hostComponent.value).toBeNull();
     });
 
     test('when focus then check dont have focused class', () => {
@@ -254,10 +254,10 @@ describe('InputDirective', () => {
 
 const triggerInputValue = (
   templateLookup: TemplateLookup<unknown>,
-  value: any
+  value: string
 ): void => {
   const input: DebugElement = templateLookup.get('input');
-  input.nativeElement.value = value;
+  (input.nativeElement as HTMLInputElement).value = value;
   input.triggerEventHandler('input', { target: input.nativeElement });
 };
 

@@ -9,10 +9,11 @@ import {
   NgModule,
   OnChanges,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
+import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
 
 @Directive({
   selector: 'input[groInput]',
@@ -20,19 +21,21 @@ import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
     class: 'gro-input',
     '[class.gro-focused]': 'focused || null',
     '[class.gro-readonly]': 'readonly || null',
-    '[class.gro-disabled]': 'disabled || null'
+    '[class.gro-disabled]': 'disabled || null',
   },
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: InputDirective, multi: true }
-  ]
+    { provide: NG_VALUE_ACCESSOR, useExisting: InputDirective, multi: true },
+  ],
 })
 @AutoUnsubscribe()
-export class InputDirective implements ControlValueAccessor, OnChanges {
+export class InputDirective<ValueType>
+  implements ControlValueAccessor, OnChanges
+{
   static ngAcceptInputType_disabled: string | boolean | null | undefined;
 
   @HostBinding('attr.value')
   @Input()
-  public value: any;
+  public value: ValueType | null = null;
 
   @Input()
   @HostBinding('readonly')
@@ -40,7 +43,7 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
   public readonly = false;
 
   @Output()
-  public readonly valueChange: EventEmitter<any> = new EventEmitter<any>();
+  public readonly valueChange: EventEmitter<ValueType | null> = new EventEmitter<ValueType | null>();
 
   private _disabled = false;
 
@@ -61,8 +64,7 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
     return this._focused;
   }
 
-  constructor(private _elementRef: ElementRef) {
-  }
+  constructor(private _elementRef: ElementRef) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.value) {
@@ -70,15 +72,15 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
     }
   }
 
-  public writeValue(value: any): void {
+  public writeValue(value: ValueType | null): void {
     this.value = value;
   }
 
-  public registerOnChange(fn: any): void {
+  public registerOnChange(fn: OnChangeFn<ValueType>): void {
     this._onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: OnTouchedFn): void {
     this._onTouched = fn;
   }
 
@@ -87,7 +89,7 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
   }
 
   @HostListener('input', ['$event.target.value'])
-  public onInput(value: any): void {
+  public onInput(value: ValueType | null): void {
     if (!this.readonly && !this.disabled) {
       this.value = value;
       this.valueChange.emit(value);
@@ -105,11 +107,11 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
     }
   }
 
-  protected _onChange = (_: any): void => {
+  protected _onChange: OnChangeFn<ValueType> = (): void => {
     // default if no ngControl
   };
 
-  protected _onTouched = (): void => {
+  protected _onTouched: OnTouchedFn = (): void => {
     // default if no ngControl
   };
 }
@@ -117,7 +119,6 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
 @NgModule({
   declarations: [InputDirective],
   imports: [CommonModule],
-  exports: [InputDirective]
+  exports: [InputDirective],
 })
-export class InputModule {
-}
+export class InputModule {}
