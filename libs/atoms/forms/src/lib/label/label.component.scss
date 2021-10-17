@@ -1,7 +1,7 @@
 @use '../../styles/src/lib/utils';
 
-@mixin adr-label($config) {
-  adr-label {
+@mixin gro-label($config) {
+  gro-label {
     @include utils.set-typography($config, label);
   }
 }

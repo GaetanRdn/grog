@@ -1,11 +1,11 @@
 @use '../../styles/src/lib/utils';
 
-@mixin adr-input($config) {
+@mixin gro-input($config) {
   $typography: map-get(map-get($config, typography), input);
   $colors: map-get($config, colors);
   $font-size: map-get($typography, font-size);
 
-  .adr-input {
+  .gro-input {
     @include utils.set-color-values($config, primary);
     font-size: $font-size;
     font-family: map-get($typography, font-family);
@@ -14,7 +14,7 @@
     outline: none;
     height: 2 * $font-size;
 
-    &:not(.adr-disabled, .adr-readonly) {
+    &:not(.gro-disabled, .gro-readonly) {
       @include utils.set-color-values($config, primary);
 
       &:hover,
@@ -23,8 +23,8 @@
       }
     }
 
-    &.adr-disabled,
-    &.adr-readonly {
+    &.gro-disabled,
+    &.gro-readonly {
       @include utils.set-color-values($config, disabled);
       border-width: 1px;
       border-style: solid;

@@ -34,20 +34,29 @@
   },
   "projects": {
     "atoms-buttons": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "styles",
+        "tests"
+      ]
     },
     "atoms-forms": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "styles",
+        "tests"
+      ]
     },
     "decorators": {
       "tags": []
     },
     "storybook": {
-      "tags": []
-    },
-    "storybook-e2e": {
       "tags": [],
-      "implicitDependencies": ["storybook"]
+      "implicitDependencies": [
+        "styles",
+        "atoms-forms",
+        "atoms-buttons"
+      ]
     },
     "styles": {
       "tags": []
