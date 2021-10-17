@@ -1,8 +1,8 @@
-@mixin adr-button($config) {
+@mixin gro-button($config) {
   $typography: map-get($config, typography);
   $colors: map-get($config, colors);
 
-  .adr-button {
+  .gro-button {
     appearance: none;
     padding: 0.25rem 0.75rem;
   }
@@ -11,7 +11,7 @@
     $typo: map-get($typography, button-#{$size});
     $font-size: map-get($typo, font-size);
 
-    .adr-#{$size} {
+    .gro-#{$size} {
       font-size: $font-size;
       font-family: map-get($typo, font-family);
       font-weight: map-get($typo, font-weight);
@@ -24,8 +24,8 @@
     $light-config: map-get($colors, $color + '-light');
     $dark-config: map-get($colors, $color + '-dark');
 
-    .adr-#{$color} {
-      &:not(.adr-outlined) {
+    .gro-#{$color} {
+      &:not(.gro-outlined) {
         color: map-get($color-config, color);
         background-color: map-get($color-config, background-color);
         border: none;
@@ -36,7 +36,7 @@
         }
       }
 
-      &.adr-outlined {
+      &.gro-outlined {
         color: map-get($color-config, background-color);
         background-color: map-get($color-config, color);
         border: 1px solid map-get($color-config, border-color);

@@ -34,12 +34,23 @@
   },
   "projects": {
     "atoms-buttons": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "styles",
+        "tests"
+      ]
     },
     "atoms-forms": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "styles",
+        "tests"
+      ]
     },
     "decorators": {
+      "tags": []
+    },
+    "storybook": {
       "tags": []
     },
     "styles": {

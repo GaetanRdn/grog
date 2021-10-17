@@ -1,13 +1,13 @@
 @use '../../styles/src/lib/utils';
 
-@mixin adr-checkbox($config) {
-  adr-checkbox {
+@mixin gro-checkbox($config) {
+  gro-checkbox {
     @include utils.set-typography($config, input);
     display: inline-flex;
     align-items: center;
     cursor: pointer;
 
-    &:not(.adr-disabled, .adr-readonly) {
+    &:not(.gro-disabled, .gro-readonly) {
       @include utils.reverse-color-values($config, primary);
 
       &:hover,
@@ -16,8 +16,8 @@
       }
     }
 
-    &.adr-disabled,
-    &.adr-readonly {
+    &.gro-disabled,
+    &.gro-readonly {
       @include utils.reverse-color-values($config, disabled);
     }
 

@@ -1,17 +1,20 @@
 @use 'utils';
+@use '../input/input';
 
-@mixin adr-autocomplete($config) {
-  adr-autocomplete {
+@mixin gro-autocomplete($config) {
+  gro-autocomplete {
     flex: 1;
 
-    &.adr-opened {
-      .adr-input {
+    @include input.gro-input($config);
+
+    &.gro-opened {
+      .gro-input {
         border-bottom-right-radius: unset;
         border-bottom-left-radius: unset;
       }
     }
 
-    .adr-autocomplete-options {
+    .gro-autocomplete-options {
       @include utils.set-typography($config, label);
       @include utils.set-color-values($config, primary);
       position: absolute;
@@ -32,14 +35,14 @@
         border-bottom-left-radius: 0.25rem;
       }
 
-      .adr-option {
+      .gro-option {
         padding: 0.5rem 1rem;
 
         &:hover {
           @include utils.set-color-values($config, primary-dark);
         }
 
-        &.adr-selected {
+        &.gro-selected {
           @include utils.set-color-values($config, primary-light);
         }
       }
