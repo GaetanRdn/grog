@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxComponent } from './checkbox.component';
 import { TemplateLookup } from '@grorg/tests';
+import { CheckboxComponent } from './checkbox.component';
 
 describe('CheckboxComponent', () => {
   beforeEach(() => {
@@ -219,19 +219,23 @@ describe('CheckboxComponent', () => {
 });
 
 @Component({
-  template: `<gro-checkbox
+  template: ` <gro-checkbox
     value="{{ checkboxValue }}"
-    (valueChange)="currentValue = $event"
+    (valueChange)="updateValue($event)"
     [checked]="checked"
-    >Basic</gro-checkbox
-  >`,
+    >Basic
+  </gro-checkbox>`,
 })
 class BasicHostComponent {
-  public checkboxValue!: any;
+  public checkboxValue!: string;
 
-  public currentValue: any = null;
+  public currentValue: string | null = null;
 
   public checked = false;
+
+  public updateValue(value: string | null): void {
+    this.currentValue = value;
+  }
 }
 
 @Component({
@@ -240,14 +244,14 @@ class BasicHostComponent {
 class ReadonlyHostComponent {}
 
 @Component({
-  template: `<gro-checkbox [value]="'val'" disabled>Disabled</gro-checkbox>`,
+  template: ` <gro-checkbox [value]="'val'" disabled>Disabled</gro-checkbox>`,
 })
 class DisabledHostComponent {}
 
 @Component({
-  template: `<gro-checkbox [value]="'val'" [formControl]="control"
-    >Reactive</gro-checkbox
-  >`,
+  template: ` <gro-checkbox [value]="'val'" [formControl]="control"
+    >Reactive
+  </gro-checkbox>`,
 })
 class ReactiveFormHostComponent {
   public control: FormControl = new FormControl('val');

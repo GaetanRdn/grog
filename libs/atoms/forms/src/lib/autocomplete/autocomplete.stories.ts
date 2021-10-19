@@ -1,7 +1,10 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/angular';
-import { AutocompleteComponent, AutocompleteModule } from './autocomplete.component';
+import {
+  AutocompleteComponent,
+  AutocompleteModule,
+} from './autocomplete.component';
 
 export default {
   title: 'atoms/forms/autocomplete',
@@ -21,7 +24,7 @@ const template: Story<AutocompleteComponent<string>> = (
     ...args,
     valueChange: action('valueChange'),
   },
-  template: `<gro-autocomplete [value]="value" [openOn]="openOn" [options]="options" [required]="required" [disabled]="disabled" (valueChange)="valueChange($event)"></gro-autocomplete>`,
+  template: `<gro-autocomplete [value]='value' [openOn]='openOn' [options]='options' [required]='required' [disabled]='disabled' (valueChange)='valueChange($event)'></gro-autocomplete>`,
 });
 
 export const basic = template.bind({});
@@ -48,7 +51,7 @@ const objectsValuesTemplate: Story<AutocompleteComponent<Person>> = (
     displayOptionFn: (option: Person): string =>
       `${option.firstName} - ${option.name}`,
   },
-  template: `<gro-autocomplete [value]="value" [openOn]="openOn" [options]="options" [required]="required" [disabled]="disabled" (valueChange)="valueChange($event)" [displayOptionFn]="displayOptionFn"></gro-autocomplete>`,
+  template: `<gro-autocomplete [value]='value' [openOn]='openOn' [options]='options' [required]='required' [disabled]='disabled' (valueChange)='valueChange($event)' [displayOptionFn]='displayOptionFn'></gro-autocomplete>`,
 });
 
 export const complexValues = objectsValuesTemplate.bind({});
@@ -74,9 +77,9 @@ const reactiveFormTemplate: Story<AutocompleteComponent<Person>> = (
     displayOptionFn: (option: Person): string =>
       `${option.firstName} - ${option.name}`,
     control: new FormControl({ id: 2, firstName: 'Soren', name: 'Redin' }),
-    identityFn: (p: Person): any => p.id,
+    identityFn: (p: Person): string | number => p.id ?? p.firstName + p.name,
   },
-  template: `<gro-autocomplete [formControl]="control" [openOn]="openOn" [options]="options" [required]="required" (valueChange)="valueChange($event)" [displayOptionFn]="displayOptionFn" [identityFn]="identityFn"></gro-autocomplete>`,
+  template: `<gro-autocomplete [formControl]='control' [openOn]='openOn' [options]='options' [required]='required' (valueChange)='valueChange($event)' [displayOptionFn]='displayOptionFn' [identityFn]='identityFn'></gro-autocomplete>`,
 });
 
 export const reactiveForm = reactiveFormTemplate.bind({});
@@ -100,8 +103,8 @@ const addOptionTemplate: Story<AutocompleteComponent<Person>> = (
     value: { id: 2, firstName: 'Soren', name: 'Redin' },
     displayOptionFn: (option: Person): string =>
       option.firstName + ' - ' + option.name,
-    identityFn: (p: Person): any => p.id ?? p.firstName + p.name,
-    createOptionFn: (input: string): any => {
+    identityFn: (p: Person): string | number => p.id ?? p.firstName + p.name,
+    createOptionFn: (input: string): Partial<Person> => {
       if (input.includes('-')) {
         return {
           firstName: input.split('-')[0].trim(),
@@ -114,7 +117,7 @@ const addOptionTemplate: Story<AutocompleteComponent<Person>> = (
       }
     },
   },
-  template: `<gro-autocomplete [value]="value" [openOn]="openOn" [options]="options" [required]="required" (valueChange)="valueChange($event)" [displayOptionFn]="displayOptionFn" [createOptionFn]="createOptionFn" [identityFn]="identityFn"></gro-autocomplete>`,
+  template: `<gro-autocomplete [value]='value' [openOn]='openOn' [options]='options' [required]='required' (valueChange)='valueChange($event)' [displayOptionFn]='displayOptionFn' [createOptionFn]='createOptionFn' [identityFn]='identityFn'></gro-autocomplete>`,
 });
 
 export const addOption = addOptionTemplate.bind({});
