@@ -21,9 +21,9 @@ import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
     '[attr.checked]': 'checked || null',
     '[attr.readonly]': 'readOnly || null',
     '[attr.disabled]': 'disabled || null',
-    '[class.adr-checked]': 'checked || null',
-    '[class.adr-readonly]': 'readOnly || null',
-    '[class.adr-disabled]': 'disabled || null',
+    '[class.gro-checked]': 'checked || null',
+    '[class.gro-readonly]': 'readOnly || null',
+    '[class.gro-disabled]': 'disabled || null',
   },
   template: `<input
       type="checkbox"
@@ -32,7 +32,7 @@ import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
       [disabled]="disabled || null"
       [checked]="checked || null"
     />
-    <span class="adr-checkbox-label"><ng-content></ng-content></span>`,
+    <span class="gro-checkbox-label"><ng-content></ng-content></span>`,
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: CheckboxComponent, multi: true },
   ],
