@@ -7,6 +7,8 @@
     "build": "nx build",
     "test": "nx test",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
+    "prebuild:storybook": "npm run test:generate-output",
+    "build:storybook": "nx run storybook:build-storybook",
     "storybook": "nx run storybook:storybook",
     "test:all": "nx run-many --all --target=test",
     "lint:all": "nx run-many --all --target=lint",
