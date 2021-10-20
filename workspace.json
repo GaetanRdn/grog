@@ -297,16 +297,6 @@
             ]
           }
         },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/storybook"
-          ],
-          "options": {
-            "jestConfig": "apps/storybook/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
         "storybook": {
           "executor": "@nrwl/storybook:storybook",
           "options": {
