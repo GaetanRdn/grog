@@ -17,6 +17,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
 import { InputDirective, InputModule } from '../input/input.directive';
 import {
   CreateOptionFn,
@@ -46,9 +47,9 @@ const AUTOCOMPLETE_VALUE_ACCESSOR: Provider = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @AutoUnsubscribe()
-export class AutocompleteComponent<T> implements ControlValueAccessor {
+export class AutocompleteComponent<ValueType> implements ControlValueAccessor {
   @Input()
-  public value: T | null = null;
+  public value: ValueType | null = null;
 
   @Input()
   @CoerceBoolean()
@@ -62,26 +63,27 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
   public disabled?: boolean;
 
   @Output()
-  public readonly valueChange: EventEmitter<T | null> = new EventEmitter<T | null>();
+  public readonly valueChange: EventEmitter<ValueType | null> = new EventEmitter<ValueType | null>();
 
   @Input()
-  public createOptionFn?: CreateOptionFn<T>;
+  public createOptionFn?: CreateOptionFn<ValueType>;
 
   @ViewChild(InputDirective, { static: true })
-  private _input!: InputDirective<T>;
+  private _input!: InputDirective<ValueType>;
 
-  private _displayedValues$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>(
-    this.options
-  );
+  private _displayedValues$: BehaviorSubject<ValueType[]> = new BehaviorSubject<
+    ValueType[]
+  >(this.options);
 
-  public displayedValues$: Observable<T[]> =
-    this._displayedValues$.asObservable();
+  get displayedValues$(): Observable<ValueType[]> {
+    return this._displayedValues$.asObservable();
+  }
 
-  private _options: T[] = [];
+  private _options: ValueType[] = [];
 
   @Input()
-  set options(options: T[]) {
-    this._options = (options || []).sort((a: T, b: T) =>
+  set options(options: ValueType[]) {
+    this._options = (options || []).sort((a: ValueType, b: ValueType) =>
       this.displayOptionFn(a) < this.displayOptionFn(b) ? -1 : 1
     );
 
@@ -100,18 +102,21 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
 
   constructor(
     private _elementRef: ElementRef,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _cdr: ChangeDetectorRef
   ) {}
 
   @Input()
-  public displayOptionFn: DisplayFn<T> = (option: T): string =>
+  public displayOptionFn: DisplayFn<ValueType> = (option: ValueType): string =>
     option as unknown as string;
 
   @Input()
-  public identityFn: IdentityFn<T> = (value: T): any => value;
+  public identityFn: IdentityFn<ValueType> = (value: ValueType): unknown =>
+    value;
 
-  public trackByFn: TrackByFunction<T> = (_: number, value: T) =>
-    this.identityFn(value);
+  public readonly trackByFn: TrackByFunction<ValueType> = (
+    _: number,
+    value: ValueType
+  ) => this.identityFn(value);
 
   @HostListener('document:click', ['$event.target'])
   public onClick(event: EventTarget): void {
@@ -126,7 +131,7 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
     }
   }
 
-  public select(option: T): void {
+  public select(option: ValueType): void {
     if (
       this.value === null ||
       this.identityFn(this.value) !== this.identityFn(option)
@@ -142,7 +147,7 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
       this._isOpen = true;
     }
     this._displayedValues$.next(
-      this._options.filter((option: T) =>
+      this._options.filter((option: ValueType) =>
         this.displayOptionFn(option)
           .toLocaleLowerCase()
           .includes((target as HTMLInputElement).value.toLocaleLowerCase())
@@ -150,27 +155,27 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
     );
   }
 
-  public isSelected(option: T): boolean {
+  public isSelected(option: ValueType): boolean {
     return (
       this.value !== null &&
       this.identityFn(this.value) === this.identityFn(option)
     );
   }
 
-  public writeValue(value: any): void {
+  public writeValue(value: ValueType): void {
     this.value = value;
   }
 
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    this._changeDetectorRef.markForCheck();
+    this._cdr.markForCheck();
   }
 
-  public registerOnChange(fn: any): void {
+  public registerOnChange(fn: OnChangeFn<ValueType>): void {
     this._onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: OnTouchedFn): void {
     this._onTouched = fn;
   }
 
@@ -186,15 +191,15 @@ export class AutocompleteComponent<T> implements ControlValueAccessor {
     }
   }
 
-  protected _onChange: (_: T | null) => void = (_: T | null): void => {
+  protected _onChange: OnChangeFn<ValueType> = (): void => {
     // default if no ngControl
   };
 
-  protected _onTouched: () => void = (): void => {
+  protected _onTouched: OnTouchedFn = (): void => {
     // default if no ngControl
   };
 
-  private propagateChange(value: T | null): void {
+  private propagateChange(value: ValueType | null): void {
     this.value = value;
     this._isOpen = false;
     this._onChange(this.value);

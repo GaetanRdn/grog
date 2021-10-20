@@ -1,8 +1,4 @@
-@import '../libs/atoms/buttons/src/lib/button/button';
-@import '../libs/atoms/forms/src/lib/autocomplete/autocomplete.component';
-@import '../libs/atoms/forms/src/lib/checkbox/checkbox.component';
-@import '../libs/atoms/forms/src/lib/input/input';
-@import '../libs/atoms/forms/src/lib/label/label.component';
+@use '../../../../libs/styles/src/lib/theme';
 @import 'colors';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
@@ -94,10 +90,4 @@ $config: (
   ),
 );
 
-@mixin ad-theme($config) {
-  @include gro-button($config);
-  @include gro-autocomplete($config);
-  @include gro-checkbox($config);
-  @include gro-input($config);
-  @include gro-label($config);
-}
+@include theme.gro-theme($config);
