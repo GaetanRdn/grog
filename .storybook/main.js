@@ -1,10 +1,18 @@
 module.exports = {
   stories: [],
   addons: [
+    '@storybook/addon-docs',
     '@storybook/addon-essentials',
     '@storybook/addon-actions',
     '@storybook/addon-jest',
-    '@storybook/addon-storysource',
+    {
+      name: '@storybook/addon-storysource',
+      options: {
+        loaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
   ],
   core: {
     builder: 'webpack5',

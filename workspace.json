@@ -329,6 +329,19 @@
               "quiet": true
             }
           }
+        },
+        "compodoc": {
+          "executor": "@twittwer/compodoc:compodoc",
+          "options": {
+            "tsConfig": "apps/storybook/tsconfig.compodoc.json",
+            "outputPath": "dist/compodoc/storybook",
+            "workspaceDocs": true
+          },
+          "configurations": {
+            "json": {
+              "exportFormat": "json"
+            }
+          }
         }
       }
     },

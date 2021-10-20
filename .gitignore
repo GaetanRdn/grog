@@ -40,3 +40,4 @@ Thumbs.db
 
 # Storybook
 .jest-test-results.json
+documentation.json
