@@ -11,10 +11,12 @@ export default {
     color: {
       options: ['primary', 'accent', 'warn'],
       control: { type: 'radio' },
+      defaultValue: 'primary',
     },
     size: {
       options: ['small', 'medium', 'large'],
       control: { type: 'radio' },
+      defaultValue: 'medium',
     },
   },
 } as Meta<ButtonDirective>;

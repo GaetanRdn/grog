@@ -1,9 +1,7 @@
 module.exports = {
   stories: [],
   addons: [
-    '@storybook/addon-docs',
     '@storybook/addon-essentials',
-    '@storybook/addon-actions',
     '@storybook/addon-jest',
     {
       name: '@storybook/addon-storysource',
