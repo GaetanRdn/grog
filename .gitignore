@@ -37,3 +37,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Storybook
+.jest-test-results.json
+documentation.json

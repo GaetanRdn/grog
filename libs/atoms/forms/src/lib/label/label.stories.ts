@@ -1,5 +1,5 @@
-import { LabelComponent } from './label.component';
 import { Meta, Story } from '@storybook/angular';
+import { LabelComponent } from './label.component';
 
 export default {
   title: 'atoms/forms/label',
@@ -10,7 +10,7 @@ export default {
 } as Meta<LabelComponent>;
 
 const BasicTemplate: Story<LabelComponent> = (args) => ({
-  template: `<adr-label>{{ ngContent }}</adr-label>`,
+  template: `<gro-label>{{ ngContent }}</gro-label>`,
   props: { ...args },
 });
 

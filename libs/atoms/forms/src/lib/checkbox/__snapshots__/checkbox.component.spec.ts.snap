@@ -9,7 +9,7 @@ exports[`CheckboxComponent Basic checkbox should create with value 2 1`] = `
     value="2"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Basic 
   </span>
@@ -25,7 +25,7 @@ exports[`CheckboxComponent Basic checkbox should create with value val1 1`] = `
     value="val1"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Basic 
   </span>
@@ -41,7 +41,7 @@ exports[`CheckboxComponent Basic checkbox should emit null on uncheck 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Basic 
   </span>
@@ -51,7 +51,7 @@ exports[`CheckboxComponent Basic checkbox should emit null on uncheck 1`] = `
 exports[`CheckboxComponent Basic checkbox should emit value on check 1`] = `
 <gro-checkbox
   checked="true"
-  class="adr-checked"
+  class="gro-checked"
   value="val"
 >
   <input
@@ -59,7 +59,7 @@ exports[`CheckboxComponent Basic checkbox should emit value on check 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Basic 
   </span>
@@ -68,7 +68,7 @@ exports[`CheckboxComponent Basic checkbox should emit value on check 1`] = `
 
 exports[`CheckboxComponent Disabled checkbox check does not emit value 1`] = `
 <gro-checkbox
-  class="adr-disabled"
+  class="gro-disabled"
   disabled="true"
   value="val"
 >
@@ -78,7 +78,7 @@ exports[`CheckboxComponent Disabled checkbox check does not emit value 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Disabled
   </span>
@@ -95,7 +95,7 @@ exports[`CheckboxComponent ReactiveForm checkbox check is touched on change 1`] 
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Reactive 
   </span>
@@ -105,7 +105,7 @@ exports[`CheckboxComponent ReactiveForm checkbox check is touched on change 1`] 
 exports[`CheckboxComponent ReactiveForm checkbox should create checked 1`] = `
 <gro-checkbox
   checked="true"
-  class="adr-checked ng-untouched ng-pristine ng-valid"
+  class="gro-checked ng-untouched ng-pristine ng-valid"
   value="val"
 >
   <input
@@ -113,7 +113,7 @@ exports[`CheckboxComponent ReactiveForm checkbox should create checked 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Reactive 
   </span>
@@ -123,7 +123,7 @@ exports[`CheckboxComponent ReactiveForm checkbox should create checked 1`] = `
 exports[`CheckboxComponent ReactiveForm checkbox should create disabled 1`] = `
 <gro-checkbox
   checked="true"
-  class="adr-checked ng-untouched ng-pristine adr-disabled"
+  class="gro-checked ng-untouched ng-pristine gro-disabled"
   disabled="true"
   value="val"
 >
@@ -133,7 +133,7 @@ exports[`CheckboxComponent ReactiveForm checkbox should create disabled 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Reactive 
   </span>
@@ -150,7 +150,7 @@ exports[`CheckboxComponent ReactiveForm checkbox should create unchecked 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     Reactive 
   </span>
@@ -159,7 +159,7 @@ exports[`CheckboxComponent ReactiveForm checkbox should create unchecked 1`] = `
 
 exports[`CheckboxComponent Readonly checkbox check does not emit value 1`] = `
 <gro-checkbox
-  class="adr-readonly"
+  class="gro-readonly"
   readonly="true"
   value="val"
 >
@@ -169,7 +169,7 @@ exports[`CheckboxComponent Readonly checkbox check does not emit value 1`] = `
     value="val"
   />
   <span
-    class="adr-checkbox-label"
+    class="gro-checkbox-label"
   >
     ReadOnly
   </span>

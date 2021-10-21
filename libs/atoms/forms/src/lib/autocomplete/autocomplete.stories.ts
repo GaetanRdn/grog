@@ -12,7 +12,13 @@ export default {
   parameters: {
     jest: ['autocomplete.component.spec.ts'],
   },
-} as Meta<AutocompleteComponent<string>>;
+  argTypes: {
+    openOn: {
+      options: ['focus', 'input'],
+      control: { type: 'inline-radio' },
+    },
+  },
+} as Meta<AutocompleteComponent<unknown>>;
 
 const template: Story<AutocompleteComponent<string>> = (
   args: AutocompleteComponent<string>
@@ -31,6 +37,14 @@ export const basic = template.bind({});
 basic.args = {
   options: ['Gaetan', 'Soren', 'Bernard'],
   value: '',
+  openOn: 'focus',
+  required: false,
+  disabled: false,
+};
+basic.argTypes = {
+  value: {
+    control: { type: 'text' },
+  },
 };
 
 interface Person {
@@ -62,6 +76,9 @@ complexValues.args = {
     { id: 3, firstName: 'Lord', name: 'Voldemor' },
   ],
   value: { id: 2, firstName: 'Soren', name: 'Redin' },
+  openOn: 'focus',
+  required: false,
+  disabled: false,
 };
 
 const reactiveFormTemplate: Story<AutocompleteComponent<Person>> = (
@@ -89,6 +106,9 @@ reactiveForm.args = {
     { id: 2, firstName: 'Soren', name: 'Redin' },
     { id: 3, firstName: 'Lord', name: 'Voldemor' },
   ],
+  openOn: 'focus',
+  required: false,
+  disabled: false,
 };
 
 const addOptionTemplate: Story<AutocompleteComponent<Person>> = (
@@ -100,7 +120,6 @@ const addOptionTemplate: Story<AutocompleteComponent<Person>> = (
   props: {
     ...args,
     valueChange: action('valueChange'),
-    value: { id: 2, firstName: 'Soren', name: 'Redin' },
     displayOptionFn: (option: Person): string =>
       option.firstName + ' - ' + option.name,
     identityFn: (p: Person): string | number => p.id ?? p.firstName + p.name,
@@ -127,4 +146,8 @@ addOption.args = {
     { id: 2, firstName: 'Soren', name: 'Redin' },
     { id: 3, firstName: 'Lord', name: 'Voldemor' },
   ],
+  openOn: 'focus',
+  required: false,
+  disabled: false,
+  value: null,
 };
