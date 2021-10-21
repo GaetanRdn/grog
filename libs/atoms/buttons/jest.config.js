@@ -8,6 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
+  collectCoverage: true,
   coverageDirectory: '../../../coverage/libs/atoms/buttons',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
