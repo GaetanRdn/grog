@@ -1,0 +1,104 @@
+@use '../../../../../styles/src/lib/utils';
+
+.material-icons {
+  direction: ltr;
+  display: inline-block;
+  font-family: 'Material Icons';
+  font-feature-settings: 'liga';
+  font-size: 24px; /* Preferred icon size */
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for all WebKit browsers. */
+  text-rendering: optimizeLegibility;
+  /* Support for Safari and Chrome. */
+  text-transform: none;
+
+  /* Support for Firefox. */
+  white-space: nowrap;
+
+  /* Support for IE. */
+  word-wrap: normal;
+}
+
+@mixin gro-select($config) {
+  $typography: map-get(map-get($config, typography), input);
+  $colors: map-get($config, colors);
+  $font-size: map-get($typography, font-size);
+
+  gro-select {
+    .gro-select-wrapper {
+      @include utils.set-typography($config, input);
+      @include utils.set-color-values($config, primary);
+      align-items: center;
+      display: inline-flex;
+      flex-flow: row nowrap;
+      border-radius: 0.25 * $font-size;
+      height: 2 * $font-size;
+      padding: 0 0.5 * $font-size;
+
+      input {
+        background-color: inherit;
+        color: inherit;
+        outline: none;
+        border: none;
+      }
+    }
+
+    .gro-select-icon {
+      @extend .material-icons;
+    }
+
+    .gro-options {
+      @include utils.set-typography($config, label);
+      @include utils.set-color-values($config, primary);
+      position: absolute;
+      top: -50%;
+      display: flex;
+      flex-flow: column;
+      align-items: stretch;
+      width: 100%;
+      cursor: pointer;
+      border-left-width: 2px;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
+      border-style: inset;
+      border-radius: 0.25rem;
+
+      .gro-option {
+        height: 2 * $font-size;
+        padding: 0 1rem;
+        display: inline-flex;
+        flex-flow: row nowrap;
+        align-items: center;
+
+        &:hover {
+          @include utils.set-color-values($config, primary-dark);
+        }
+
+        &.gro-selected {
+          @include utils.set-color-values($config, primary-light);
+        }
+      }
+    }
+
+    &:not(.gro-disabled) {
+      @include utils.set-color-values($config, primary);
+
+      &:hover,
+      &:focus {
+        @include utils.set-color-values($config, primary-dark);
+      }
+    }
+
+    &.gro-disabled {
+      @include utils.set-color-values($config, disabled);
+      border-width: 1px;
+      border-style: solid;
+    }
+  }
+}

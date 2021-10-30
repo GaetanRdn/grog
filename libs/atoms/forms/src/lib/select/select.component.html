@@ -1,0 +1,8 @@
+<span class="gro-select-wrapper">
+<input [disabled]="disabled" readonly value="{{value}}" />
+  <span class="gro-select-icon">keyboard_arrow_down</span>
+</span>
+<div *ngIf="isOpen" class="gro-options">
+  <span (click)="select($event, option)" *ngFor="let option of options"
+        [class.gro-selected]="value === option" class="gro-option">{{ option }}</span>
+</div>

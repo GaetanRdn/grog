@@ -1,0 +1,436 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectComponent Basic select Close on click outside 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select Open on click 1`] = `
+<gro-select
+  class="gro-opened"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  <div
+    class="gro-options"
+  >
+    <span
+      class="gro-option"
+    >
+      option1
+    </span>
+    <span
+      class="gro-option"
+    >
+      option2
+    </span>
+    
+  </div>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select When not required then can deselect option 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select When required then cannot deselect option 1`] = `
+<gro-select
+  class="gro-opened"
+  required="true"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  <div
+    class="gro-options"
+  >
+    <span
+      class="gro-option gro-selected"
+    >
+      option1
+    </span>
+    <span
+      class="gro-option"
+    >
+      option2
+    </span>
+    
+  </div>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select should create with options 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select should create with options 2`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select when click on option 0 then value is emitted and panel is closed 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select when click on option 1 then value is emitted and panel is closed 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Basic select when disabled then cannot open panel 1`] = `
+<gro-select
+  class="gro-disabled"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      disabled=""
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Close on click outside 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Multiple selection When multiple selection then emitted value 1`] = `
+<gro-select
+  class="gro-opened"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  <div
+    class="gro-options"
+  >
+    <span
+      class="gro-option"
+    >
+      option1
+    </span>
+    <span
+      class="gro-option gro-selected"
+    >
+      option2
+    </span>
+    
+  </div>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent Open on click 1`] = `
+<gro-select
+  class="gro-opened"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  <div
+    class="gro-options"
+  >
+    <span
+      class="gro-option"
+    >
+      option1
+    </span>
+    <span
+      class="gro-option"
+    >
+      option2
+    </span>
+    
+  </div>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent When not required then can deselect option 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent When required then cannot deselect option 1`] = `
+<gro-select
+  class="gro-opened"
+  required="true"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  <div
+    class="gro-options"
+  >
+    <span
+      class="gro-option gro-selected"
+    >
+      option1
+    </span>
+    <span
+      class="gro-option"
+    >
+      option2
+    </span>
+    
+  </div>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent should create with options 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent should create with options 2`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent when click on option 0 then value is emitted and panel is closed 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent when click on option 1 then value is emitted and panel is closed 1`] = `
+<gro-select>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;
+
+exports[`SelectComponent when disabled then cannot open panel 1`] = `
+<gro-select
+  class="gro-disabled"
+>
+  <span
+    class="gro-select-wrapper"
+  >
+    <input
+      disabled=""
+      readonly=""
+    />
+    <span
+      class="gro-select-icon"
+    >
+      keyboard_arrow_down
+    </span>
+  </span>
+  
+</gro-select>
+`;

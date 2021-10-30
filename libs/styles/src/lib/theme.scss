@@ -3,6 +3,7 @@
 @use '../../../atoms/forms/src/lib/checkbox/checkbox.component';
 @use '../../../atoms/forms/src/lib/input/input';
 @use '../../../atoms/forms/src/lib/label/label.component';
+@use '../../../atoms/forms/src/lib/select/select.component';
 
 @mixin gro-theme($config) {
   @include button.gro-button($config);
@@ -10,4 +11,5 @@
   @include checkbox.gro-checkbox($config);
   @include input.gro-input($config);
   @include label.gro-label($config);
+  @include select.gro-select($config);
 }
