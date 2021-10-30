@@ -36,17 +36,14 @@
   "projects": {
     "atoms-buttons": {
       "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "tests"
-      ]
+      "implicitDependencies": ["styles", "tests"]
     },
     "atoms-forms": {
       "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "tests"
-      ]
+      "implicitDependencies": ["styles", "tests"]
+    },
+    "data-store": {
+      "tags": ["scope:shared"]
     },
     "decorators": {
       "tags": []

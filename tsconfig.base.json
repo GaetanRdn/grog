@@ -17,6 +17,7 @@
     "paths": {
       "@grorg/atoms-forms": ["libs/atoms/forms/src/index.ts"],
       "@grorg/atoms/buttons": ["libs/atoms/buttons/src/index.ts"],
+      "@grorg/data-store": ["libs/data-store/src/index.ts"],
       "@grorg/decorators": ["libs/decorators/src/index.ts"],
       "@grorg/storybook": ["libs/storybook/src/index.ts"],
       "@grorg/styles": ["libs/styles/src/index.ts"],
