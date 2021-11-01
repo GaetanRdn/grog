@@ -1,36 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { CrudService } from './crud.service';
-
-export interface StoreEntity {
-  [key: string]: unknown;
-}
+import { CRUD_SERVICE_TOKEN, CrudService } from './crud.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DataStoreService<
-  EntityType extends StoreEntity,
-  IdentifierType extends Partial<EntityType>
-> {
+export class DataStore<EntityType> {
   private _store: BehaviorSubject<EntityType[]> = new BehaviorSubject<
     EntityType[]
   >([]);
 
-  constructor(private _crud: CrudService<EntityType, IdentifierType>) {}
+  constructor(
+    @Inject(CRUD_SERVICE_TOKEN) private _crud: CrudService<EntityType>
+  ) {}
 
-  public get(identifier: IdentifierType): Observable<EntityType> {
-    const found: EntityType | undefined = this._store
+  public get<GetParam = Parameters<CrudService<EntityType>['get']>[0]>(
+    identifier: GetParam
+  ): Observable<EntityType> {
+    const find: EntityType | undefined = this._store
       .getValue()
-      .find((entity: EntityType) =>
-        Object.keys(identifier).every(
-          (key: string) => identifier[key] === entity[key]
-        )
-      );
+      .find((entity: EntityType) => {
+        const keys: [keyof GetParam] = Object.keys(identifier) as [
+          keyof GetParam
+        ];
 
-    if (found) {
-      return of(found);
+        return keys.every(
+          (key: keyof GetParam) =>
+            (entity as unknown as GetParam)[key] === identifier[key]
+        );
+      });
+
+    if (find) {
+      return of(find);
     }
 
     return this._crud

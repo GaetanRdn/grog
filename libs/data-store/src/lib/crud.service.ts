@@ -1,18 +1,28 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StoreEntity } from './data-store.service';
+
+type PatchType<EntityType, Identifier> = Partial<EntityType> & Identifier;
+type PostType<EntityType, Identifier> = Required<EntityType> & Identifier;
+type PutType<EntityType, Identifier> = Required<EntityType> & Identifier;
+
+export const CRUD_SERVICE_TOKEN: InjectionToken<CrudService<unknown>> =
+  new InjectionToken<CrudService<unknown>>('CRUD_SERVICE_TOKEN');
 
 @Injectable()
-export abstract class CrudService<
-  EntityType extends StoreEntity,
-  IdentifierType = never
-> {
-  protected _url!: string;
+export abstract class CrudService<EntityType, EntityIdentifierType = never> {
+  abstract get(filters: Partial<EntityType>): Observable<EntityType>;
 
-  protected constructor(protected _httpClient: HttpClient) {}
+  abstract delete(identifier: EntityIdentifierType): Observable<boolean>;
 
-  public get(identifier: IdentifierType): Observable<EntityType> {
-    return this._httpClient.get<EntityType>(`${this._url}/${identifier}`);
-  }
+  abstract patch(
+    body: PatchType<EntityType, EntityIdentifierType>
+  ): Observable<boolean>;
+
+  abstract post(
+    body: PostType<EntityType, EntityIdentifierType>
+  ): Observable<boolean>;
+
+  abstract put(
+    body: PutType<EntityType, EntityIdentifierType>
+  ): Observable<boolean>;
 }
