@@ -12,22 +12,22 @@ export interface StoreEntity {
 })
 export class DataStoreService<
   EntityType extends StoreEntity,
-  Identifier extends Partial<EntityType>
+  IdentifierType extends Partial<EntityType>
 > {
   private _store: BehaviorSubject<EntityType[]> = new BehaviorSubject<
     EntityType[]
   >([]);
 
-  constructor(private _crud: CrudService<EntityType>) {}
+  constructor(private _crud: CrudService<EntityType, IdentifierType>) {}
 
-  public get(identifier: Identifier): Observable<EntityType> {
+  public get(identifier: IdentifierType): Observable<EntityType> {
     const found: EntityType | undefined = this._store
       .getValue()
-      .find((entity: EntityType) => {
-        return Object.keys(identifier).every(
+      .find((entity: EntityType) =>
+        Object.keys(identifier).every(
           (key: string) => identifier[key] === entity[key]
-        );
-      });
+        )
+      );
 
     if (found) {
       return of(found);

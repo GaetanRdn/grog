@@ -4,12 +4,15 @@ import { Observable } from 'rxjs';
 import { StoreEntity } from './data-store.service';
 
 @Injectable()
-export abstract class CrudService<EntityType extends StoreEntity> {
+export abstract class CrudService<
+  EntityType extends StoreEntity,
+  IdentifierType = never
+> {
   protected _url!: string;
 
   protected constructor(protected _httpClient: HttpClient) {}
 
-  public get(identifier: Partial<EntityType>): Observable<EntityType> {
+  public get(identifier: IdentifierType): Observable<EntityType> {
     return this._httpClient.get<EntityType>(`${this._url}/${identifier}`);
   }
 }
