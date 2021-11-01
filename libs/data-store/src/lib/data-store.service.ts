@@ -12,7 +12,7 @@ export class DataStore<EntityType> {
   >([]);
 
   constructor(
-    @Inject(CRUD_SERVICE_TOKEN) private _crud: CrudService<EntityType>
+    @Inject(CRUD_SERVICE_TOKEN) private _crud: CrudService<EntityType, unknown>
   ) {}
 
   public get<GetParam = Parameters<CrudService<EntityType>['get']>[0]>(

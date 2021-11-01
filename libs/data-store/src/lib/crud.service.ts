@@ -10,7 +10,9 @@ export const CRUD_SERVICE_TOKEN: InjectionToken<CrudService<unknown>> =
 
 @Injectable()
 export abstract class CrudService<EntityType, EntityIdentifierType = never> {
-  abstract get(filters: Partial<EntityType>): Observable<EntityType>;
+  abstract get(filters: EntityIdentifierType): Observable<EntityType>;
+
+  abstract getAll(filters: Partial<EntityType>): Observable<EntityType[]>;
 
   abstract delete(identifier: EntityIdentifierType): Observable<boolean>;
 

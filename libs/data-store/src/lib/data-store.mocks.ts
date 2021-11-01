@@ -31,6 +31,10 @@ export class PersonWithIdCrudService extends CrudService<
   public put(body: PersonWithId): Observable<boolean> {
     throw new Error('Unsupported Operation');
   }
+
+  public getAll(filters: Partial<PersonWithId>): Observable<PersonWithId[]> {
+    throw new Error('Unsupported Operation');
+  }
 }
 
 export interface PersonWithId {
