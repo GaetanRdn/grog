@@ -33,32 +33,24 @@
       }
     ]
   },
-  "projects": {
-    "atoms-buttons": {
-      "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "tests"
-      ]
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
     },
-    "atoms-forms": {
-      "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "tests"
-      ]
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     },
-    "decorators": {
-      "tags": []
-    },
-    "storybook": {
-      "tags": []
-    },
-    "styles": {
-      "tags": []
-    },
-    "tests": {
-      "tags": []
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
-  }
+  },
+  "defaultProject": "decorators"
 }
