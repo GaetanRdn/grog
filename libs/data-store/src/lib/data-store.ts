@@ -17,13 +17,13 @@ export class DataStore<
   EntityType,
   Identifier extends keyof Concrete<EntityType> = keyof MandatoryPropertiesOf<EntityType>
 > {
-  private _store: BehaviorSubject<StoredEntity<EntityType>[]> =
+  private _store$: BehaviorSubject<StoredEntity<EntityType>[]> =
     new BehaviorSubject<StoredEntity<EntityType>[]>([]);
 
   private _identifierKeys: (keyof EntityType)[];
 
   get changed$(): Observable<StorableEntity<EntityType>[]> {
-    return this._store.asObservable();
+    return this._store$.asObservable();
   }
 
   constructor(private _config: StoreConfig<EntityType>) {
@@ -33,8 +33,8 @@ export class DataStore<
   }
 
   public store(...entities: EntityType[]): DataStore<EntityType, Identifier> {
-    this._store.next([
-      ...this._store.getValue(),
+    this._store$.next([
+      ...this._store$.getValue(),
       ...entities.map(
         (entity: EntityType) => new StoredEntity(deepCopy(entity), this)
       ),
@@ -47,7 +47,7 @@ export class DataStore<
     identifier: Pick<EntityType, Identifier>
   ): StorableEntity<EntityType> | null {
     return (
-      this._store
+      this._store$
         .getValue()
         .find((storedEntity: StoredEntity<EntityType>) =>
           this.sameEntity(identifier, storedEntity.entity)
@@ -74,8 +74,8 @@ export class DataStore<
   }
 
   public create(entity: MandatoryPropertiesOf<EntityType>): void {
-    this._store.next([
-      ...this._store.getValue(),
+    this._store$.next([
+      ...this._store$.getValue(),
       new StoredEntity(deepCopy(entity) as EntityType, this, 'created'),
     ]);
   }
@@ -85,8 +85,8 @@ export class DataStore<
     state: StoredEntityState,
     change?: Partial<EntityType>
   ): void {
-    this._store.next(
-      this._store.getValue().map((storedEntity: StoredEntity<EntityType>) => {
+    this._store$.next(
+      this._store$.getValue().map((storedEntity: StoredEntity<EntityType>) => {
         if (this.sameEntity(identifier, storedEntity.entity)) {
           storedEntity['_state'] = state;
 
