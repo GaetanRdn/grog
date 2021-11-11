@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataStoreService when create entity then check changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "firstName": "Gaetan",
+      "lastName": "REDIN",
+    },
+  },
+]
+`;
+
+exports[`DataStoreService when delete entity then check changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "firstName": "Gaetan",
+      "id": 1,
+      "lastName": "REDIN",
+    },
+  },
+]
+`;
+
+exports[`DataStoreService when get entity and store contains entity then return it 1`] = `
+Object {
+  "change": null,
+  "entity": Object {
+    "firstName": "Gaetan",
+    "id": 1,
+    "lastName": "REDIN",
+  },
+}
+`;
+
+exports[`DataStoreService when partialUpdate entity then check changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": Object {
+      "age": 31,
+    },
+    "entity": Object {
+      "firstName": "Gaetan",
+      "id": 1,
+      "lastName": "REDIN",
+    },
+  },
+]
+`;
+
+exports[`DataStoreService when store 1 entity then check changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "firstName": "Gaetan",
+      "lastName": "REDIN",
+    },
+  },
+]
+`;
+
+exports[`DataStoreService when store 2 entities at the same time then check changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "age": 25,
+      "firstName": "Elisa",
+      "lastName": "REDIN",
+    },
+  },
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "firstName": "Gaetan",
+      "lastName": "REDIN",
+    },
+  },
+]
+`;
+
+exports[`DataStoreService when store 2 entities one after another then check last changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "age": 25,
+      "firstName": "Elisa",
+      "lastName": "REDIN",
+    },
+  },
+  StoredEntity {
+    "change": null,
+    "entity": Object {
+      "firstName": "Gaetan",
+      "lastName": "REDIN",
+    },
+  },
+]
+`;
+
+exports[`DataStoreService when update entity then check changed$ 1`] = `
+Array [
+  StoredEntity {
+    "change": Object {
+      "age": 31,
+      "firstName": "Gaetan",
+      "id": 1,
+      "lastName": "REDIN",
+    },
+    "entity": Object {
+      "firstName": "Gaetan",
+      "id": 1,
+      "lastName": "REDIN",
+    },
+  },
+]
+`;

@@ -1,66 +1,182 @@
-import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { CRUD_SERVICE_TOKEN } from './crud.service';
-import { PersonWithId, PersonWithIdCrudService } from './data-store.mocks';
-import { DataStore } from './data-store.service';
+import { Person } from './data-store.mocks';
+import { DataStore, StorableEntity } from './data-store.service';
 
 describe('DataStoreService', () => {
-  afterEach(() => jest.clearAllMocks());
+  let personStore: DataStore<Person, 'id'>;
 
-  describe('Simple Entity identified by an id', () => {
-    let store: DataStore<PersonWithId>;
-    let crud: PersonWithIdCrudService;
-
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        providers: [
-          DataStore,
-          // PersonWithIdCrudService,
-          {
-            provide: CRUD_SERVICE_TOKEN,
-            useClass: PersonWithIdCrudService,
-          },
-        ],
-      });
-
-      store = TestBed.inject(DataStore);
-      crud = TestBed.inject(CRUD_SERVICE_TOKEN) as PersonWithIdCrudService;
-    });
-
-    test('When call get once then check crud has been called once', async () => {
-      // GIVEN
-      jest
-        .spyOn(crud, 'get')
-        .mockReturnValueOnce(
-          of({ id: 1, firstName: 'Gaetan', lastName: 'Redin' })
-        );
-
-      // WHEN
-      const personWithId: PersonWithId = await store.get({ id: 1 }).toPromise();
-
-      // THEN
-      expect(personWithId).toMatchInlineSnapshot(`
-        Object {
-          "firstName": "Gaetan",
-          "id": 1,
-          "lastName": "Redin",
-        }
-      `);
-      expect(crud.get).toHaveBeenCalledTimes(1);
-    });
-
-    test('When call get twice then check crud has been called once', async () => {
-      // GIVEN
-      jest
-        .spyOn(crud, 'get')
-        .mockReturnValue(of({ id: 1, firstName: 'Gaetan', lastName: 'Redin' }));
-
-      // WHEN
-      await store.get({ id: 1 }).toPromise();
-      await store.get({ id: 1 }).toPromise();
-
-      // THEN
-      expect(crud.get).toHaveBeenCalledTimes(1);
+  beforeEach(() => {
+    personStore = new DataStore({
+      extractIdentifier: 'id',
     });
   });
+
+  test('when store 1 entity then check changed$', (doneFn: jest.DoneCallback) => {
+    // WHEN
+    personStore.store({
+      firstName: 'Gaetan',
+      lastName: 'REDIN',
+    });
+
+    // THEN
+    personStore.changed$.subscribe((changed: StorableEntity<Person>[]) => {
+      expect(changed).toMatchSnapshot();
+      changed.forEach(({ state }: StorableEntity<Person>) =>
+        expect(state).toEqual('initialized')
+      );
+      doneFn();
+    });
+  });
+
+  test('when store 2 entities at the same time then check changed$', (doneFn: jest.DoneCallback) => {
+    // WHEN
+    personStore.store(
+      {
+        firstName: 'Elisa',
+        lastName: 'REDIN',
+        age: 25,
+      },
+      {
+        firstName: 'Gaetan',
+        lastName: 'REDIN',
+      }
+    );
+
+    // THEN
+    personStore.changed$.subscribe((changed: StorableEntity<Person>[]) => {
+      expect(changed).toMatchSnapshot();
+      changed.forEach(({ state }: StorableEntity<Person>) =>
+        expect(state).toEqual('initialized')
+      );
+      doneFn();
+    });
+  });
+
+  test('when store 2 entities one after another then check last changed$', (doneFn: jest.DoneCallback) => {
+    // WHEN
+    personStore
+      .store({
+        firstName: 'Elisa',
+        lastName: 'REDIN',
+        age: 25,
+      })
+      .store({
+        firstName: 'Gaetan',
+        lastName: 'REDIN',
+      });
+
+    // THEN
+    personStore.changed$.subscribe((changed: StorableEntity<Person>[]) => {
+      expect(changed).toMatchSnapshot();
+      changed.forEach(({ state }: StorableEntity<Person>) =>
+        expect(state).toEqual('initialized')
+      );
+      doneFn();
+    });
+  });
+
+  test('when get entity and empty store then return null', () => {
+    expect(personStore.get({ id: 1 })).toBeNull();
+  });
+
+  test('when get entity and store contains entity then return it', () => {
+    // GIVEN
+    personStore.store({
+      id: 1,
+      firstName: 'Gaetan',
+      lastName: 'REDIN',
+    });
+
+    // WHEN
+    const current: StorableEntity<Person> | null = personStore.get({ id: 1 });
+
+    // THEN
+    expect(current).toMatchSnapshot({
+      entity: {
+        id: 1,
+        firstName: 'Gaetan',
+        lastName: 'REDIN',
+      },
+    });
+    expect(current?.state).toEqual('initialized');
+  });
+
+  test('when delete entity then check changed$', (doneFn: jest.DoneCallback) => {
+    // GIVEN
+    personStore.store({
+      id: 1,
+      firstName: 'Gaetan',
+      lastName: 'REDIN',
+    });
+
+    // WHEN
+    personStore.delete({ id: 1 });
+
+    // THEN
+    personStore.changed$.subscribe((changed: StorableEntity<Person>[]) => {
+      expect(changed).toMatchSnapshot();
+      expect(changed[0].state).toEqual('deleted');
+      doneFn();
+    });
+  });
+
+  test('when update entity then check changed$', (doneFn: jest.DoneCallback) => {
+    // GIVEN
+    const entity: Person = {
+      id: 1,
+      firstName: 'Gaetan',
+      lastName: 'REDIN',
+    };
+    personStore.store(entity);
+
+    // WHEN
+    entity.age = 31;
+    personStore.update({ id: 1 }, entity);
+
+    // THEN
+    personStore.changed$.subscribe((changed) => {
+      expect(changed).toMatchSnapshot();
+      expect(changed[0].state).toEqual('updated');
+      doneFn();
+    });
+  });
+
+  test('when create entity then check changed$', (doneFn: jest.DoneCallback) => {
+    // GIVEN
+    const entity: Person = {
+      firstName: 'Gaetan',
+      lastName: 'REDIN',
+    };
+
+    // WHEN
+    personStore.create(entity);
+
+    // THEN
+    personStore.changed$.subscribe((changed) => {
+      expect(changed).toMatchSnapshot();
+      expect(changed[0].state).toEqual('created');
+      doneFn();
+    });
+  });
+
+  test('when partialUpdate entity then check changed$', (doneFn: jest.DoneCallback) => {
+    // GIVEN
+    const entity: Person = {
+      id: 1,
+      firstName: 'Gaetan',
+      lastName: 'REDIN',
+    };
+    personStore.store(entity);
+
+    // WHEN
+    personStore.partialUpdate({ id: 1 }, { age: 31 });
+
+    // THEN
+    personStore.changed$.subscribe((changed: StorableEntity<Person>[]) => {
+      expect(changed).toMatchSnapshot();
+      expect(changed[0].state).toEqual('partial');
+      doneFn();
+    });
+  });
+
+  test.todo('when flush store then check changed$');
 });

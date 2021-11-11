@@ -1,6 +1,8 @@
 module.exports = {
   displayName: 'data-store',
   preset: '../../jest.preset.js',
+  clearMocks: true,
+  collectCoverage: true,
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

@@ -1,46 +1,174 @@
-import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { CRUD_SERVICE_TOKEN, CrudService } from './crud.service';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+
+export interface StorableEntity<EntityType> {
+  entity: EntityType;
+  change: Partial<EntityType> | null;
+  readonly state: StoredEntityState;
+  readonly stateChanged$: Observable<StoredEntityState>;
+  delete: () => void;
+}
+
+class StoredEntity<EntityType> implements StorableEntity<EntityType> {
+  public change: Partial<EntityType> | null = null;
+
+  #store: DataStore<EntityType>;
+
+  #_state$: BehaviorSubject<StoredEntityState> =
+    new BehaviorSubject<StoredEntityState>('initialized');
+
+  get stateChanged$(): Observable<StoredEntityState> {
+    return this.#_state$.asObservable().pipe(distinctUntilChanged());
+  }
+
+  get state(): StoredEntityState {
+    return this.#_state$.getValue();
+  }
+
+  /**
+   * @internal
+   * @private
+   */
+  private set _state(state: StoredEntityState) {
+    this.#_state$.next(state);
+  }
+
+  constructor(
+    public entity: EntityType,
+    _store: DataStore<EntityType, keyof Concrete<EntityType>>,
+    state: StoredEntityState = 'initialized'
+  ) {
+    this.#store = _store;
+    this._state = state;
+  }
+
+  public delete(): void {
+    this.#store.delete(this.entity);
+  }
+}
+
+export type StoredEntityState =
+  | 'initialized'
+  | 'deleted'
+  | 'updated'
+  | 'partial'
+  | 'created';
+
+type Concrete<Type> = {
+  [Property in keyof Type]-?: Type[Property];
+};
+
+type OptionalPropertiesOf<Type> = {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  [K in keyof Type]-?: {} extends Pick<Type, K> ? K : never;
+}[keyof Type];
+
+type MandatoryPropertiesOf<Type> = Omit<Type, OptionalPropertiesOf<Type>>;
+
+function deepCopy<Type>(obj: Type): Type {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+interface StoreConfig<EntityType> {
+  extractIdentifier: keyof EntityType | (keyof EntityType)[];
+}
 
 @Injectable({
   providedIn: 'root',
 })
-export class DataStore<EntityType> {
-  private _store: BehaviorSubject<EntityType[]> = new BehaviorSubject<
-    EntityType[]
-  >([]);
+export class DataStore<
+  EntityType,
+  Identifier extends keyof Concrete<EntityType> = keyof MandatoryPropertiesOf<EntityType>
+> {
+  private _store: BehaviorSubject<StoredEntity<EntityType>[]> =
+    new BehaviorSubject<StoredEntity<EntityType>[]>([]);
 
-  constructor(
-    @Inject(CRUD_SERVICE_TOKEN) private _crud: CrudService<EntityType, unknown>
-  ) {}
+  private _identifierKeys: (keyof EntityType)[];
 
-  public get<GetParam = Parameters<CrudService<EntityType>['get']>[0]>(
-    identifier: GetParam
-  ): Observable<EntityType> {
-    const find: EntityType | undefined = this._store
-      .getValue()
-      .find((entity: EntityType) => {
-        const keys: [keyof GetParam] = Object.keys(identifier) as [
-          keyof GetParam
-        ];
+  get changed$(): Observable<StorableEntity<EntityType>[]> {
+    return this._store.asObservable();
+  }
 
-        return keys.every(
-          (key: keyof GetParam) =>
-            (entity as unknown as GetParam)[key] === identifier[key]
-        );
-      });
+  constructor(private _config: StoreConfig<EntityType>) {
+    this._identifierKeys = Array.isArray(this._config.extractIdentifier)
+      ? this._config.extractIdentifier
+      : [this._config.extractIdentifier];
+  }
 
-    if (find) {
-      return of(find);
-    }
+  public store(...entities: EntityType[]): DataStore<EntityType, Identifier> {
+    this._store.next([
+      ...this._store.getValue(),
+      ...entities.map(
+        (entity: EntityType) => new StoredEntity(deepCopy(entity), this)
+      ),
+    ]);
 
-    return this._crud
-      .get(identifier)
-      .pipe(
-        tap((entity: EntityType) =>
-          this._store.next([...this._store.getValue(), entity])
-        )
-      );
+    return this;
+  }
+
+  public get(
+    identifier: Pick<EntityType, Identifier>
+  ): StorableEntity<EntityType> | null {
+    return (
+      this._store
+        .getValue()
+        .find((storedEntity: StoredEntity<EntityType>) =>
+          this.isSame(identifier, storedEntity.entity)
+        ) ?? null
+    );
+  }
+
+  public delete(identifier: Pick<EntityType, Identifier>): void {
+    this.updateState(identifier, 'deleted');
+  }
+
+  public update(
+    entity: Pick<EntityType, Identifier>,
+    change: Partial<EntityType> & MandatoryPropertiesOf<EntityType>
+  ): void {
+    this.updateState(entity, 'updated', change);
+  }
+
+  public partialUpdate(
+    entity: Pick<EntityType, Identifier>,
+    change: Partial<EntityType>
+  ): void {
+    this.updateState(entity, 'partial', change);
+  }
+
+  public create(entity: MandatoryPropertiesOf<EntityType>): void {
+    this._store.next([
+      ...this._store.getValue(),
+      new StoredEntity(deepCopy(entity) as EntityType, this, 'created'),
+    ]);
+  }
+
+  private updateState(
+    identifier: Pick<EntityType, Identifier>,
+    state: StoredEntityState,
+    change?: Partial<EntityType>
+  ): void {
+    this._store.next(
+      this._store.getValue().map((storedEntity: StoredEntity<EntityType>) => {
+        if (this.isSame(identifier, storedEntity.entity)) {
+          storedEntity['_state'] = state;
+
+          if (change) {
+            storedEntity.change = change;
+          }
+        }
+        return storedEntity;
+      })
+    );
+  }
+
+  private isSame(
+    identifier: Pick<EntityType, Identifier>,
+    entity: EntityType
+  ): boolean {
+    return this._identifierKeys.every(
+      (key: keyof EntityType) => (identifier as EntityType)[key] === entity[key]
+    );
   }
 }
