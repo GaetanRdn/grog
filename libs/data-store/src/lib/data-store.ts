@@ -1,78 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
-
-export interface StorableEntity<EntityType> {
-  entity: EntityType;
-  change: Partial<EntityType> | null;
-  readonly state: StoredEntityState;
-  readonly stateChanged$: Observable<StoredEntityState>;
-  delete: () => void;
-}
-
-class StoredEntity<EntityType> implements StorableEntity<EntityType> {
-  public change: Partial<EntityType> | null = null;
-
-  #store: DataStore<EntityType>;
-
-  #_state$: BehaviorSubject<StoredEntityState> =
-    new BehaviorSubject<StoredEntityState>('initialized');
-
-  get stateChanged$(): Observable<StoredEntityState> {
-    return this.#_state$.asObservable().pipe(distinctUntilChanged());
-  }
-
-  get state(): StoredEntityState {
-    return this.#_state$.getValue();
-  }
-
-  /**
-   * @internal
-   * @private
-   */
-  private set _state(state: StoredEntityState) {
-    this.#_state$.next(state);
-  }
-
-  constructor(
-    public entity: EntityType,
-    _store: DataStore<EntityType, keyof Concrete<EntityType>>,
-    state: StoredEntityState = 'initialized'
-  ) {
-    this.#store = _store;
-    this._state = state;
-  }
-
-  public delete(): void {
-    this.#store.delete(this.entity);
-  }
-}
-
-export type StoredEntityState =
-  | 'initialized'
-  | 'deleted'
-  | 'updated'
-  | 'partial'
-  | 'created';
-
-type Concrete<Type> = {
-  [Property in keyof Type]-?: Type[Property];
-};
-
-type OptionalPropertiesOf<Type> = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  [K in keyof Type]-?: {} extends Pick<Type, K> ? K : never;
-}[keyof Type];
-
-type MandatoryPropertiesOf<Type> = Omit<Type, OptionalPropertiesOf<Type>>;
-
-function deepCopy<Type>(obj: Type): Type {
-  return JSON.parse(JSON.stringify(obj));
-}
-
-interface StoreConfig<EntityType> {
-  extractIdentifier: keyof EntityType | (keyof EntityType)[];
-}
+import { StoredEntity } from './stored-entity';
+import {
+  Concrete,
+  MandatoryPropertiesOf,
+  StorableEntity,
+  StoreConfig,
+  StoredEntityState,
+} from './types';
+import { deepCopy } from './utils';
 
 @Injectable({
   providedIn: 'root',
@@ -114,7 +50,7 @@ export class DataStore<
       this._store
         .getValue()
         .find((storedEntity: StoredEntity<EntityType>) =>
-          this.isSame(identifier, storedEntity.entity)
+          this.sameEntity(identifier, storedEntity.entity)
         ) ?? null
     );
   }
@@ -151,7 +87,7 @@ export class DataStore<
   ): void {
     this._store.next(
       this._store.getValue().map((storedEntity: StoredEntity<EntityType>) => {
-        if (this.isSame(identifier, storedEntity.entity)) {
+        if (this.sameEntity(identifier, storedEntity.entity)) {
           storedEntity['_state'] = state;
 
           if (change) {
@@ -163,7 +99,7 @@ export class DataStore<
     );
   }
 
-  private isSame(
+  private sameEntity(
     identifier: Pick<EntityType, Identifier>,
     entity: EntityType
   ): boolean {

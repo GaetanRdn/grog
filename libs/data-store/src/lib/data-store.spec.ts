@@ -1,7 +1,8 @@
+import { DataStore } from './data-store';
 import { Person } from './data-store.mocks';
-import { DataStore, StorableEntity } from './data-store.service';
+import { StorableEntity } from './types';
 
-describe('DataStoreService', () => {
+describe('DataStore', () => {
   let personStore: DataStore<Person, 'id'>;
 
   beforeEach(() => {
