@@ -43,7 +43,7 @@
     "@nrwl/linter": "12.10.0",
     "@nrwl/storybook": "^13.0.0-beta.12",
     "@nrwl/tao": "12.10.0",
-    "@nrwl/workspace": "12.10.0",
+    "@nrwl/workspace": "12.9.0",
     "@storybook/addon-actions": "^6.4.0-beta.12",
     "@storybook/addon-docs": "^6.3.12",
     "@storybook/addon-essentials": "^6.4.0-beta.12",
