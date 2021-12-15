@@ -11,13 +11,13 @@ export default {
   parameters: {
     jest: ['input.directive.spec.ts'],
   },
-} as Meta<InputDirective<unknown>>;
+} as Meta<InputDirective>;
 
-const BasicTemplate: Story<InputDirective<unknown>> = (args) => ({
+const BasicTemplate: Story<InputDirective> = (args: InputDirective) => ({
   props: {
     ...args,
   },
-  template: `<input groInput [value]='value' (valueChange)='valueChange($event)' [disabled]='disabled' [readonly]='readonly'/>`,
+  template: `<input groInput [value]="value" (valueChange)="valueChange($event)" [disabled]="disabled" [readonly]="readonly"/>`,
 });
 
 export const Default = BasicTemplate.bind({});

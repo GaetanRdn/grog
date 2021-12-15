@@ -73,6 +73,7 @@ exports[`InputDirective ReactiveForm input check class on focus 1`] = `
 <input
   class="gro-input ng-pristine ng-valid ng-touched gro-focused"
   groinput=""
+  value=""
 />
 `;
 
@@ -80,6 +81,7 @@ exports[`InputDirective ReactiveForm input should create with formControl 1`] = 
 <input
   class="gro-input ng-untouched ng-pristine ng-valid"
   groinput=""
+  value=""
 />
 `;
 
@@ -104,6 +106,7 @@ exports[`InputDirective ReactiveForm input when control is disabled then check 1
   class="gro-input ng-untouched ng-pristine gro-disabled"
   disabled=""
   groinput=""
+  value=""
 />
 `;
 
@@ -111,7 +114,7 @@ exports[`InputDirective Readonly input do not emit change 1`] = `
 <input
   class="gro-input gro-readonly"
   groinput=""
-  readonly=""
+  readonly="true"
 />
 `;
 
@@ -119,6 +122,6 @@ exports[`InputDirective Readonly input when focus then check dont have focused c
 <input
   class="gro-input gro-readonly"
   groinput=""
-  readonly=""
+  readonly="true"
 />
 `;
