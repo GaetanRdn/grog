@@ -20,7 +20,8 @@
       "@grorg/decorators": ["libs/decorators/src/index.ts"],
       "@grorg/storybook": ["libs/storybook/src/index.ts"],
       "@grorg/styles": ["libs/styles/src/index.ts"],
-      "@grorg/tests": ["libs/tests/src/index.ts"]
+      "@grorg/tests": ["libs/tests/src/index.ts"],
+      "@grorg/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -94,7 +94,7 @@ describe('InputDirective', () => {
 
     test('check OnDestroy', () => {
       // GIVEN
-      const input: InputDirective<string> = templateLookup
+      const input: InputDirective = templateLookup
         .get('input')
         .injector.get(InputDirective);
       jest.spyOn(input.valueChange, 'unsubscribe');
