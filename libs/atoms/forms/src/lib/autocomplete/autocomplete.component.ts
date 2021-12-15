@@ -69,7 +69,7 @@ export class AutocompleteComponent<ValueType> implements ControlValueAccessor {
   public createOptionFn?: CreateOptionFn<ValueType>;
 
   @ViewChild(InputDirective, { static: true })
-  private _input!: InputDirective<ValueType>;
+  private _input!: InputDirective;
 
   private _displayedValues$: BehaviorSubject<ValueType[]> = new BehaviorSubject<
     ValueType[]
