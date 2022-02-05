@@ -39,8 +39,8 @@ testem.log
 Thumbs.db
 
 # Storybook
-.jest-test-results.json
-documentation.json
+apps/storybook/.jest-test-results.json
+apps/storybook/documentation.json
 
 #Angular
 .angular
