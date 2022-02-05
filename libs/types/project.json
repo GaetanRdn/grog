@@ -1,0 +1,34 @@
+{
+  "projectType": "library",
+  "root": "libs/types",
+  "sourceRoot": "libs/types/src",
+  "prefix": "grorg",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/types"],
+      "options": {
+        "project": "libs/types/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/types/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/types/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/types/src/**/*.ts",
+          "libs/types/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:shared"]
+}

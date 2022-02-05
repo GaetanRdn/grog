@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/decorators",
+  "sourceRoot": "libs/decorators/src",
+  "prefix": "gro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/decorators"],
+      "options": {
+        "project": "libs/decorators/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/decorators/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/decorators/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/decorators"],
+      "options": {
+        "jestConfig": "libs/decorators/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/decorators/src/**/*.ts",
+          "libs/decorators/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
