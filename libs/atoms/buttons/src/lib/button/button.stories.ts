@@ -10,12 +10,12 @@ export default {
   argTypes: {
     color: {
       options: ['primary', 'accent', 'warn'],
-      control: { type: 'radio' },
+      control: { type: 'inline-radio' },
       defaultValue: 'primary',
     },
     size: {
       options: ['small', 'medium', 'large'],
-      control: { type: 'radio' },
+      control: { type: 'inline-radio' },
       defaultValue: 'medium',
     },
   },
@@ -23,12 +23,7 @@ export default {
 
 const Template: Story<ButtonDirective> = (args: ButtonDirective) => ({
   props: args,
-  template: `<button groButton [size]='size' [outlined]='outlined' [color]='color'>Click</button>`,
+  template: `<button groButton [size]="size" [outlined]="outlined" [color]="color">Click</button>`,
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  size: 'medium',
-  outlined: false,
-  color: 'primary',
-};
