@@ -12,7 +12,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
-import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
+import { Nullable } from '@grorg/types';
+import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms.models';
 
 @Component({
   selector: 'gro-checkbox',
@@ -44,61 +45,65 @@ export class CheckboxComponent<ValueType> implements ControlValueAccessor {
 
   @Input()
   @HostBinding('attr.value')
-  public value: ValueType | null = null;
+  public value: Nullable<ValueType> = null;
 
   @Input()
   @CoerceBoolean()
-  public checked?: boolean;
+  public checked = false;
 
   @Input()
   @CoerceBoolean()
-  public readOnly?: boolean;
+  public readOnly = false;
 
   @Input()
   @CoerceBoolean()
-  public disabled?: boolean;
+  public disabled = false;
 
   @Output()
-  public readonly valueChange: EventEmitter<ValueType | null> = new EventEmitter<ValueType | null>();
+  public readonly valueChange: EventEmitter<
+    CheckboxComponent<ValueType>['value']
+  > = new EventEmitter<CheckboxComponent<ValueType>['value']>();
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private readonly _cdr: ChangeDetectorRef) {}
 
-  public writeValue(obj: ValueType): void {
+  public writeValue(obj: CheckboxComponent<ValueType>['value']): void {
     this.checked = obj !== null && obj !== undefined;
   }
 
   public registerOnChange(fn: OnChangeFn<ValueType>): void {
-    this._onChange = fn;
+    this.onChange = fn;
   }
 
   public registerOnTouched(fn: OnTouchedFn): void {
-    this._onTouched = fn;
+    this.onTouched = fn;
   }
 
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    this._changeDetectorRef.markForCheck();
+    this._cdr.markForCheck();
   }
 
   /**
    * @internal private usage
    */
   @HostListener('click')
-  public onChange(): void {
+  public onToggle(): void {
     if (!this.readOnly && !this.disabled) {
-      this._onTouched();
+      this.onTouched();
       this.checked = !this.checked;
-      const emittedValue: ValueType | null = this.checked ? this.value : null;
+      const emittedValue: CheckboxComponent<ValueType>['value'] = this.checked
+        ? this.value
+        : null;
       this.valueChange.emit(emittedValue);
-      this._onChange(emittedValue);
+      this.onChange(emittedValue);
     }
   }
 
-  protected _onChange: OnChangeFn<ValueType> = (): void => {
+  public onChange: OnChangeFn<ValueType> = (): void => {
     // default if no ngControl
   };
 
-  protected _onTouched: () => void = (): void => {
+  public onTouched: () => void = (): void => {
     // default if no ngControl
   };
 }
