@@ -69,11 +69,11 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
   public registerOnChange(
     fn: OnChangeFn<Nullable<InputDirective['value']>>
   ): void {
-    this._onChange = fn;
+    this.onChange = fn;
   }
 
   public registerOnTouched(fn: OnTouchedFn): void {
-    this._onTouched = fn;
+    this.onTouched = fn;
   }
 
   public setDisabledState(disabled: boolean): void {
@@ -85,8 +85,8 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
     if (!this.readonly && !this.disabled) {
       this.value = value;
       this.valueChange.emit(value);
-      this._onChange(value);
-      this._onTouched();
+      this.onChange(value);
+      this.onTouched();
     }
   }
 
@@ -95,16 +95,15 @@ export class InputDirective implements ControlValueAccessor, OnChanges {
   public onToggleFocus(focused: boolean): void {
     if (!this.readonly && !this.disabled) {
       this._focused = focused;
-      this._onTouched();
+      this.onTouched();
     }
   }
 
-  protected _onChange: OnChangeFn<Nullable<InputDirective['value']>> =
-    (): void => {
-      // default if no ngControl
-    };
+  public onChange: OnChangeFn<Nullable<InputDirective['value']>> = (): void => {
+    // default if no ngControl
+  };
 
-  protected _onTouched: OnTouchedFn = (): void => {
+  public onTouched: OnTouchedFn = (): void => {
     // default if no ngControl
   };
 }
