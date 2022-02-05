@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/tests",
+  "sourceRoot": "libs/tests/src",
+  "prefix": "gro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/tests"],
+      "options": {
+        "project": "libs/tests/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/tests/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/tests/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/tests"],
+      "options": {
+        "jestConfig": "libs/tests/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/tests/src/**/*.ts",
+          "libs/tests/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

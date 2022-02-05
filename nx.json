@@ -33,38 +33,5 @@
       }
     ]
   },
-  "projects": {
-    "atoms-buttons": {
-      "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "tests"
-      ]
-    },
-    "atoms-forms": {
-      "tags": [],
-      "implicitDependencies": [
-        "styles",
-        "tests",
-        "types"
-      ]
-    },
-    "decorators": {
-      "tags": []
-    },
-    "storybook": {
-      "tags": []
-    },
-    "styles": {
-      "tags": []
-    },
-    "tests": {
-      "tags": []
-    },
-    "types": {
-      "tags": [
-        "scope:shared"
-      ]
-    }
-  }
+  "projects": {}
 }

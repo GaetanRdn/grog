@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/styles",
+  "sourceRoot": "libs/styles/src",
+  "prefix": "gro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/styles"],
+      "options": {
+        "project": "libs/styles/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/styles/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/styles/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/styles"],
+      "options": {
+        "jestConfig": "libs/styles/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/styles/src/**/*.ts",
+          "libs/styles/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

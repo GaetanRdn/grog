@@ -1,0 +1,74 @@
+{
+  "projectType": "library",
+  "root": "libs/atoms/forms",
+  "sourceRoot": "libs/atoms/forms/src",
+  "prefix": "gro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/atoms/forms"],
+      "options": {
+        "project": "libs/atoms/forms/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/atoms/forms/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/atoms/forms/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/atoms/forms"],
+      "options": {
+        "jestConfig": "libs/atoms/forms/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/atoms/forms/src/**/*.ts",
+          "libs/atoms/forms/src/**/*.html"
+        ]
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/atoms/forms/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/angular",
+        "outputPath": "dist/storybook/atoms-forms",
+        "config": {
+          "configFolder": "libs/atoms/forms/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["styles", "tests", "types"]
+}
