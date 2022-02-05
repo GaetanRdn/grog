@@ -6,7 +6,6 @@ export default {
   title: 'atoms/forms/input',
   argTypes: {
     value: { control: { type: 'text' } },
-    // valueChange: { action: 'valueChange' },
   },
   component: InputDirective,
   parameters: {

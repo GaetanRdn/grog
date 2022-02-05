@@ -12,7 +12,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
 import { BooleanInput, NgChanges, Nullable } from '@grorg/types';
-import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
+import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms.models';
 
 @Directive({
   selector: 'input[groInput]',
