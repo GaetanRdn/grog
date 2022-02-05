@@ -44,7 +44,8 @@
         "port": 4400,
         "config": {
           "configFolder": "libs/atoms/forms/.storybook"
-        }
+        },
+        "projectBuildConfig": "atoms-forms"
       },
       "configurations": {
         "ci": {
@@ -60,7 +61,8 @@
         "outputPath": "dist/storybook/atoms-forms",
         "config": {
           "configFolder": "libs/atoms/forms/.storybook"
-        }
+        },
+        "projectBuildConfig": "atoms-forms"
       },
       "configurations": {
         "ci": {

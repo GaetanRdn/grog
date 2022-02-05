@@ -95,7 +95,8 @@
         "port": 4400,
         "config": {
           "configFolder": "apps/storybook/.storybook"
-        }
+        },
+        "projectBuildConfig": "storybook"
       },
       "configurations": {
         "ci": {
@@ -111,7 +112,8 @@
         "outputPath": "dist/storybook/storybook",
         "config": {
           "configFolder": "apps/storybook/.storybook"
-        }
+        },
+        "projectBuildConfig": "storybook"
       },
       "configurations": {
         "ci": {

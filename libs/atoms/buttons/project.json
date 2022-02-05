@@ -44,7 +44,8 @@
         "port": 4400,
         "config": {
           "configFolder": "libs/atoms/buttons/.storybook"
-        }
+        },
+        "projectBuildConfig": "atoms-buttons"
       },
       "configurations": {
         "ci": {
@@ -60,7 +61,8 @@
         "outputPath": "dist/storybook/atoms-buttons",
         "config": {
           "configFolder": "libs/atoms/buttons/.storybook"
-        }
+        },
+        "projectBuildConfig": "atoms-buttons"
       },
       "configurations": {
         "ci": {
