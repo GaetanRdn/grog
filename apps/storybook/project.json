@@ -21,7 +21,7 @@
           "apps/storybook/src/assets"
         ],
         "styles": [
-          "apps/storybook/src/styles.scss",
+          "apps/storybook/src/assets/styles.scss",
           "libs/styles/src/lib/theme.scss",
           "libs/styles/src/lib/utils.scss"
         ],
@@ -29,7 +29,7 @@
         "stylePreprocessorOptions": {
           "includePaths": [
             "src/assets/styles",
-            "libs/styles/src/lib"
+            "../../libs/styles/src/lib"
           ]
         }
       },
