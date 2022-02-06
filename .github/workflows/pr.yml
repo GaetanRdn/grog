@@ -41,12 +41,12 @@ jobs:
   #
   #      - name: Run Affected Build
   #        run: npx nx affected:build --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5 --prod
-  main:
+  master:
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'pull_request' }}
     steps:
       - uses: actions/checkout@v2
-        name: Checkout [main]
+        name: Checkout [master]
         with:
           fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
