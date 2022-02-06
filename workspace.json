@@ -4,7 +4,6 @@
     "atoms-buttons": "libs/atoms/buttons",
     "atoms-forms": "libs/atoms/forms",
     "decorators": "libs/decorators",
-    "storybook": "apps/storybook",
     "styles": "libs/styles",
     "tests": "libs/tests",
     "types": "libs/types"
