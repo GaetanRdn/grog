@@ -53,5 +53,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "decorators"
+  "defaultProject": "storybook"
 }

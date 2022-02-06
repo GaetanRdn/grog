@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/storybook",
         "index": "apps/storybook/src/index.html",
@@ -18,8 +20,18 @@
           "apps/storybook/src/favicon.ico",
           "apps/storybook/src/assets"
         ],
-        "styles": ["apps/storybook/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "apps/storybook/src/styles.scss",
+          "libs/styles/src/lib/theme.scss",
+          "libs/styles/src/lib/utils.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "src/assets/styles",
+            "libs/styles/src/lib"
+          ]
+        }
       },
       "configurations": {
         "production": {
@@ -90,7 +102,9 @@
     },
     "build-storybook": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "uiFramework": "@storybook/angular",
         "outputPath": "dist/storybook/storybook",
@@ -106,5 +120,10 @@
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": [
+    "atoms-buttons",
+    "atoms-forms",
+    "styles"
+  ]
 }
