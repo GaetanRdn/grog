@@ -1,5 +1,10 @@
 name: Nx build, lint and test
+
 on: push
+
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -36,3 +41,37 @@ jobs:
 
       - name: Run Affected Build
         run: npx nx affected:build --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5 --prod
+
+  pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npx nx-cloud start-ci-run
+      - run: npx nx affected --target=build --parallel --max-parallel=3
+      - run: npx nx affected --target=test --parallel --max-parallel=2
+      - run: npx nx-cloud stop-all-agents
+  agents:
+    runs-on: ubuntu-latest
+    name: Agent 1
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        agent: [ 1, 2, 3 ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: npm install
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
