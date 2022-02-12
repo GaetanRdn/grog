@@ -14,10 +14,11 @@ export default {
   },
   parameters: {
     jest: ['checkbox.component.spec.ts'],
+    actions: { argTypesRegex: '^on.*' },
   },
 } as Meta<CheckboxComponent<string>>;
 
-const basicTemplate: Story<CheckboxComponent<string>> = (
+const template: Story<CheckboxComponent<string>> = (
   args: CheckboxComponent<string>
 ) => ({
   template: `<gro-checkbox [value]="value" [checked]="checked" [disabled]="disabled" [readOnly]="readOnly" (valueChange)="valueChange($event)">{{ ngContent }}</gro-checkbox>`,
@@ -27,8 +28,8 @@ const basicTemplate: Story<CheckboxComponent<string>> = (
   },
 });
 
-export const basic = basicTemplate.bind({});
-basic.args = {
+export const Basic = template.bind({});
+Basic.args = {
   checked: false,
   disabled: false,
   readOnly: false,
@@ -45,11 +46,12 @@ const reactiveTemplate: Story<CheckboxComponent<string>> = (
   props: {
     ...args,
     control: new FormControl(args.value),
+    valueChange: action('valueChange'),
   },
 });
 
-export const reactiveForms = reactiveTemplate.bind({});
-reactiveForms.args = {
+export const ReactiveForms = reactiveTemplate.bind({});
+ReactiveForms.args = {
   readOnly: false,
   value: 'test',
 };

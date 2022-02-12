@@ -1,38 +1,63 @@
 name: Nx build, lint and test
+
 on: push
+
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  NX_BRANCH: ${{ github.event.number || github.ref }}
+  NX_RUN_GROUP: ${{ github.run_id }}
+
 jobs:
-  ci:
+  master:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 16.13.1 ]
-
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout [master]
+        with:
+          fetch-depth: 0
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+      - run: npm install
+      - run: npx nx-cloud start-ci-run
+      - run: npx nx affected --target=build --parallel --max-parallel=3
+      - run: npx nx affected --target=test --parallel --max-parallel=2
+      - run: npx nx affected --target=lint --parallel --max-parallel=2
+      - run: npx nx-cloud stop-all-agents
+  pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
     steps:
       - uses: actions/checkout@v2
         with:
+          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
-
-      - name: Cache node modules
-        uses: actions/cache@v1
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+      - uses: actions/setup-node@v1
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+          node-version: '16'
+      - run: npm install
+      - run: npx nx-cloud start-ci-run
+      - run: npx nx affected --target=build --parallel --max-parallel=3
+      - run: npx nx affected --target=test --parallel --max-parallel=2
+      - run: npx nx affected --target=lint --parallel --max-parallel=2
+      - run: npx nx-cloud stop-all-agents
+  agents:
+    runs-on: ubuntu-latest
+    name: Agent 1
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        agent: [ 1, 2, 3 ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-
-      - run: npm i
-
-      - name: Run Affected Tests
-        run: npx nx affected:test --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5
-
-      - name: Run Affected Lint
-        run: npx nx affected:lint --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5
-
-      - name: Run Affected Build
-        run: npx nx affected:build --base=remotes/origin/master --head=HEAD --parallel --maxParallel=5 --prod
+          node-version: '16'
+      - run: npm install
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent

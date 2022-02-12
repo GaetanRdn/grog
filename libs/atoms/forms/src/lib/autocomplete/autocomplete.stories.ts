@@ -1,6 +1,7 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/angular';
+import { screen, userEvent } from '@storybook/testing-library';
 import {
   AutocompleteComponent,
   AutocompleteModule,
@@ -27,24 +28,39 @@ const template: Story<AutocompleteComponent<string>> = (
     imports: [AutocompleteModule],
   },
   props: {
-    ...args,
+    value: args.value,
+    required: args.required,
+    openOn: args.openOn,
+    disabled: args.disabled,
     valueChange: action('valueChange'),
+    options: args.options,
   },
-  template: `<gro-autocomplete [value]='value' [openOn]='openOn' [options]='options' [required]='required' [disabled]='disabled' (valueChange)='valueChange($event)'></gro-autocomplete>`,
+  template: `<gro-autocomplete data-testId="basic" [value]="value" [openOn]="openOn" [options]="options" [required]="required" [disabled]="disabled" (valueChange)="valueChange($event)"></gro-autocomplete>`,
 });
 
-export const basic = template.bind({});
-basic.args = {
+export const Basic = template.bind({});
+Basic.args = {
   options: ['Gaetan', 'Soren', 'Bernard'],
   value: '',
   openOn: 'focus',
   required: false,
   disabled: false,
 };
-basic.argTypes = {
+Basic.argTypes = {
   value: {
     control: { type: 'text' },
   },
+};
+Basic.play = async () => {
+  const input: HTMLInputElement = screen.getByRole('textbox');
+
+  await userEvent.type(input, 'Sor', {
+    delay: 100,
+  });
+
+  const option: HTMLElement = screen.getByRole('option');
+
+  await userEvent.click(option);
 };
 
 interface Person {
@@ -60,16 +76,20 @@ const objectsValuesTemplate: Story<AutocompleteComponent<Person>> = (
     imports: [AutocompleteModule],
   },
   props: {
-    ...args,
+    value: args.value,
+    required: args.required,
+    openOn: args.openOn,
+    disabled: args.disabled,
+    options: args.options,
     valueChange: action('valueChange'),
     displayOptionFn: (option: Person): string =>
       `${option.firstName} - ${option.name}`,
   },
-  template: `<gro-autocomplete [value]='value' [openOn]='openOn' [options]='options' [required]='required' [disabled]='disabled' (valueChange)='valueChange($event)' [displayOptionFn]='displayOptionFn'></gro-autocomplete>`,
+  template: `<gro-autocomplete [value]="value" [openOn]="openOn" [options]="options" [required]="required" [disabled]="disabled" (valueChange)="valueChange($event)" [displayOptionFn]="displayOptionFn"></gro-autocomplete>`,
 });
 
-export const complexValues = objectsValuesTemplate.bind({});
-complexValues.args = {
+export const ComplexValues = objectsValuesTemplate.bind({});
+ComplexValues.args = {
   options: [
     { id: 1, firstName: 'Gaetan', name: 'Redin' },
     { id: 2, firstName: 'Soren', name: 'Redin' },
@@ -88,19 +108,21 @@ const reactiveFormTemplate: Story<AutocompleteComponent<Person>> = (
     imports: [AutocompleteModule, ReactiveFormsModule],
   },
   props: {
-    ...args,
+    required: args.required,
+    openOn: args.openOn,
+    disabled: args.disabled,
+    options: args.options,
     valueChange: action('valueChange'),
-    value: null,
     displayOptionFn: (option: Person): string =>
       `${option.firstName} - ${option.name}`,
     control: new FormControl({ id: 2, firstName: 'Soren', name: 'Redin' }),
     identityFn: (p: Person): string | number => p.id ?? p.firstName + p.name,
   },
-  template: `<gro-autocomplete [formControl]='control' [openOn]='openOn' [options]='options' [required]='required' (valueChange)='valueChange($event)' [displayOptionFn]='displayOptionFn' [identityFn]='identityFn'></gro-autocomplete>`,
+  template: `<gro-autocomplete [formControl]="control" [openOn]="openOn" [options]="options" [required]="required" (valueChange)="valueChange($event)" [displayOptionFn]="displayOptionFn" [identityFn]="identityFn"></gro-autocomplete>`,
 });
 
-export const reactiveForm = reactiveFormTemplate.bind({});
-reactiveForm.args = {
+export const ReactiveForm = reactiveFormTemplate.bind({});
+ReactiveForm.args = {
   options: [
     { id: 1, firstName: 'Gaetan', name: 'Redin' },
     { id: 2, firstName: 'Soren', name: 'Redin' },
@@ -118,7 +140,11 @@ const addOptionTemplate: Story<AutocompleteComponent<Person>> = (
     imports: [AutocompleteModule, ReactiveFormsModule],
   },
   props: {
-    ...args,
+    required: args.required,
+    openOn: args.openOn,
+    disabled: args.disabled,
+    options: args.options,
+    value: args.value,
     valueChange: action('valueChange'),
     displayOptionFn: (option: Person): string =>
       option.firstName + ' - ' + option.name,
@@ -136,11 +162,11 @@ const addOptionTemplate: Story<AutocompleteComponent<Person>> = (
       }
     },
   },
-  template: `<gro-autocomplete [value]='value' [openOn]='openOn' [options]='options' [required]='required' (valueChange)='valueChange($event)' [displayOptionFn]='displayOptionFn' [createOptionFn]='createOptionFn' [identityFn]='identityFn'></gro-autocomplete>`,
+  template: `<gro-autocomplete [value]="value" [openOn]="openOn" [options]="options" [required]="required" (valueChange)="valueChange($event)" [displayOptionFn]="displayOptionFn" [createOptionFn]="createOptionFn" [identityFn]="identityFn"></gro-autocomplete>`,
 });
 
-export const addOption = addOptionTemplate.bind({});
-addOption.args = {
+export const AddOption = addOptionTemplate.bind({});
+AddOption.args = {
   options: [
     { id: 1, firstName: 'Gaetan', name: 'Redin' },
     { id: 2, firstName: 'Soren', name: 'Redin' },

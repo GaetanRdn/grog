@@ -2,11 +2,13 @@
   "projectType": "application",
   "root": "apps/storybook",
   "sourceRoot": "apps/storybook/src",
-  "prefix": "grorg",
+  "prefix": "gro",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/storybook",
         "index": "apps/storybook/src/index.html",
@@ -25,7 +27,10 @@
         ],
         "scripts": [],
         "stylePreprocessorOptions": {
-          "includePaths": ["src/assets/styles", "libs/styles/src/lib"]
+          "includePaths": [
+            "src/assets/styles",
+            "../../libs/styles/src/lib"
+          ]
         }
       },
       "configurations": {
@@ -79,15 +84,6 @@
         "browserTarget": "storybook:build"
       }
     },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/storybook/src/**/*.ts",
-          "apps/storybook/src/**/*.html"
-        ]
-      }
-    },
     "storybook": {
       "executor": "@nrwl/storybook:storybook",
       "options": {
@@ -106,7 +102,9 @@
     },
     "build-storybook": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "uiFramework": "@storybook/angular",
         "outputPath": "dist/storybook/storybook",
@@ -120,20 +118,12 @@
           "quiet": true
         }
       }
-    },
-    "compodoc": {
-      "executor": "@twittwer/compodoc:compodoc",
-      "options": {
-        "tsConfig": "apps/storybook/tsconfig.compodoc.json",
-        "outputPath": "dist/compodoc/storybook",
-        "workspaceDocs": true
-      },
-      "configurations": {
-        "json": {
-          "exportFormat": "json"
-        }
-      }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": [
+    "atoms-buttons",
+    "atoms-forms",
+    "styles"
+  ]
 }

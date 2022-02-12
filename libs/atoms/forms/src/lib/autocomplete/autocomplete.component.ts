@@ -17,7 +17,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AutoUnsubscribe, CoerceBoolean } from '@grorg/decorators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms';
+import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms.models';
 import { InputDirective, InputModule } from '../input/input.directive';
 import {
   CreateOptionFn,

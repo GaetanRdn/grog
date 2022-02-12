@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'grorg-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'gro-root',
+  template: '',
 })
-export class AppComponent {
-  title = 'storybook';
-}
+export class AppComponent {}
