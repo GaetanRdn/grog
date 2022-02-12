@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap);
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+body {
+  font-size: 16px;
+  height: 100vh;
+  width: 100vw;
+}
+.gro-button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding: 0.25rem 0.75rem;
+}
+.gro-small {
+  font-size: 12px;
+  font-family: Roboto;
+  font-weight: 700;
+  border-radius: 3px;
+}
+.gro-medium {
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: 400;
+  border-radius: 4px;
+}
+.gro-large {
+  font-size: 24px;
+  font-family: Roboto;
+  font-weight: 400;
+  border-radius: 6px;
+}
+.gro-primary:not(.gro-outlined) {
+  color: white;
+  background-color: #455A64;
+  border: none;
+}
+.gro-primary:not(.gro-outlined):hover {
+  color: white;
+  background-color: #1C313A;
+}
+.gro-primary.gro-outlined {
+  color: #455A64;
+  background-color: white;
+  border: 1px solid #1C313A;
+}
+.gro-primary.gro-outlined:hover {
+  color: black;
+  background-color: #718792;
+}
+.gro-accent:not(.gro-outlined) {
+  color: white;
+  background-color: #1A237E;
+  border: none;
+}
+.gro-accent:not(.gro-outlined):hover {
+  color: white;
+  background-color: #000051;
+}
+.gro-accent.gro-outlined {
+  color: #1A237E;
+  background-color: white;
+  border: 1px solid #000051;
+}
+.gro-accent.gro-outlined:hover {
+  color: white;
+  background-color: #534BAE;
+}
+.gro-warn:not(.gro-outlined) {
+  color: white;
+  background-color: #C62828;
+  border: none;
+}
+.gro-warn:not(.gro-outlined):hover {
+  color: white;
+  background-color: #8E0000;
+}
+.gro-warn.gro-outlined {
+  color: #C62828;
+  background-color: white;
+  border: 1px solid #8E0000;
+}
+.gro-warn.gro-outlined:hover {
+  color: black;
+  background-color: #FF5F52;
+}
+gro-autocomplete {
+  flex: 1;
+}
+gro-autocomplete .gro-input {
+  font-size: 16px;
+  font-family: Lato;
+  font-weight: 400;
+  border-radius: 4px;
+  outline: none;
+  height: 32px;
+  border-width: 1px;
+}
+gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly) {
+  color: black;
+  background-color: #718792;
+  border-style: inset;
+}
+gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly):hover, gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly):focus {
+  color: white;
+  background-color: #455A64;
+  border-color: #1C313A;
+}
+gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly):focus {
+  border-width: 2px;
+}
+gro-autocomplete .gro-input.gro-disabled, gro-autocomplete .gro-input.gro-readonly {
+  color: white;
+  background-color: #777;
+  border-color: #666;
+  border-style: dashed;
+}
+gro-autocomplete.gro-opened .gro-input {
+  border-bottom-right-radius: unset;
+  border-bottom-left-radius: unset;
+}
+gro-autocomplete .gro-autocomplete-options {
+  font-size: 14px;
+  font-family: Lato;
+  font-weight: 400;
+  color: white;
+  background-color: #455A64;
+  border-color: #1C313A;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  width: 100%;
+  cursor: pointer;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-style: inset;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+gro-autocomplete .gro-autocomplete-options:last-child {
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+gro-autocomplete .gro-autocomplete-options .gro-option {
+  padding: 0.5rem 1rem;
+}
+gro-autocomplete .gro-autocomplete-options .gro-option:hover {
+  color: white;
+  background-color: #1C313A;
+}
+gro-autocomplete .gro-autocomplete-options .gro-option.gro-selected {
+  color: black;
+  background-color: #718792;
+}
+gro-checkbox {
+  font-size: 16px;
+  font-family: Lato;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+gro-checkbox:not(.gro-disabled, .gro-readonly) {
+  color: #455A64;
+  background-color: white;
+  border-color: #1C313A;
+}
+gro-checkbox:not(.gro-disabled, .gro-readonly):hover, gro-checkbox:not(.gro-disabled, .gro-readonly):focus {
+  color: #1C313A;
+  background-color: white;
+}
+gro-checkbox.gro-disabled, gro-checkbox.gro-readonly {
+  color: #777;
+  background-color: white;
+  border-color: #666;
+}
+gro-checkbox input[type=checkbox i] {
+  height: 1rem;
+  width: 1rem;
+  cursor: inherit;
+}
+.gro-input {
+  font-size: 16px;
+  font-family: Lato;
+  font-weight: 400;
+  border-radius: 4px;
+  outline: none;
+  height: 32px;
+  border-width: 1px;
+}
+.gro-input:not(.gro-disabled, .gro-readonly) {
+  color: black;
+  background-color: #718792;
+  border-style: inset;
+}
+.gro-input:not(.gro-disabled, .gro-readonly):hover, .gro-input:not(.gro-disabled, .gro-readonly):focus {
+  color: white;
+  background-color: #455A64;
+  border-color: #1C313A;
+}
+.gro-input:not(.gro-disabled, .gro-readonly):focus {
+  border-width: 2px;
+}
+.gro-input.gro-disabled, .gro-input.gro-readonly {
+  color: white;
+  background-color: #777;
+  border-color: #666;
+  border-style: dashed;
+}
+gro-label {
+  font-size: 14px;
+  font-family: Lato;
+  font-weight: 400;
+}
+
+
