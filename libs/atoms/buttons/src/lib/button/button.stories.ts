@@ -5,25 +5,25 @@ export default {
   title: 'atoms/button',
   component: ButtonDirective,
   parameters: {
-    jest: ['button.directive.spec.ts'],
+    jest: ['button.directive.spec'],
   },
   argTypes: {
     color: {
-      options: ['primary', 'accent', 'warn'],
       control: { type: 'inline-radio' },
-      defaultValue: 'primary',
     },
     size: {
-      options: ['small', 'medium', 'large'],
       control: { type: 'inline-radio' },
-      defaultValue: 'medium',
     },
   },
 } as Meta<ButtonDirective>;
 
-const Template: Story<ButtonDirective> = (args: ButtonDirective) => ({
-  props: args,
+const template: Story<ButtonDirective> = (args: ButtonDirective) => ({
+  props: {
+    size: args.size,
+    outlined: args.outlined,
+    color: args.color,
+  },
   template: `<button groButton [size]="size" [outlined]="outlined" [color]="color">Click</button>`,
 });
 
-export const Default = Template.bind({});
+export const Default = template.bind({});
