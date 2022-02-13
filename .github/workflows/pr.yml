@@ -10,7 +10,6 @@ env:
 jobs:
   master:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/head/master' }}
     steps:
       - uses: actions/checkout@v2
         name: Checkout [master]
