@@ -27,7 +27,6 @@ jobs:
       - run: npx nx affected --target=lint --parallel --max-parallel=2
       - run: npx nx affected --target=e2e --parallel --max-parallel=2
       - run: npx nx-cloud stop-all-agents
-      - run: npm run chromatic
   agents:
     runs-on: ubuntu-latest
     name: Agent 1
