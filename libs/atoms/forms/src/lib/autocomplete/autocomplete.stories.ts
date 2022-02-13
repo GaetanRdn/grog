@@ -1,7 +1,6 @@
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/angular';
-import { screen, userEvent } from '@storybook/testing-library';
 import {
   AutocompleteComponent,
   AutocompleteModule,
@@ -50,17 +49,6 @@ Basic.argTypes = {
   value: {
     control: { type: 'text' },
   },
-};
-Basic.play = async () => {
-  const input: HTMLInputElement = screen.getByRole('textbox');
-
-  await userEvent.type(input, 'Sor', {
-    delay: 100,
-  });
-
-  const option: HTMLElement = screen.getByRole('option');
-
-  await userEvent.click(option);
 };
 
 interface Person {
