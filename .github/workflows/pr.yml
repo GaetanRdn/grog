@@ -10,7 +10,7 @@ env:
 jobs:
   master:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' && github.ref_name == 'master }}
+    if: ${{ github.event_name != 'pull_request' && github.ref_name == 'master' }}
     steps:
       - uses: actions/checkout@v2
         name: Checkout [master]
@@ -31,7 +31,7 @@ jobs:
       - run: npm run chromatic
   pr:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && github.ref_name != 'master }}
+    if: ${{ github.event_name == 'pull_request' && github.ref_name != 'master' }}
     steps:
       - uses: actions/checkout@v2
         with:
