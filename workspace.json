@@ -5,6 +5,7 @@
     "atoms-forms": "libs/atoms/forms",
     "decorators": "libs/decorators",
     "storybook": "apps/storybook",
+    "storybook-e2e": "apps/storybook-e2e",
     "styles": "libs/styles",
     "tests": "libs/tests",
     "types": "libs/types"

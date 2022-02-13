@@ -1,0 +1,13 @@
+{
+  "fileServerFolder": ".",
+  "fixturesFolder": "apps/storybook-e2e/src/fixtures",
+  "integrationFolder": "apps/storybook-e2e/src/integration",
+  "modifyObstructiveCode": false,
+  "supportFile": "apps/storybook-e2e/src/support/index.ts",
+  "pluginsFile": false,
+  "video": true,
+  "videosFolder": "../../dist/cypress/apps/storybook-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/storybook-e2e/screenshots",
+  "chromeWebSecurity": false,
+  "baseUrl": "http://localhost:4400"
+}
