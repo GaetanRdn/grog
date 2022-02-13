@@ -7,10 +7,6 @@
 
     @include input.gro-input($config);
 
-    .gro-input {
-      width: 500px;
-    }
-
     &.gro-opened {
       .gro-input {
         border-bottom-right-radius: unset;
