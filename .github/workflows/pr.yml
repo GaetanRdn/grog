@@ -4,11 +4,13 @@ on: push
 
 env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  NX_BRANCH: ${{ github.event.number || github.ref }}
+  NX_RUN_GROUP: ${{ github.run_id }}
 
 jobs:
   master:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
+    if: ${{ github.event_name != 'pull_request' && github.ref_name == 'master }}
     steps:
       - uses: actions/checkout@v2
         name: Checkout [master]
@@ -29,7 +31,7 @@ jobs:
       - run: npm run chromatic
   pr:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request' && github.ref_name != 'master }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -46,6 +48,7 @@ jobs:
       - run: npx nx affected --target=test --parallel --max-parallel=2
       - run: npx nx affected --target=lint --parallel --max-parallel=2
       - run: npx nx-cloud stop-all-agents
+      - run: npm run chromatic
   agents:
     runs-on: ubuntu-latest
     name: Agent 1

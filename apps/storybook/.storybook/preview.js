@@ -2,10 +2,20 @@ import { withTests } from '@storybook/addon-jest';
 import 'cypress-storybook/angular';
 
 import { setCompodocJson } from '@storybook/addon-docs/angular';
-import docJson from '../documentation.json';
-import results from '../.jest-test-results.json';
 
-setCompodocJson(docJson);
+try {
+  const doc = require('../documentation.json');
+  setCompodocJson(doc);
+} catch (e) {
+  console.warn('No documentation found');
+}
+
+let results = null;
+try {
+  results = require('../.jest-test-results.json');
+} catch (e) {
+  console.warn('No unit test found');
+}
 
 export const decorators = [
   withTests({
