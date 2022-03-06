@@ -41,6 +41,7 @@ Thumbs.db
 # Storybook
 apps/storybook/.jest-test-results.json
 apps/storybook/documentation.json
+build-storybook.log
 
 #Angular
 .angular
