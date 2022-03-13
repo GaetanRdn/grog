@@ -1,0 +1,100 @@
+@use '../../../../../styles/src/lib/utils';
+
+@mixin gro-radios($config) {
+  $colors: map-get($config, colors);
+  $colorKeys: map-keys($colors);
+
+  gro-radios-group {
+    @include utils.set-typography($config, input);
+    display: flex;
+    min-width: fit-content;
+    flex: 1;
+    accent-color: utils.get-deep-value($colors, primary, background-color);
+
+    label {
+      color: utils.get-deep-value($colors, primary, color);
+
+      &:focus-within {
+        input[type='radio'] {
+          color: utils.get-deep-value($colors, primary, background-color);
+        }
+      }
+
+      input[type='radio']::before {
+        box-shadow: inset 1em 1em utils.get-deep-value($colors, primary, background-color);
+      }
+    }
+
+    &.gro-vertical {
+      flex-flow: column;
+
+      gro-radio + gro-radio {
+        margin-top: 1em;
+      }
+    }
+
+    &:not(.gro-vertical) {
+      gro-radio + gro-radio {
+        margin-left: 1em;
+      }
+    }
+
+    @each $key in $colorKeys {
+      &.gro-#{$key} {
+        accent-color: utils.get-deep-value($colors, $key, background-color);
+
+        label {
+          color: utils.get-deep-value($colors, $key, color);
+
+          &:focus-within {
+            input[type='radio'] {
+              color: utils.get-deep-value($colors, $key, background-color);
+            }
+          }
+
+          input[type='radio']::before {
+            box-shadow: inset 1em 1em utils.get-deep-value($colors, $key, background-color);
+          }
+        }
+      }
+    }
+
+    gro-radio {
+      cursor: pointer;
+
+      label {
+        display: grid;
+        grid-template-columns: 1rem auto;
+        gap: 0.5rem;
+
+        input[type=radio] {
+          appearance: none;
+          background-color: #FFF;
+          margin: 0;
+          font: inherit;
+          color: currentColor;
+          width: 1.15em;
+          height: 1.15em;
+          border: 0.15em solid currentColor;
+          border-radius: 50%;
+          display: grid;
+          place-content: center;
+          transform: translateY(-0.075em);
+        }
+
+        input[type='radio']::before {
+          content: '';
+          width: 0.65em;
+          height: 0.65em;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: 120ms transform ease-in-out;
+        }
+
+        input[type='radio']:checked::before {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
