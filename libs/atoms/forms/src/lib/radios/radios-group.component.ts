@@ -101,8 +101,10 @@ export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit
             .find((radio: RadioComponent<ValueType>) => radio.checked);
 
           if (checked) {
-            this.value = checked.value;
-            this.valueChange.emit(this.value);
+            Promise.resolve().then(() => {
+              this.value = checked.value;
+              this.valueChange.emit(this.value);
+            });
           }
         }
       });

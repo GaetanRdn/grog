@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadiosGroupComponent should create 1`] = `
+<gro-radios-group
+  name="yesOrNo"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      Yes
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      No
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
+exports[`RadiosGroupComponent should create with initial value 1`] = `
+<gro-radios-group
+  name="yesOrNo"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      Yes
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      No
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
+exports[`RadiosGroupComponent should set value from checked 1`] = `
+<gro-radios-group
+  name="yesOrNo"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      Yes
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      No
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
+exports[`RadiosGroupComponent should set value when check 1`] = `
+<gro-radios-group
+  name="yesOrNo"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      Yes
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      No
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
