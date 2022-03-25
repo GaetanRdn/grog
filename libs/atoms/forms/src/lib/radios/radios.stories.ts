@@ -10,16 +10,17 @@ export default {
   component: RadiosGroupComponent,
   subcomponents: { RadioComponent },
   decorators: [moduleMetadata({ imports: [RadiosModule] })],
-} as Meta;
+} as Meta<RadiosGroupComponent<unknown>>;
 
 const template: Story = (args: Args) => ({
   props: {
     value: args['value'],
     valueChange: action('log'),
     vertical: Boolean(args['vertical']),
+    disabled: Boolean(args['disabled']),
     class: args['class'] ? 'gro-' + args['class'] : null,
   },
-  template: `<gro-radios-group name="yesOrNo" [value]="value" (valueChange)="valueChange($event)" [vertical]="vertical" class="{{class}}">
+  template: `<gro-radios-group name="yesOrNo" [value]="value" [disabled]="disabled" (valueChange)="valueChange($event)" [vertical]="vertical" class="{{class}}">
 <gro-radio [value]="1">Yes</gro-radio>
 <gro-radio [value]="0">No</gro-radio>
 </gro-radios-group>`,
@@ -44,6 +45,14 @@ Default.argTypes = {
     ],
     control: { type: 'select' },
   },
+};
+
+export const Disabled = template.bind({});
+Disabled.args = {
+  disabled: true,
+};
+Disabled.argTypes = {
+  disabled: { control: false },
 };
 
 export const Vertical = template.bind({});

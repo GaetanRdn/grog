@@ -4,6 +4,7 @@ import {
   Component,
   ContentChildren,
   EventEmitter,
+  forwardRef,
   Input,
   NgZone,
   OnInit,
@@ -21,6 +22,7 @@ import { CheckedChange } from './radios.models';
   selector: 'gro-radios-group',
   host: {
     '[class.gro-vertical]': 'vertical || null',
+    '[class.gro-disabled]': 'disabled || null',
   },
   template: ` <ng-content></ng-content>`,
   styleUrls: ['./radios-group.component.scss'],
@@ -29,6 +31,7 @@ import { CheckedChange } from './radios.models';
 @AutoUnsubscribe()
 export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit {
   static ngAcceptInputType_vertical: BooleanInput;
+  static ngAcceptInputType_disabled: BooleanInput;
 
   @Input()
   @Required()
@@ -41,10 +44,14 @@ export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit
   @CoerceBoolean()
   public vertical = false;
 
+  @Input()
+  @CoerceBoolean()
+  public disabled = false;
+
   @Output()
   public readonly valueChange: EventEmitter<ValueType> = new EventEmitter<ValueType>();
 
-  @ContentChildren(RadioComponent, { descendants: true })
+  @ContentChildren(forwardRef(() => RadioComponent), { descendants: true })
   public readonly radios!: QueryList<RadioComponent<ValueType>>;
 
   private readonly _checkedChange: Observable<CheckedChange<ValueType>> = defer(() => {

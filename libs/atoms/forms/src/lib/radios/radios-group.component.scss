@@ -12,7 +12,7 @@
     accent-color: utils.get-deep-value($colors, primary, background-color);
 
     label {
-      color: utils.get-deep-value($colors, primary, color);
+      color: utils.get-deep-value($colors, primary, coloFr);
 
       &:focus-within {
         input[type='radio'] {

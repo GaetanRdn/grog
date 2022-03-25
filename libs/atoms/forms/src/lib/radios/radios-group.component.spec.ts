@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { TemplateLookup } from '@grorg/tests';
 import { EqualsFn, Nullable } from '@grorg/types';
 import { RadiosGroupComponent } from './radios-group.component';
 import { RadiosModule } from './radios.module';
 
 describe('RadiosGroupComponent', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [HostComponent, HostWithoutEqualsFnComponent],
-      imports: [RadiosModule],
-    });
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [HostComponent, HostWithoutEqualsFnComponent],
+        imports: [RadiosModule],
+      }).compileComponents();
+    })
+  );
 
   describe('Complex Object', () => {
     let templateLookup: TemplateLookup<HostComponent>;
@@ -58,6 +60,16 @@ describe('RadiosGroupComponent', () => {
       expect(templateLookup.getComponent(RadiosGroupComponent).value).toEqual({ id: 1, name: 'yes' });
       expect(templateLookup.hostComponent.valueChange).toBeCalledWith({ id: 1, name: 'yes' });
     }));
+
+    test('should create disabled', fakeAsync(() => {
+      // WHEN
+      templateLookup.hostComponent.disabled = true;
+      tick(50);
+      templateLookup.detectChanges();
+
+      // THEN
+      expect(templateLookup.firstChildElement).toMatchSnapshot();
+    }));
   });
 
   describe('Without EqualsFn', () => {
@@ -89,6 +101,7 @@ describe('RadiosGroupComponent', () => {
   template: ` <gro-radios-group
     name="yesOrNo"
     [value]="value"
+    [disabled]="disabled"
     [equalsFn]="equalsFn"
     (valueChange)="valueChange($event)"
   >
@@ -100,6 +113,8 @@ class HostComponent {
   public checked: Nullable<number> = null;
 
   public value: Nullable<{ id: number; name: string }> = null;
+
+  public disabled = false;
 
   public equalsFn: EqualsFn<{ id: number; name: string }> = (
     val1: Nullable<{ id: number; name: string }>,

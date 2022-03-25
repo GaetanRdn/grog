@@ -27,6 +27,36 @@ exports[`RadiosGroupComponent Complex Object should create 1`] = `
 </gro-radios-group>
 `;
 
+exports[`RadiosGroupComponent Complex Object should create disabled 1`] = `
+<gro-radios-group
+  class="gro-disabled"
+  name="yesOrNo"
+>
+  <gro-radio>
+    <label>
+      <input
+        disabled=""
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      Yes
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        disabled=""
+        name="yesOrNo"
+        type="radio"
+        value="[object Object]"
+      />
+      No
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
 exports[`RadiosGroupComponent Complex Object should create with initial value 1`] = `
 <gro-radios-group
   name="yesOrNo"
