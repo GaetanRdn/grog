@@ -19,3 +19,8 @@ export type NgChanges<Component, Props = ExcludeFunctions<Component>> = {
     isFirstChange(): boolean;
   };
 };
+
+export type EqualsFn<Type> = (
+  obj1: Nullable<Type>,
+  obj2: Nullable<Type>
+) => boolean;

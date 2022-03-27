@@ -23,3 +23,19 @@ export const decorators = [
     filesExt: '((\\.specs?)|(\\.tests?))?(\\.ts)?$',
   }),
 ];
+
+export const parameters = {
+  backgrounds: {
+    default: 'dark',
+    values: [
+      {
+        name: 'light',
+        value: '#F8F8F8',
+      },
+      {
+        name: 'dark',
+        value: '#333',
+      },
+    ],
+  },
+};
