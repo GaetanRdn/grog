@@ -7,9 +7,9 @@
 
 @mixin gro-theme($config) {
   @include button.gro-button($config);
-  @include autocomplete.gro-autocomplete($config);
-  @include checkbox.gro-checkbox($config);
-  @include input.gro-input($config);
-  @include label.gro-label($config);
-  @include radios-group.gro-radios($config);
+  //@include autocomplete.gro-autocomplete($config);
+  //@include checkbox.gro-checkbox($config);
+  //@include input.gro-input($config);
+  //@include label.gro-label($config);
+  //@include radios-group.gro-radios($config);
 }

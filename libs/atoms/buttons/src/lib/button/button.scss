@@ -1,52 +1,64 @@
 @mixin gro-button($config) {
-  $typography: map-get($config, typography);
+  $typography: map-get(map-get($config, typography), buttons);
   $colors: map-get($config, colors);
+  $sizeKeys: ['small', 'medium', 'large'];
+  $colorKeys: ['default', 'primary', 'accent', 'error'];
 
-  .gro-button {
+  button {
     appearance: none;
-    padding: 0.25rem 0.75rem;
+    display: inline-flex;
+    font-family: inherit;
+    border-style: none;
+  }
 
+  .gro-base-button {
+    width: fit-content;
+    font-family: 'Open Sans', sans-serif;
+    background: none;
+    user-select: none;
+    background: transparent;
+    color: white;
+  }
 
-    @each $size in small, medium, large {
-      $typo: map-get($typography, button-#{$size});
-      $font-size: map-get($typo, font-size);
+  // Typography
 
-      .gro-#{$size} {
-        font-size: $font-size;
-        font-family: map-get($typo, font-family);
-        font-weight: map-get($typo, font-weight);
-        border-radius: 0.25 * $font-size;
+  @each $size in $sizeKeys {
+    .gro-base-button.gro-#{$size} {
+      font-size: map-get(map-get($typography, $size), font-size);
+      line-height: map-get(map-get($typography, $size), line-height);
+      font-weight: map-get(map-get($typography, $size), font-weight);
+    }
+  }
+
+  .gro-base-button.gro-small {
+    padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 3);
+    border-radius: var(--default-radius);
+  }
+
+  .gro-base-button.gro-medium {
+    padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 3);
+    border-radius: var(--default-radius);
+  }
+
+  .gro-base-button.gro-large {
+    padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 4);
+    border-radius: calc(var(--default-radius) * 2);
+  }
+
+  // Colors
+  @each $color in $colorKeys {
+    .gro-button.gro-#{$color} {
+      color: map-get(map-get($colors, $color), color);
+
+      &:hover {
+        background: transparentize(map-get(map-get($colors, $color), color), 0.9);
       }
     }
 
-    @each $color in primary, accent, warn {
-      $color-config: map-get($colors, $color);
-      $light-config: map-get($colors, $color + '-light');
-      $dark-config: map-get($colors, $color + '-dark');
-
-      .gro-#{$color} {
-        &:not(.gro-outlined) {
-          color: map-get($color-config, color);
-          background-color: map-get($color-config, background-color);
-          border: none;
-
-          &:hover {
-            color: map-get($dark-config, color);
-            background-color: map-get($dark-config, background-color);
-          }
-        }
-
-        &.gro-outlined {
-          color: map-get($color-config, background-color);
-          background-color: map-get($color-config, color);
-          border: 1px solid map-get($color-config, border-color);
-
-          &:hover {
-            color: map-get($light-config, color);
-            background-color: map-get($light-config, background-color);
-          }
-        }
-      }
+    .gro-raised-button.gro-#{$color} {
+      color: map-get(map-get($colors, $color), background);
+      background-color: map-get(map-get($colors, $color), color);
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     }
   }
 }
