@@ -1,91 +1,90 @@
 @use 'libs/styles/src/lib/theme';
 @use 'colors';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 * {
   box-sizing: border-box;
   position: relative;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
-  font-size: 16px;
+  font-size: 1rem;
   height: 100vh;
   width: 100vw;
 }
 
+:root {
+  --default-radius: 0.4rem;
+  --default-padding: 0.4rem;
+}
+
+.material-icons {
+  font-family: 'Material Icons', serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 $config: (
   typography: (
-    button-small: (
-      font-family: Roboto,
-      font-size: 12px,
-      font-weight: 700,
-    ),
-    button-medium: (
-      font-family: Roboto,
-      font-size: 16px,
-      font-weight: 400,
-    ),
-    button-large: (
-      font-family: Roboto,
-      font-size: 24px,
-      font-weight: 400,
-    ),
-    input: (
-      font-family: Lato,
-      font-size: 16px,
-      font-weight: 400,
-    ),
-    label: (
-      font-family: Lato,
-      font-size: 14px,
-      font-weight: 400,
+    buttons: (
+      small: (
+        font-size: 1.4rem,
+        line-height: 1.4rem,
+        font-weight: 400,
+        font-family: 'Open sans',
+      ),
+      medium: (
+        font-size: 1.6rem,
+        line-height: 1.6rem,
+        font-weight: 500,
+        font-family: 'Open sans',
+      ),
+      large: (
+        font-size: 2.2rem,
+        line-height: 2.2rem,
+        font-weight: 600,
+        font-family: 'Open sans',
+      ),
     ),
   ),
   colors: (
+    default: (
+      color: #F5F5F5,
+      background: black,
+    ),
     primary: (
-      color: colors.$primary-text,
-      background-color: colors.$primary,
-      border-color: colors.$primary-dark
-    ),
-    primary-light: (
-      color: colors.$primary-light-text,
-      background-color: colors.$primary-light,
-    ),
-    primary-dark: (
-      color: colors.$primary-dark-text,
-      background-color: colors.$primary-dark,
+      color: #3282B8,
+      background: white,
     ),
     accent: (
-      color: colors.$accent-text,
-      background-color: colors.$accent,
-      border-color: colors.$accent-dark
+      color: #FFC045,
+      background: black,
     ),
-    accent-light: (
-      color: colors.$accent-light-text,
-      background-color: colors.$accent-light,
-    ),
-    accent-dark: (
-      color: colors.$accent-dark-text,
-      background-color: colors.$accent-dark,
-    ),
-    warn: (
-      color: colors.$warn-text,
-      background-color: colors.$warn,
-      border-color: colors.$warn-dark
-    ),
-    warn-light: (
-      color: colors.$warn-light-text,
-      background-color: colors.$warn-light,
-    ),
-    warn-dark: (
-      color: colors.$warn-dark-text,
-      background-color: colors.$warn-dark,
-    ),
-    disabled: (
-      color: colors.$disabled-text,
-      background-color: colors.$disabled,
-      border-color: colors.$disabled-border
+    error: (
+      color: #DA0037,
+      background: white,
     ),
   ),
 );

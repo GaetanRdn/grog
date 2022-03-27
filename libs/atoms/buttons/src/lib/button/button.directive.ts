@@ -1,30 +1,40 @@
-import { Directive, Input, NgModule } from '@angular/core';
-import { CoerceBoolean } from '@grorg/decorators';
+import { Directive, ElementRef, Input, NgModule } from '@angular/core';
+
+const BUTTON_HOST_ATTRIBUTES = ['groButton', 'groRaisedButton', 'groIconButton'] as const;
 
 @Directive({
-  selector: 'button[groButton]',
+  selector: 'button[groButton], button[groRaisedButton], button[groIconButton]',
   // standalone: true,
   host: {
-    class: 'gro-button',
+    class: 'gro-base-button',
     '[class.gro-small]': 'size === "small"',
     '[class.gro-medium]': 'size === "medium"',
     '[class.gro-large]': 'size === "large"',
-    '[class.gro-outlined]': 'outlined',
+    '[class.gro-default]': 'color === "default"',
     '[class.gro-primary]': 'color === "primary"',
     '[class.gro-accent]': 'color === "accent"',
-    '[class.gro-warn]': 'color === "warn"',
+    '[class.gro-error]': 'color === "error"',
   },
 })
 export class ButtonDirective {
   @Input()
-  public size: 'small' | 'medium' | 'large' = 'medium';
+  public size: 'small' | 'medium' | 'large' = 'small';
 
   @Input()
-  @CoerceBoolean()
-  public outlined?: boolean;
+  public color: 'default' | 'primary' | 'accent' | 'error' = 'default';
 
-  @Input()
-  public color: 'primary' | 'accent' | 'warn' = 'primary';
+  constructor(private _elementRef: ElementRef) {
+    for (const attribute of BUTTON_HOST_ATTRIBUTES) {
+      if (this.hostElement.hasAttribute(attribute)) {
+        // Extract method caml case to kebab case
+        this.hostElement.classList.add(attribute.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase());
+      }
+    }
+  }
+
+  private get hostElement(): HTMLElement {
+    return this._elementRef.nativeElement;
+  }
 }
 
 @NgModule({
