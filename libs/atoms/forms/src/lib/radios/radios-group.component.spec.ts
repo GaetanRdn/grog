@@ -4,13 +4,15 @@ import { TemplateLookup } from '@grorg/tests';
 import { EqualsFn, Nullable } from '@grorg/types';
 import { RadiosGroupComponent } from './radios-group.component';
 import { RadiosModule } from './radios.module';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { RadioComponent } from './radio.component';
 
 describe('RadiosGroupComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [HostComponent, HostWithoutEqualsFnComponent],
-        imports: [RadiosModule],
+        declarations: [HostComponent, HostWithoutEqualsFnComponent, HostReactiveFormComponent],
+        imports: [RadiosModule, ReactiveFormsModule],
       }).compileComponents();
     })
   );
@@ -95,6 +97,54 @@ describe('RadiosGroupComponent', () => {
       ).toBe(true);
     }));
   });
+
+  describe('Reactive form', () => {
+    let templateLookup: TemplateLookup<HostReactiveFormComponent>;
+
+    beforeEach(() => {
+      templateLookup = new TemplateLookup(TestBed.createComponent(HostReactiveFormComponent));
+    });
+
+    test('should create', fakeAsync(() => {
+      templateLookup.detectChanges();
+      expect(templateLookup.firstChildElement).toMatchSnapshot();
+    }));
+
+    test('should create with value', fakeAsync(() => {
+      // WHEN
+      templateLookup.hostComponent.control.setValue(true);
+      templateLookup.detectChanges();
+
+      // THEN
+      expect(templateLookup.firstChildElement).toMatchSnapshot();
+      expect(templateLookup.getComponent(RadioComponent).checked).toBe(true);
+    }));
+
+    test('should create disabled', fakeAsync(() => {
+      // WHEN
+      templateLookup.hostComponent.control.disable();
+      templateLookup.detectChanges();
+
+      // THEN
+      expect(templateLookup.firstChildElement).toMatchSnapshot();
+      expect(templateLookup.getComponent(RadiosGroupComponent).disabled).toBe(true);
+    }));
+
+    test('should change control value on click', fakeAsync(() => {
+      // GIVEN
+      templateLookup.hostComponent.control.setValue(false);
+      templateLookup.detectChanges();
+
+      // WHEN
+      templateLookup.queryAll<HTMLInputElement>('input')[0].click();
+      tick(100);
+      templateLookup.detectChanges();
+
+      // THEN
+      expect(templateLookup.firstChildElement).toMatchSnapshot();
+      expect(templateLookup.hostComponent.control.value).toBe(true);
+    }));
+  });
 });
 
 @Component({
@@ -133,3 +183,13 @@ class HostComponent {
   </gro-radios-group>`,
 })
 class HostWithoutEqualsFnComponent {}
+
+@Component({
+  template: ` <gro-radios-group name="trueOrFalse" [formControl]="control">
+    <gro-radio [value]="true">True</gro-radio>
+    <gro-radio [value]="false">False</gro-radio>
+  </gro-radios-group>`,
+})
+class HostReactiveFormComponent {
+  public readonly control: FormControl = new FormControl();
+}

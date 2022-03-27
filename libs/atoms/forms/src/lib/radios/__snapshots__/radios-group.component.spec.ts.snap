@@ -138,6 +138,120 @@ exports[`RadiosGroupComponent Complex Object should set value when check 1`] = `
 </gro-radios-group>
 `;
 
+exports[`RadiosGroupComponent Reactive form should change control value on click 1`] = `
+<gro-radios-group
+  class="ng-valid ng-touched ng-dirty"
+  name="trueOrFalse"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="trueOrFalse"
+        type="radio"
+        value="true"
+      />
+      True
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="trueOrFalse"
+        type="radio"
+        value="false"
+      />
+      False
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
+exports[`RadiosGroupComponent Reactive form should create 1`] = `
+<gro-radios-group
+  class="ng-untouched ng-pristine ng-valid"
+  name="trueOrFalse"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="trueOrFalse"
+        type="radio"
+        value="true"
+      />
+      True
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="trueOrFalse"
+        type="radio"
+        value="false"
+      />
+      False
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
+exports[`RadiosGroupComponent Reactive form should create disabled 1`] = `
+<gro-radios-group
+  class="gro-disabled ng-untouched ng-pristine"
+  name="trueOrFalse"
+>
+  <gro-radio>
+    <label>
+      <input
+        disabled=""
+        name="trueOrFalse"
+        type="radio"
+        value="true"
+      />
+      True
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        disabled=""
+        name="trueOrFalse"
+        type="radio"
+        value="false"
+      />
+      False
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
+exports[`RadiosGroupComponent Reactive form should create with value 1`] = `
+<gro-radios-group
+  class="ng-untouched ng-pristine ng-valid"
+  name="trueOrFalse"
+>
+  <gro-radio>
+    <label>
+      <input
+        name="trueOrFalse"
+        type="radio"
+        value="true"
+      />
+      True
+    </label>
+  </gro-radio>
+  <gro-radio>
+    <label>
+      <input
+        name="trueOrFalse"
+        type="radio"
+        value="false"
+      />
+      False
+    </label>
+  </gro-radio>
+</gro-radios-group>
+`;
+
 exports[`RadiosGroupComponent Without EqualsFn should create 1`] = `
 <gro-radios-group
   name="yesOrNo"

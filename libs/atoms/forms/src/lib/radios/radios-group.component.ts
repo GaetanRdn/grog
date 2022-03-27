@@ -8,8 +8,10 @@ import {
   Input,
   NgZone,
   OnInit,
+  Optional,
   Output,
   QueryList,
+  Self,
 } from '@angular/core';
 import { AutoUnsubscribe, CoerceBoolean, Required } from '@grorg/decorators';
 import { BooleanInput, EqualsFn, Nullable } from '@grorg/types';
@@ -17,6 +19,8 @@ import { defer, merge, Observable, Subscription } from 'rxjs';
 import { startWith, switchMap, take } from 'rxjs/operators';
 import { RadioComponent } from './radio.component';
 import { CheckedChange } from './radios.models';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { OnChangeFn, OnTouchedFn } from '../core/reactive-forms.models';
 
 @Component({
   selector: 'gro-radios-group',
@@ -29,7 +33,7 @@ import { CheckedChange } from './radios.models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 @AutoUnsubscribe()
-export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit {
+export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit, ControlValueAccessor {
   static ngAcceptInputType_vertical: BooleanInput;
   static ngAcceptInputType_disabled: BooleanInput;
 
@@ -43,10 +47,6 @@ export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit
   @Input()
   @CoerceBoolean()
   public vertical = false;
-
-  @Input()
-  @CoerceBoolean()
-  public disabled = false;
 
   @Output()
   public readonly valueChange: EventEmitter<ValueType> = new EventEmitter<ValueType>();
@@ -67,10 +67,25 @@ export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit
       switchMap(() => this._checkedChange)
     );
   });
-
   private _subscriptions: Subscription[] = [];
 
-  constructor(private readonly _ngZone: NgZone) {}
+  constructor(private readonly _ngZone: NgZone, @Self() @Optional() private readonly _ngControl?: NgControl) {
+    if (_ngControl) {
+      _ngControl.valueAccessor = this;
+    }
+  }
+
+  private _disabled = false;
+
+  get disabled(): boolean {
+    return this._disabled || Boolean(this._ngControl?.disabled);
+  }
+
+  @Input()
+  @CoerceBoolean()
+  set disabled(disabled: boolean) {
+    this._disabled = disabled;
+  }
 
   public ngOnInit(): void {
     this._subscriptions[this._subscriptions.length] = this._checkedChange.subscribe(
@@ -78,6 +93,8 @@ export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit
         this.value = change.source.value;
 
         if (change.isUserInteraction) {
+          this._onChanged(this.value);
+          this._onTouched();
           this.valueChange.emit(this.value);
         }
       }
@@ -116,6 +133,24 @@ export class RadiosGroupComponent<ValueType> implements AfterContentInit, OnInit
         }
       });
   }
+
+  public registerOnChange(fn: OnChangeFn<ValueType>): void {
+    this._onChanged = fn;
+  }
+
+  public registerOnTouched(fn: OnTouchedFn): void {
+    this._onTouched = fn;
+  }
+
+  public writeValue(value: RadiosGroupComponent<ValueType>['value']): void {
+    if (!this.equalsFn(this.value, value)) {
+      this.value = value;
+    }
+  }
+
+  private _onTouched: OnTouchedFn = () => ({});
+
+  private _onChanged: OnChangeFn<ValueType> = () => ({});
 
   private setRadioNames(radios: QueryList<RadioComponent<ValueType>>): void {
     radios.toArray().forEach((radio: RadioComponent<ValueType>) => (radio.name = this.name));
