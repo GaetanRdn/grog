@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TemplateLookup } from '@grorg/tests';
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { MaterialIconComponent } from '@grorg/atoms/icons';
+import { MaterialIconComponent } from './material-icon.component';
 
 describe('MaterialIconComponent', () => {
   let templateLookup: TemplateLookup<HostComponent>;

@@ -2,11 +2,13 @@
   "projectType": "library",
   "root": "libs/atoms/icons",
   "sourceRoot": "libs/atoms/icons/src",
-  "prefix": "grorg",
+  "prefix": "gro",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:ng-packagr-lite",
-      "outputs": ["dist/libs/atoms/icons"],
+      "outputs": [
+        "dist/libs/atoms/icons"
+      ],
       "options": {
         "project": "libs/atoms/icons/ng-package.json"
       },
@@ -22,7 +24,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/atoms/icons"],
+      "outputs": [
+        "coverage/libs/atoms/icons"
+      ],
       "options": {
         "jestConfig": "libs/atoms/icons/jest.config.js",
         "passWithNoTests": true
@@ -31,7 +35,10 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["libs/atoms/icons/src/**/*.ts", "libs/atoms/icons/src/**/*.html"]
+        "lintFilePatterns": [
+          "libs/atoms/icons/src/**/*.ts",
+          "libs/atoms/icons/src/**/*.html"
+        ]
       }
     }
   },
