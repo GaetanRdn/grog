@@ -50,3 +50,13 @@ const templateForRaised: Story<ButtonDirective> = () => ({
 });
 
 export const Raised = templateForRaised.bind({});
+
+const templateForIcon: Story<ButtonDirective> = () => ({
+  template: `
+<button groIconButton size="small"><span class="material-icons">home</span></button>
+<button groIconButton size="small" color="primary"><span class="material-icons">done</span></button>
+<button groIconButton size="small" color="accent"><span class="material-icons">verified</span></button>
+<button groIconButton size="small" color="error"><span class="material-icons">delete</span></button>`,
+});
+
+export const Icon = templateForIcon.bind({});

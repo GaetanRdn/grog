@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, NgModule } from '@angular/core';
 const BUTTON_HOST_ATTRIBUTES = ['groButton', 'groRaisedButton', 'groIconButton'] as const;
 
 @Directive({
-  selector: 'button[groButton], button[groRaisedButton]',
+  selector: 'button[groButton], button[groRaisedButton], button[groIconButton]',
   // standalone: true,
   host: {
     class: 'gro-base-button',
