@@ -1,402 +1,168 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap);
 * {
   box-sizing: border-box;
   position: relative;
 }
+
+html {
+  font-size: 62.5%;
+}
+
 body {
-  font-size: 16px;
+  font-size: 1rem;
   height: 100vh;
   width: 100vw;
 }
-.gro-button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  padding: 0.25rem 0.75rem;
+
+:root {
+  --default-radius: 0.4rem;
+  --default-padding: 0.4rem;
 }
-.gro-button .gro-small {
-  font-size: 12px;
-  font-family: Roboto;
-  font-weight: 700;
-  border-radius: 3px;
-}
-.gro-button .gro-medium {
-  font-size: 16px;
-  font-family: Roboto;
-  font-weight: 400;
-  border-radius: 4px;
-}
-.gro-button .gro-large {
+
+.material-icons {
+  font-family: "Material Icons", serif;
+  font-weight: normal;
+  font-style: normal;
   font-size: 24px;
-  font-family: Roboto;
-  font-weight: 400;
-  border-radius: 6px;
-}
-.gro-button .gro-primary:not(.gro-outlined) {
-  color: white;
-  background-color: #455A64;
-  border: none;
-}
-.gro-button .gro-primary:not(.gro-outlined):hover {
-  color: white;
-  background-color: #1C313A;
-}
-.gro-button .gro-primary.gro-outlined {
-  color: #455A64;
-  background-color: white;
-  border: 1px solid #1C313A;
-}
-.gro-button .gro-primary.gro-outlined:hover {
-  color: black;
-  background-color: #718792;
-}
-.gro-button .gro-accent:not(.gro-outlined) {
-  color: white;
-  background-color: #1A237E;
-  border: none;
-}
-.gro-button .gro-accent:not(.gro-outlined):hover {
-  color: white;
-  background-color: #000051;
-}
-.gro-button .gro-accent.gro-outlined {
-  color: #1A237E;
-  background-color: white;
-  border: 1px solid #000051;
-}
-.gro-button .gro-accent.gro-outlined:hover {
-  color: white;
-  background-color: #534BAE;
-}
-.gro-button .gro-warn:not(.gro-outlined) {
-  color: white;
-  background-color: #C62828;
-  border: none;
-}
-.gro-button .gro-warn:not(.gro-outlined):hover {
-  color: white;
-  background-color: #8E0000;
-}
-.gro-button .gro-warn.gro-outlined {
-  color: #C62828;
-  background-color: white;
-  border: 1px solid #8E0000;
-}
-.gro-button .gro-warn.gro-outlined:hover {
-  color: black;
-  background-color: #FF5F52;
-}
-gro-autocomplete {
-  flex: 1;
-}
-gro-autocomplete .gro-input {
-  font-size: 16px;
-  font-family: Lato;
-  font-weight: 400;
-  border-radius: 4px;
-  outline: none;
-  height: 32px;
-  border-width: 1px;
-}
-gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly) {
-  color: black;
-  background-color: #718792;
-  border-style: inset;
-}
-gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly):hover, gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly):focus {
-  color: white;
-  background-color: #455A64;
-  border-color: #1C313A;
-}
-gro-autocomplete .gro-input:not(.gro-disabled, .gro-readonly):focus {
-  border-width: 2px;
-}
-gro-autocomplete .gro-input.gro-disabled, gro-autocomplete .gro-input.gro-readonly {
-  color: white;
-  background-color: #777;
-  border-color: #666;
-  border-style: dashed;
-}
-gro-autocomplete.gro-opened .gro-input {
-  border-bottom-right-radius: unset;
-  border-bottom-left-radius: unset;
-}
-gro-autocomplete .gro-autocomplete-options {
-  font-size: 14px;
-  font-family: Lato;
-  font-weight: 400;
-  color: white;
-  background-color: #455A64;
-  border-color: #1C313A;
-  position: absolute;
-  display: flex;
-  flex-flow: column;
-  align-items: stretch;
-  width: 100%;
-  cursor: pointer;
-  border-left-width: 2px;
-  border-right-width: 2px;
-  border-bottom-width: 2px;
-  border-style: inset;
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-gro-autocomplete .gro-autocomplete-options:last-child {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-gro-autocomplete .gro-autocomplete-options .gro-option {
-  padding: 0.5rem 1rem;
-}
-gro-autocomplete .gro-autocomplete-options .gro-option:hover {
-  color: white;
-  background-color: #1C313A;
-}
-gro-autocomplete .gro-autocomplete-options .gro-option.gro-selected {
-  color: black;
-  background-color: #718792;
-}
-gro-checkbox {
-  font-size: 16px;
-  font-family: Lato;
-  font-weight: 400;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-gro-checkbox:not(.gro-disabled, .gro-readonly) {
-  color: #455A64;
-  background-color: white;
-  border-color: #1C313A;
-}
-gro-checkbox:not(.gro-disabled, .gro-readonly):hover, gro-checkbox:not(.gro-disabled, .gro-readonly):focus {
-  color: #1C313A;
-  background-color: white;
-}
-gro-checkbox.gro-disabled, gro-checkbox.gro-readonly {
-  color: #777;
-  background-color: white;
-  border-color: #666;
-}
-gro-checkbox input[type=checkbox i] {
-  height: 1rem;
-  width: 1rem;
-  cursor: inherit;
-}
-.gro-input {
-  font-size: 16px;
-  font-family: Lato;
-  font-weight: 400;
-  border-radius: 4px;
-  outline: none;
-  height: 32px;
-  border-width: 1px;
-}
-.gro-input:not(.gro-disabled, .gro-readonly) {
-  color: black;
-  background-color: #718792;
-  border-style: inset;
-}
-.gro-input:not(.gro-disabled, .gro-readonly):hover, .gro-input:not(.gro-disabled, .gro-readonly):focus {
-  color: white;
-  background-color: #455A64;
-  border-color: #1C313A;
-}
-.gro-input:not(.gro-disabled, .gro-readonly):focus {
-  border-width: 2px;
-}
-.gro-input.gro-disabled, .gro-input.gro-readonly {
-  color: white;
-  background-color: #777;
-  border-color: #666;
-  border-style: dashed;
-}
-gro-label {
-  font-size: 14px;
-  font-family: Lato;
-  font-weight: 400;
-}
-gro-radios-group {
-  font-size: 16px;
-  font-family: Lato;
-  font-weight: 400;
-  display: flex;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  flex: 1;
-  accent-color: #455A64;
-}
-gro-radios-group label:focus-within input[type=radio] {
-  color: #455A64;
-}
-gro-radios-group label input[type=radio]::before {
-  box-shadow: inset 1em 1em #455A64;
-}
-gro-radios-group.gro-vertical {
-  flex-flow: column;
-}
-gro-radios-group.gro-vertical gro-radio + gro-radio {
-  margin-top: 1em;
-}
-gro-radios-group:not(.gro-vertical) gro-radio + gro-radio {
-  margin-left: 1em;
-}
-gro-radios-group.gro-primary {
-  accent-color: #455A64;
-}
-gro-radios-group.gro-primary label {
-  color: white;
-}
-gro-radios-group.gro-primary label:focus-within input[type=radio] {
-  color: #455A64;
-}
-gro-radios-group.gro-primary label input[type=radio]::before {
-  box-shadow: inset 1em 1em #455A64;
-}
-gro-radios-group.gro-primary-light {
-  accent-color: #718792;
-}
-gro-radios-group.gro-primary-light label {
-  color: black;
-}
-gro-radios-group.gro-primary-light label:focus-within input[type=radio] {
-  color: #718792;
-}
-gro-radios-group.gro-primary-light label input[type=radio]::before {
-  box-shadow: inset 1em 1em #718792;
-}
-gro-radios-group.gro-primary-dark {
-  accent-color: #1C313A;
-}
-gro-radios-group.gro-primary-dark label {
-  color: white;
-}
-gro-radios-group.gro-primary-dark label:focus-within input[type=radio] {
-  color: #1C313A;
-}
-gro-radios-group.gro-primary-dark label input[type=radio]::before {
-  box-shadow: inset 1em 1em #1C313A;
-}
-gro-radios-group.gro-accent {
-  accent-color: #1A237E;
-}
-gro-radios-group.gro-accent label {
-  color: white;
-}
-gro-radios-group.gro-accent label:focus-within input[type=radio] {
-  color: #1A237E;
-}
-gro-radios-group.gro-accent label input[type=radio]::before {
-  box-shadow: inset 1em 1em #1A237E;
-}
-gro-radios-group.gro-accent-light {
-  accent-color: #534BAE;
-}
-gro-radios-group.gro-accent-light label {
-  color: white;
-}
-gro-radios-group.gro-accent-light label:focus-within input[type=radio] {
-  color: #534BAE;
-}
-gro-radios-group.gro-accent-light label input[type=radio]::before {
-  box-shadow: inset 1em 1em #534BAE;
-}
-gro-radios-group.gro-accent-dark {
-  accent-color: #000051;
-}
-gro-radios-group.gro-accent-dark label {
-  color: white;
-}
-gro-radios-group.gro-accent-dark label:focus-within input[type=radio] {
-  color: #000051;
-}
-gro-radios-group.gro-accent-dark label input[type=radio]::before {
-  box-shadow: inset 1em 1em #000051;
-}
-gro-radios-group.gro-warn {
-  accent-color: #C62828;
-}
-gro-radios-group.gro-warn label {
-  color: white;
-}
-gro-radios-group.gro-warn label:focus-within input[type=radio] {
-  color: #C62828;
-}
-gro-radios-group.gro-warn label input[type=radio]::before {
-  box-shadow: inset 1em 1em #C62828;
-}
-gro-radios-group.gro-warn-light {
-  accent-color: #FF5F52;
-}
-gro-radios-group.gro-warn-light label {
-  color: black;
-}
-gro-radios-group.gro-warn-light label:focus-within input[type=radio] {
-  color: #FF5F52;
-}
-gro-radios-group.gro-warn-light label input[type=radio]::before {
-  box-shadow: inset 1em 1em #FF5F52;
-}
-gro-radios-group.gro-warn-dark {
-  accent-color: #8E0000;
-}
-gro-radios-group.gro-warn-dark label {
-  color: white;
-}
-gro-radios-group.gro-warn-dark label:focus-within input[type=radio] {
-  color: #8E0000;
-}
-gro-radios-group.gro-warn-dark label input[type=radio]::before {
-  box-shadow: inset 1em 1em #8E0000;
-}
-gro-radios-group.gro-disabled {
-  accent-color: #777;
-}
-gro-radios-group.gro-disabled label {
-  color: white;
-}
-gro-radios-group.gro-disabled label:focus-within input[type=radio] {
-  color: #777;
-}
-gro-radios-group.gro-disabled label input[type=radio]::before {
-  box-shadow: inset 1em 1em #777;
-}
-gro-radios-group gro-radio {
-  cursor: pointer;
-}
-gro-radios-group gro-radio label {
-  display: grid;
-  grid-template-columns: 1rem auto;
-  grid-gap: 0.5rem;
-  gap: 0.5rem;
-}
-gro-radios-group gro-radio label input[type=radio] {
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+button {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #FFF;
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 50%;
-  display: grid;
-  place-content: center;
-  transform: translateY(-0.075em);
+  display: inline-flex;
+  font-family: inherit;
+  border-style: none;
 }
-gro-radios-group gro-radio label input[type=radio]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
+
+.gro-base-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Open Sans", sans-serif;
+  background: none;
+  -webkit-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
-gro-radios-group gro-radio label input[type=radio]:checked::before {
-  transform: scale(1);
+
+.gro-base-button.gro-small {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+}
+
+.gro-base-button.gro-medium {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  font-weight: 500;
+}
+
+.gro-base-button.gro-large {
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  font-weight: 600;
+}
+
+.gro-base-button.gro-small {
+  padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 3);
+  border-radius: var(--default-radius);
+}
+
+.gro-base-button.gro-medium {
+  padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 3);
+  border-radius: var(--default-radius);
+}
+
+.gro-base-button.gro-large {
+  padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 4);
+  border-radius: calc(var(--default-radius) * 2);
+}
+
+.gro-button.gro-default {
+  color: #F5F5F5;
+}
+
+.gro-button.gro-default:hover {
+  background: rgba(245, 245, 245, 0.1);
+}
+
+.gro-raised-button.gro-default {
+  color: black;
+  background-color: #F5F5F5;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.gro-icon-button.gro-default {
+  color: #F5F5F5;
+}
+
+.gro-button.gro-primary {
+  color: #3282B8;
+}
+
+.gro-button.gro-primary:hover {
+  background: rgba(50, 130, 184, 0.1);
+}
+
+.gro-raised-button.gro-primary {
+  color: white;
+  background-color: #3282B8;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.gro-icon-button.gro-primary {
+  color: #3282B8;
+}
+
+.gro-button.gro-accent {
+  color: #FFC045;
+}
+
+.gro-button.gro-accent:hover {
+  background: rgba(255, 192, 69, 0.1);
+}
+
+.gro-raised-button.gro-accent {
+  color: black;
+  background-color: #FFC045;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.gro-icon-button.gro-accent {
+  color: #FFC045;
+}
+
+.gro-button.gro-error {
+  color: #DA0037;
+}
+
+.gro-button.gro-error:hover {
+  background: rgba(218, 0, 55, 0.1);
+}
+
+.gro-raised-button.gro-error {
+  color: white;
+  background-color: #DA0037;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
+}
+
+.gro-icon-button.gro-error {
+  color: #DA0037;
 }
 
 
