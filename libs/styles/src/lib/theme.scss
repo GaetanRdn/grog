@@ -1,3 +1,4 @@
+@use '../../../atoms/icons/src/lib/material-icon.component';
 @use '../../../atoms/buttons/src/lib/button/button';
 @use '../../../atoms/forms/src/lib/autocomplete/autocomplete.component';
 @use '../../../atoms/forms/src/lib/checkbox/checkbox.component';
@@ -6,6 +7,7 @@
 @use '../../../atoms/forms/src/lib/radios/radios-group.component';
 
 @mixin gro-theme($config) {
+  @include material-icon.gro-material-icon();
   @include button.gro-button($config);
   //@include autocomplete.gro-autocomplete($config);
   //@include checkbox.gro-checkbox($config);

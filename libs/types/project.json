@@ -23,10 +23,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/types/src/**/*.ts",
-          "libs/types/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/types/src/**/*.ts", "libs/types/src/**/*.html"]
       }
     }
   },
