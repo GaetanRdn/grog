@@ -6,7 +6,6 @@
 @mixin gro-option($config) {
   $typography: map-get(map-get($config, typography), option);
   $colors: map-get($config, colors);
-  $colorKeys: ['primary', 'accent', 'error'];
 
   gro-option {
     font-family: map-get($typography, font-family);
