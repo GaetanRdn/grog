@@ -14,7 +14,6 @@
     line-height: map-get($typography, line-height);
     font-weight: map-get($typography, font-weight);
     color: map-get(map-get($colors, default), color);
-    flex: 1 1 100%;
 
     &:not(.gro-disabled) {
       cursor: pointer;
