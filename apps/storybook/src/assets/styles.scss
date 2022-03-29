@@ -43,6 +43,12 @@ $config: (
         font-family: 'Open sans',
       ),
     ),
+    option: (
+      font-size: 1.4rem,
+      line-height: 1.6rem,
+      font-weight: 400,
+      font-family: 'Open sans',
+    )
   ),
   colors: (
     default: (
@@ -50,7 +56,7 @@ $config: (
       background: black,
     ),
     primary: (
-      color: #3282B8,
+      color: #1081cd,
       background: white,
     ),
     accent: (
@@ -61,6 +67,11 @@ $config: (
       color: #DA0037,
       background: white,
     ),
+    disabled: (
+      background: #EFEFEF4C,
+      color: #F5F5F5,
+      border: #7676764C,
+    )
   ),
 );
 
