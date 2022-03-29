@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionComponent With value should create 1`] = `
+<gro-option
+  value="Val"
+>
+  Label
+</gro-option>
+`;
+
+exports[`OptionComponent Without value should create 1`] = `
+<gro-option>
+  Value
+</gro-option>
+`;
+
+exports[`OptionComponent Without value should create disabled 1`] = `
+<gro-option
+  class="gro-disabled"
+>
+  Value
+</gro-option>
+`;
+
+exports[`OptionComponent Without value should have class gro-selected when selected 1`] = `
+<gro-option
+  class="gro-selected"
+>
+  Value
+</gro-option>
+`;
