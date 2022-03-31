@@ -1,6 +1,15 @@
 :host {
   flex: 1;
-  padding: calc(var(--default-padding) * 2) calc(var(--default-padding) * 4);
+  padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+}
+
+:host-context(.gro-opened) {
+  margin-left: -0.1rem;
+
+  &:last-of-type {
+    border-bottom-left-radius: var(--default-radius);
+    border-bottom-right-radius: var(--default-radius);
+  }
 }
 
 @mixin gro-option($config) {
