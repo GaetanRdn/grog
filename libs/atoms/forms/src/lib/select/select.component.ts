@@ -11,6 +11,7 @@ import {
   Input,
   NgModule,
   NgZone,
+  Optional,
   Output,
   QueryList,
 } from '@angular/core';
@@ -20,11 +21,15 @@ import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { defer, merge, Observable } from 'rxjs';
 import { startWith, switchMap, take, tap } from 'rxjs/operators';
-import { Nullable } from '@grorg/types';
+import { BooleanInput, Nullable, OnChangeFn, OnTouchedFn, TypedControlValueAccessor } from '@grorg/types';
+import { NgControl } from '@angular/forms';
+import { CoerceBoolean } from '@grorg/decorators';
 
 // TODO handle multiple selection
 // TODO handle Complex type selection
+// TODO Disabled
 // TODO revoir la bordure en selected
+// TODO externaliser l'animation
 
 @Component({
   selector: 'gro-select',
@@ -44,7 +49,9 @@ import { Nullable } from '@grorg/types';
   styleUrls: ['./select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectComponent<ValueType> implements AfterContentInit {
+export class SelectComponent<ValueType> implements AfterContentInit, TypedControlValueAccessor<ValueType> {
+  static ngAcceptInputType_disabled: BooleanInput;
+
   @Input()
   public placeholder?: string;
 
@@ -59,6 +66,7 @@ export class SelectComponent<ValueType> implements AfterContentInit {
 
   @HostBinding('class.gro-opened')
   public opened = false;
+
   private readonly _selectionChange$: Observable<OptionComponent<ValueType>> = defer(() => {
     const options = this.options;
 
@@ -78,8 +86,26 @@ export class SelectComponent<ValueType> implements AfterContentInit {
   constructor(
     private readonly _elementRef: ElementRef,
     private readonly _ngZone: NgZone,
-    private readonly _cdr: ChangeDetectorRef
-  ) {}
+    private readonly _cdr: ChangeDetectorRef,
+    @Optional() private readonly _ngControl: NgControl
+  ) {
+    if (_ngControl) {
+      _ngControl.valueAccessor = this;
+    }
+  }
+
+  private _disabled = false;
+
+  get disabled(): boolean {
+    return this._disabled || Boolean(this._ngControl?.disabled);
+  }
+
+  @HostBinding('class.gro-disabled')
+  @Input()
+  @CoerceBoolean()
+  set disabled(disabled: boolean) {
+    this._disabled = disabled;
+  }
 
   private _viewValue: Nullable<string> = null;
 
@@ -93,12 +119,14 @@ export class SelectComponent<ValueType> implements AfterContentInit {
 
   @HostListener('click')
   public openPanel(): void {
-    this.opened = true;
+    if (!this.disabled) {
+      this.opened = true;
+    }
   }
 
   @HostListener('document:click', ['$event.target'])
   public onClick(event: EventTarget): void {
-    if (!this._elementRef.nativeElement.contains(event)) {
+    if (!this.disabled && !this._elementRef.nativeElement.contains(event)) {
       this.opened = false;
     }
   }
@@ -115,7 +143,9 @@ export class SelectComponent<ValueType> implements AfterContentInit {
         tap(() => (this.opened = false)),
         tap((option: OptionComponent<ValueType>) => (this._viewValue = option.value as unknown as string)),
         tap((option: OptionComponent<ValueType>) => (this.value = option.value)),
-        tap(() => this.valueChange.emit(this.value))
+        tap(() => this.valueChange.emit(this.value)),
+        tap(() => this._onChange(this.value)),
+        tap(() => this._onTouched())
       )
       .subscribe(() => this._cdr.markForCheck());
 
@@ -130,6 +160,33 @@ export class SelectComponent<ValueType> implements AfterContentInit {
       }
     }
   }
+
+  public registerOnChange(fn: OnChangeFn<ValueType>): void {
+    this._onChange = fn;
+  }
+
+  public registerOnTouched(fn: OnTouchedFn): void {
+    this._onTouched = fn;
+  }
+
+  public writeValue(value: Nullable<ValueType>): void {
+    this.value = value;
+    this._viewValue = value as unknown as string;
+
+    Promise.resolve().then(() => {
+      const found: OptionComponent<ValueType> | undefined = this.options.find(
+        (option: OptionComponent<ValueType>) => option.value === this.value
+      );
+
+      if (found) {
+        found.selected = true;
+      }
+    });
+  }
+
+  private _onChange: OnChangeFn<ValueType> = () => ({});
+
+  private _onTouched: OnTouchedFn = () => ({});
 }
 
 @NgModule({
