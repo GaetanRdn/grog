@@ -30,7 +30,11 @@ describe('OptionComponent', () => {
 
       // WHEN
       const debugElement: DebugElement = templateLookup.get('gro-option');
-      debugElement.triggerEventHandler('click', { target: debugElement.nativeElement });
+      debugElement.triggerEventHandler('click', {
+        target: debugElement.nativeElement,
+        stopPropagation: () => ({}),
+        stopImmediatePropagation: () => ({}),
+      });
 
       // THEN
       expect(templateLookup.hostComponent.selectedChange).toBeCalledWith(debugElement.componentInstance);
@@ -43,8 +47,16 @@ describe('OptionComponent', () => {
 
       // WHEN
       const debugElement: DebugElement = templateLookup.get('gro-option');
-      debugElement.triggerEventHandler('click', { target: debugElement.nativeElement });
-      debugElement.triggerEventHandler('click', { target: debugElement.nativeElement });
+      debugElement.triggerEventHandler('click', {
+        target: debugElement.nativeElement,
+        stopPropagation: () => ({}),
+        stopImmediatePropagation: () => ({}),
+      });
+      debugElement.triggerEventHandler('click', {
+        target: debugElement.nativeElement,
+        stopPropagation: () => ({}),
+        stopImmediatePropagation: () => ({}),
+      });
 
       // THEN
       expect(templateLookup.hostComponent.selectedChange).toBeCalledTimes(1);
@@ -55,7 +67,11 @@ describe('OptionComponent', () => {
 
       // WHEN
       const debugElement: DebugElement = templateLookup.get('gro-option');
-      debugElement.triggerEventHandler('click', { target: debugElement.nativeElement });
+      debugElement.triggerEventHandler('click', {
+        target: debugElement.nativeElement,
+        stopPropagation: () => ({}),
+        stopImmediatePropagation: () => ({}),
+      });
       templateLookup.detectChanges();
 
       // THEN

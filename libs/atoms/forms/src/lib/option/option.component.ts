@@ -49,13 +49,13 @@ export class OptionComponent<ValueType> implements OnInit {
 
   @HostListener('click', ['$event'])
   public select(event: MouseEvent): void {
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-
     if (!this.disabled && !this.selected) {
       this.selected = true;
       this.selectedChange.emit(this);
     }
+
+    event.stopPropagation();
+    event.stopImmediatePropagation();
   }
 }
 
