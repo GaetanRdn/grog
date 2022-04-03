@@ -48,12 +48,19 @@ $config: (
       line-height: 1.6rem,
       font-weight: 400,
       font-family: 'Open sans',
+    ),
+    input: (
+      font-size: 1.6rem,
+      line-height: 1.8rem,
+      font-weight: 400,
+      font-family: 'Source Sans Pro',
     )
   ),
   colors: (
     default: (
       color: #F5F5F5,
       background: black,
+      border: #F5F5F5,
     ),
     primary: (
       color: #1081cd,
