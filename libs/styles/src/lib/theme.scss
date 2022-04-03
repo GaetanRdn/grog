@@ -1,6 +1,7 @@
 @use '../../../atoms/icons/src/lib/material-icon.component';
 @use '../../../atoms/buttons/src/lib/button/button';
 @use '../../../atoms/forms/src/lib/option/option.component';
+@use '../../../atoms/forms/src/lib/select/select.component';
 
 /*@use '../../../atoms/forms/src/lib/autocomplete/autocomplete.component';
 @use '../../../atoms/forms/src/lib/checkbox/checkbox.component';
@@ -12,6 +13,7 @@
   @include material-icon.gro-material-icon();
   @include button.gro-button($config);
   @include option.gro-option($config);
+  @include select.gro-select($config);
   //@include autocomplete.gro-autocomplete($config);
   //@include checkbox.gro-checkbox($config);
   //@include input.gro-input($config);

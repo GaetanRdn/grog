@@ -3,26 +3,26 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 export class TemplateLookup<T> {
-  private _fixture: ComponentFixture<T>;
+  public readonly fixture: ComponentFixture<T>;
 
-  constructor(public readonly fixtureOrHostClass: ComponentFixture<T> | Type<T>) {
+  constructor(private readonly fixtureOrHostClass: ComponentFixture<T> | Type<T>) {
     if ('detectChanges' in fixtureOrHostClass) {
-      this._fixture = fixtureOrHostClass;
+      this.fixture = fixtureOrHostClass;
     } else {
-      this._fixture = TestBed.createComponent(fixtureOrHostClass);
+      this.fixture = TestBed.createComponent(fixtureOrHostClass);
     }
   }
 
   get firstChildElement(): HTMLElement {
-    return this._fixture.debugElement.children[0].nativeElement;
+    return this.fixture.debugElement.children[0].nativeElement;
   }
 
   get hostComponent(): T {
-    return this._fixture.componentInstance;
+    return this.fixture.componentInstance;
   }
 
   public detectChanges(): void {
-    this._fixture.detectChanges();
+    this.fixture.detectChanges();
   }
 
   public get(selectorOrType: string | Type<unknown>): DebugElement {
@@ -34,7 +34,7 @@ export class TemplateLookup<T> {
       predicate = By.directive(selectorOrType);
     }
 
-    return this._fixture.debugElement.query(predicate);
+    return this.fixture.debugElement.query(predicate);
   }
 
   public getAll(selectorOrType: string | Type<unknown>): DebugElement[] {
@@ -46,7 +46,7 @@ export class TemplateLookup<T> {
       predicate = By.directive(selectorOrType);
     }
 
-    return this._fixture.debugElement.queryAll(predicate);
+    return this.fixture.debugElement.queryAll(predicate);
   }
 
   public getComponent<U>(selectorOrType: string | Type<U>): U {
