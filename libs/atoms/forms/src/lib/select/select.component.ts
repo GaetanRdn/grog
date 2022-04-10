@@ -21,13 +21,11 @@ import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { defer, merge, Observable } from 'rxjs';
 import { startWith, switchMap, take, tap } from 'rxjs/operators';
-import { BooleanInput, Nullable, OnChangeFn, OnTouchedFn, TypedControlValueAccessor } from '@grorg/types';
+import { BooleanInput, EqualsFn, Nullable, OnChangeFn, OnTouchedFn, TypedControlValueAccessor } from '@grorg/types';
 import { NgControl } from '@angular/forms';
 import { CoerceBoolean } from '@grorg/decorators';
 
 // TODO handle multiple selection
-// TODO handle Complex type selection
-// TODO Disabled
 // TODO revoir la bordure en selected
 // TODO externaliser l'animation
 
@@ -117,6 +115,10 @@ export class SelectComponent<ValueType> implements AfterContentInit, TypedContro
     return this.options.toArray().length * 4;
   }
 
+  @Input()
+  public equals: EqualsFn<Nullable<ValueType>> = (opt1: Nullable<ValueType>, opt2: Nullable<ValueType>): boolean =>
+    opt1 === opt2;
+
   @HostListener('click')
   public openPanel(): void {
     if (!this.disabled) {
@@ -137,7 +139,7 @@ export class SelectComponent<ValueType> implements AfterContentInit, TypedContro
         tap((option: OptionComponent<ValueType>) =>
           this.options
             .toArray()
-            .filter((opt: OptionComponent<ValueType>) => opt !== option)
+            .filter((opt: OptionComponent<ValueType>) => !this.equals(opt.value, option.value))
             .forEach((opt: OptionComponent<ValueType>) => (opt.selected = false))
         ),
         tap(() => (this.opened = false)),
@@ -151,12 +153,12 @@ export class SelectComponent<ValueType> implements AfterContentInit, TypedContro
 
     if (this.value) {
       this._viewValue = this.value as unknown as string;
-      const found: OptionComponent<ValueType> | undefined = this.options.find(
-        (option: OptionComponent<ValueType>) => option.value === this.value
+      const found: OptionComponent<ValueType> | undefined = this.options.find((option: OptionComponent<ValueType>) =>
+        this.equals(option.value, this.value)
       );
 
       if (found) {
-        found.selected = true;
+        Promise.resolve().then(() => (found.selected = true));
       }
     }
   }
@@ -174,8 +176,8 @@ export class SelectComponent<ValueType> implements AfterContentInit, TypedContro
     this._viewValue = value as unknown as string;
 
     Promise.resolve().then(() => {
-      const found: OptionComponent<ValueType> | undefined = this.options.find(
-        (option: OptionComponent<ValueType>) => option.value === this.value
+      const found: OptionComponent<ValueType> | undefined = this.options.find((option: OptionComponent<ValueType>) =>
+        this.equals(option.value, this.value)
       );
 
       if (found) {

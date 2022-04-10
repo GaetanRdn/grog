@@ -178,6 +178,76 @@ exports[`Select Basic when select option then check 1`] = `
 </gro-select>
 `;
 
+exports[`Select Complex value should create 1`] = `
+<gro-select>
+  <div
+    class="gro-select-wrapper"
+  >
+    <span>
+      
+    </span>
+    <gro-material-icon>
+      expand_more
+    </gro-material-icon>
+  </div>
+  
+</gro-select>
+`;
+
+exports[`Select Complex value should create with initial value 1`] = `
+<gro-select>
+  <div
+    class="gro-select-wrapper"
+  >
+    <span>
+      Two
+    </span>
+    <gro-material-icon>
+      expand_more
+    </gro-material-icon>
+  </div>
+  
+</gro-select>
+`;
+
+exports[`Select Complex value when select option then check 1`] = `
+<gro-select>
+  <div
+    class="gro-select-wrapper"
+  >
+    <span>
+      One
+    </span>
+    <gro-material-icon>
+      expand_more
+    </gro-material-icon>
+  </div>
+  <div
+    class="gro-options-wrapper ng-trigger ng-trigger-slideDownUp ng-animating"
+    style="height:12rem;0:height;"
+  >
+    <gro-option
+      class="gro-selected"
+      style=""
+    >
+      One
+    </gro-option>
+    <gro-option
+      style=""
+    >
+      Two
+    </gro-option>
+    <gro-option
+      style=""
+    >
+      Three
+    </gro-option>
+    
+  </div>
+  
+</gro-select>
+`;
+
 exports[`Select Reactive should be disabled 1`] = `
 <gro-select
   class="gro-disabled ng-untouched ng-pristine"
