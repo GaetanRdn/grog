@@ -1,3 +1,65 @@
+:host {
+  flex: 1;
+  padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+}
+
+:host-context(.gro-opened) {
+  margin-left: -0.1rem;
+}
+
+:host-context(.gro-opened):last-of-type {
+  border-bottom-left-radius: var(--default-radius);
+  border-bottom-right-radius: var(--default-radius);
+}
+
+:host {
+  display: inline-flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 20rem;
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+:host:not(.gro-disabled) {
+  cursor: pointer;
+}
+
+:host.gro-opened .gro-select-wrapper {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+:host .gro-select-wrapper {
+  z-index: 2;
+  border-radius: var(--default-radius);
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+}
+
+:host .gro-options-wrapper {
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  bottom: 100%;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  border-bottom-left-radius: var(--default-radius);
+  border-bottom-right-radius: var(--default-radius);
+  overflow: hidden;
+}
+
+/*@use '../../../atoms/forms/src/lib/autocomplete/autocomplete.component';
+@use '../../../atoms/forms/src/lib/checkbox/checkbox.component';
+@use '../../../atoms/forms/src/lib/input/input';
+@use '../../../atoms/forms/src/lib/label/label.component';
+@use '../../../atoms/forms/src/lib/radios/radios-group.component';*/
+
 * {
   box-sizing: border-box;
   position: relative;
@@ -112,21 +174,21 @@ button {
 }
 
 .gro-button.gro-primary {
-  color: #3282B8;
+  color: #1081cd;
 }
 
 .gro-button.gro-primary:hover {
-  background: rgba(50, 130, 184, 0.1);
+  background: rgba(16, 129, 205, 0.1);
 }
 
 .gro-raised-button.gro-primary {
   color: white;
-  background-color: #3282B8;
+  background-color: #1081cd;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.24) 0 1px 2px;
 }
 
 .gro-icon-button.gro-primary {
-  color: #3282B8;
+  color: #1081cd;
 }
 
 .gro-button.gro-accent {
@@ -165,4 +227,127 @@ button {
   color: #DA0037;
 }
 
+gro-option {
+  font-family: "Open sans";
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: 400;
+  color: #F5F5F5;
+}
+
+gro-option:not(.gro-disabled) {
+  cursor: pointer;
+}
+
+gro-option:not(.gro-disabled):hover {
+  background: rgba(245, 245, 245, 0.1);
+}
+
+gro-option:not(.gro-disabled).gro-selected {
+  color: #1081cd;
+  border-left: 0.4rem inset #1081cd;
+}
+
+gro-option.gro-disabled {
+  color: #F5F5F5;
+  background: #EFEFEF4C;
+  border: 0.1rem inset #7676764C;
+}
+
+gro-option.gro-disabled.gro-selected {
+  border-left: 0.4rem inset #7676764C;
+}
+
+gro-select {
+  font-family: "Source Sans Pro";
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  color: #F5F5F5;
+}
+
+gro-select .gro-options-wrapper, gro-select .gro-select-wrapper {
+  border-left: 0.1rem inset #F5F5F5;
+  border-right: 0.1rem inset #F5F5F5;
+  border-bottom: 0.1rem inset #F5F5F5;
+  background-color: black;
+}
+
+gro-select .gro-select-wrapper {
+  border-top: 0.1rem inset #F5F5F5;
+}
+
+gro-select .gro-select-wrapper:hover {
+  background: rgba(245, 245, 245, 0.1);
+}
+
+gro-select.gro-disabled {
+  color: #F5F5F5;
+}
+
+gro-select.gro-disabled .gro-select-wrapper {
+  border: 0.1rem inset #7676764C;
+  background-color: #EFEFEF4C;
+}
+:host {
+  flex: 1;
+  padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+}
+
+:host-context(.gro-opened) {
+  margin-left: -0.1rem;
+}
+
+:host-context(.gro-opened):last-of-type {
+  border-bottom-left-radius: var(--default-radius);
+  border-bottom-right-radius: var(--default-radius);
+}
+
+:host {
+  display: inline-flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 20rem;
+  -webkit-user-select: none;
+          user-select: none;
+}
+
+:host:not(.gro-disabled) {
+  cursor: pointer;
+}
+
+:host.gro-opened .gro-select-wrapper {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+:host .gro-select-wrapper {
+  z-index: 2;
+  border-radius: var(--default-radius);
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+}
+
+:host .gro-options-wrapper {
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  bottom: 100%;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  border-bottom-left-radius: var(--default-radius);
+  border-bottom-right-radius: var(--default-radius);
+  overflow: hidden;
+}
+
+/*@use '../../../atoms/forms/src/lib/autocomplete/autocomplete.component';
+@use '../../../atoms/forms/src/lib/checkbox/checkbox.component';
+@use '../../../atoms/forms/src/lib/input/input';
+@use '../../../atoms/forms/src/lib/label/label.component';
+@use '../../../atoms/forms/src/lib/radios/radios-group.component';*/
 
