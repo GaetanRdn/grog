@@ -31,10 +31,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/atoms/buttons/src/**/*.ts",
-          "libs/atoms/buttons/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/atoms/buttons/src/**/*.ts", "libs/atoms/buttons/src/**/*.html"]
       }
     },
     "storybook": {

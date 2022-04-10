@@ -1,5 +1,5 @@
 import { ControlValueAccessor } from '@angular/forms';
-import { Nullable } from '@grorg/types';
+import { Nullable } from './utility-types';
 
 export interface TypedControlValueAccessor<ValueType> extends ControlValueAccessor {
   writeValue(value: Nullable<ValueType>): void;

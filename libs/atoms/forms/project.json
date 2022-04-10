@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:ng-packagr-lite",
-      "outputs": ["dist/libs/atoms/forms"],
+      "outputs": [
+        "dist/libs/atoms/forms"
+      ],
       "options": {
         "project": "libs/atoms/forms/ng-package.json"
       },
@@ -22,7 +24,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/atoms/forms"],
+      "outputs": [
+        "coverage/libs/atoms/forms"
+      ],
       "options": {
         "jestConfig": "libs/atoms/forms/jest.config.js",
         "passWithNoTests": true
@@ -55,7 +59,9 @@
     },
     "build-storybook": {
       "executor": "@nrwl/storybook:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "uiFramework": "@storybook/angular",
         "outputPath": "dist/storybook/atoms-forms",
@@ -72,5 +78,9 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["styles", "tests", "types"]
+  "implicitDependencies": [
+    "styles",
+    "tests",
+    "types"
+  ]
 }

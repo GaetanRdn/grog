@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@grorg/atoms-forms": ["libs/atoms/forms/src/index.ts"],
+      "@grorg/atoms/animations": ["libs/atoms/animations/src/index.ts"],
       "@grorg/atoms/buttons": ["libs/atoms/buttons/src/index.ts"],
       "@grorg/atoms/icons": ["libs/atoms/icons/src/index.ts"],
       "@grorg/decorators": ["libs/decorators/src/index.ts"],

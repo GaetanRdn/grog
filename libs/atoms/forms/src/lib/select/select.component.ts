@@ -18,25 +18,19 @@ import {
 import { OptionComponent, OptionModule } from '../option/option.component';
 import { MaterialIconModule } from '@grorg/atoms/icons';
 import { CommonModule } from '@angular/common';
-import { animate, style, transition, trigger } from '@angular/animations';
 import { defer, merge, Observable } from 'rxjs';
 import { startWith, switchMap, take, tap } from 'rxjs/operators';
 import { BooleanInput, EqualsFn, Nullable, OnChangeFn, OnTouchedFn, TypedControlValueAccessor } from '@grorg/types';
 import { NgControl } from '@angular/forms';
 import { CoerceBoolean } from '@grorg/decorators';
+import { slideDownUp } from '@grorg/atoms/animations';
 
 // TODO handle multiple selection
 // TODO revoir la bordure en selected
 // TODO externaliser l'animation
-
 @Component({
   selector: 'gro-select',
-  animations: [
-    trigger('slideDownUp', [
-      transition(':enter', [style({ height: 0 }), animate(300)]),
-      transition(':leave', [animate(300, style({ height: 0 }))]),
-    ]),
-  ],
+  animations: [slideDownUp],
   template: ` <div class="gro-select-wrapper">
       <span>{{ viewValue }}</span>
       <gro-material-icon>expand_more</gro-material-icon>
