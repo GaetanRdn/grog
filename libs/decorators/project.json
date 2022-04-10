@@ -31,10 +31,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/decorators/src/**/*.ts",
-          "libs/decorators/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/decorators/src/**/*.ts", "libs/decorators/src/**/*.html"]
       }
     }
   },

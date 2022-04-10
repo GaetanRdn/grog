@@ -1,0 +1,78 @@
+:host {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 20rem;
+  user-select: none;
+
+  &:not(.gro-disabled) {
+    cursor: pointer;
+  }
+
+  &.gro-opened {
+    .gro-select-wrapper {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .gro-select-wrapper {
+    z-index: 2;
+    border-radius: var(--default-radius);
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+  }
+
+  .gro-options-wrapper {
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    bottom: 100%;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    border-bottom-left-radius: var(--default-radius);
+    border-bottom-right-radius: var(--default-radius);
+    overflow: hidden;
+  }
+}
+
+@mixin gro-select($config) {
+  $typography: map-get(map-get($config, typography), input);
+  $colors: map-get($config, colors);
+
+  gro-select {
+    font-family: map-get($typography, font-family);
+    font-size: map-get($typography, font-size);
+    line-height: map-get($typography, line-height);
+    font-weight: map-get($typography, font-weight);
+    color: map-get(map-get($colors, default), color);
+
+    .gro-options-wrapper, .gro-select-wrapper {
+      border-left: 0.1rem inset map-get(map-get($colors, default), border);
+      border-right: 0.1rem inset map-get(map-get($colors, default), border);
+      border-bottom: 0.1rem inset map-get(map-get($colors, default), border);
+      background-color: map-get(map-get($colors, default), background);
+    }
+
+    .gro-select-wrapper {
+      border-top: 0.1rem inset map-get(map-get($colors, default), border);
+    }
+
+    .gro-select-wrapper:hover {
+      background: transparentize(map-get(map-get($colors, default), color), 0.9);
+    }
+
+    &.gro-disabled {
+      color: map-get(map-get($colors, disabled), color);
+
+      .gro-select-wrapper {
+        border: 0.1rem inset map-get(map-get($colors, disabled), border);
+        background-color: map-get(map-get($colors, disabled), background);
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "projectType": "library",
+  "root": "libs/atoms/animations",
+  "sourceRoot": "libs/atoms/animations/src",
+  "prefix": "gro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/atoms/animations"],
+      "options": {
+        "project": "libs/atoms/animations/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/atoms/animations/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/atoms/animations/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/atoms/animations/src/**/*.ts", "libs/atoms/animations/src/**/*.html"]
+      }
+    }
+  },
+  "tags": ["shared"]
+}

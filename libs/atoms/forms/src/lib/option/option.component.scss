@@ -1,0 +1,49 @@
+:host {
+  flex: 1;
+  padding: calc(var(--default-padding) * 3) calc(var(--default-padding) * 4);
+}
+
+:host-context(.gro-opened) {
+  margin-left: -0.1rem;
+
+  &:last-of-type {
+    border-bottom-left-radius: var(--default-radius);
+    border-bottom-right-radius: var(--default-radius);
+  }
+}
+
+@mixin gro-option($config) {
+  $typography: map-get(map-get($config, typography), option);
+  $colors: map-get($config, colors);
+
+  gro-option {
+    font-family: map-get($typography, font-family);
+    font-size: map-get($typography, font-size);
+    line-height: map-get($typography, line-height);
+    font-weight: map-get($typography, font-weight);
+    color: map-get(map-get($colors, default), color);
+
+    &:not(.gro-disabled) {
+      cursor: pointer;
+
+      &:hover {
+        background: transparentize(map-get(map-get($colors, default), color), 0.9);
+      }
+
+      &.gro-selected {
+        color: map-get(map-get($colors, primary), color);
+        border-left: 0.4rem inset map-get(map-get($colors, primary), color);
+      }
+    }
+
+    &.gro-disabled {
+      color: map-get(map-get($colors, disabled), color);
+      background: map-get(map-get($colors, disabled), background);
+      border: 0.1rem inset map-get(map-get($colors, disabled), border);
+
+      &.gro-selected {
+        border-left: 0.4rem inset map-get(map-get($colors, disabled), border);
+      }
+    }
+  }
+}

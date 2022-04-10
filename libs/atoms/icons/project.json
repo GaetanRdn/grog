@@ -1,0 +1,46 @@
+{
+  "projectType": "library",
+  "root": "libs/atoms/icons",
+  "sourceRoot": "libs/atoms/icons/src",
+  "prefix": "gro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": [
+        "dist/libs/atoms/icons"
+      ],
+      "options": {
+        "project": "libs/atoms/icons/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/atoms/icons/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/atoms/icons/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/atoms/icons"
+      ],
+      "options": {
+        "jestConfig": "libs/atoms/icons/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/atoms/icons/src/**/*.ts",
+          "libs/atoms/icons/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

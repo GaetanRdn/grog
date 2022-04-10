@@ -1,8 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "atoms-animations": "libs/atoms/animations",
     "atoms-buttons": "libs/atoms/buttons",
     "atoms-forms": "libs/atoms/forms",
+    "atoms-icons": "libs/atoms/icons",
     "decorators": "libs/decorators",
     "storybook": "apps/storybook",
     "storybook-e2e": "apps/storybook-e2e",

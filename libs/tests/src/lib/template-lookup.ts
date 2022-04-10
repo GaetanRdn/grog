@@ -1,8 +1,18 @@
 import { DebugElement, Predicate, Type } from '@angular/core';
-import { ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 export class TemplateLookup<T> {
+  public readonly fixture: ComponentFixture<T>;
+
+  constructor(private readonly fixtureOrHostClass: ComponentFixture<T> | Type<T>) {
+    if ('detectChanges' in fixtureOrHostClass) {
+      this.fixture = fixtureOrHostClass;
+    } else {
+      this.fixture = TestBed.createComponent(fixtureOrHostClass);
+    }
+  }
+
   get firstChildElement(): HTMLElement {
     return this.fixture.debugElement.children[0].nativeElement;
   }
@@ -10,8 +20,6 @@ export class TemplateLookup<T> {
   get hostComponent(): T {
     return this.fixture.componentInstance;
   }
-
-  constructor(public readonly fixture: ComponentFixture<T>) {}
 
   public detectChanges(): void {
     this.fixture.detectChanges();

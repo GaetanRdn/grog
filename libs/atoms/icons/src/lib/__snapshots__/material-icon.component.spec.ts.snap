@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MaterialIconComponent should create home icon 1`] = `
+<gro-material-icon
+  class="material-icons"
+>
+  home
+</gro-material-icon>
+`;
+
+exports[`MaterialIconComponent should create verified icon 1`] = `
+<gro-material-icon
+  class="material-icons"
+>
+  verified
+</gro-material-icon>
+`;
