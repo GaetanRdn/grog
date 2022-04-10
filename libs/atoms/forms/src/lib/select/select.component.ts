@@ -25,8 +25,6 @@ import { NgControl } from '@angular/forms';
 import { CoerceBoolean } from '@grorg/decorators';
 import { slideDownUp } from '@grorg/atoms/animations';
 
-// TODO handle multiple selection
-// TODO revoir la bordure en selected
 @Component({
   selector: 'gro-select',
   animations: [slideDownUp],
