@@ -10,21 +10,45 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@grorg/atoms-forms": ["libs/atoms/forms/src/index.ts"],
-      "@grorg/atoms/animations": ["libs/atoms/animations/src/index.ts"],
-      "@grorg/atoms/buttons": ["libs/atoms/buttons/src/index.ts"],
-      "@grorg/atoms/icons": ["libs/atoms/icons/src/index.ts"],
-      "@grorg/decorators": ["libs/decorators/src/index.ts"],
-      "@grorg/storybook": ["libs/storybook/src/index.ts"],
-      "@grorg/styles": ["libs/styles/src/index.ts"],
-      "@grorg/tests": ["libs/tests/src/index.ts"],
-      "@grorg/types": ["libs/types/src/index.ts"]
+      "@grorg/atoms-forms": [
+        "libs/atoms/forms/src/index.ts"
+      ],
+      "@grorg/atoms-animations": [
+        "libs/atoms/animations/src/index.ts"
+      ],
+      "@grorg/atoms-buttons": [
+        "libs/atoms/buttons/src/index.ts"
+      ],
+      "@grorg/atoms-icons": [
+        "libs/atoms/icons/src/index.ts"
+      ],
+      "@grorg/decorators": [
+        "libs/decorators/src/index.ts"
+      ],
+      "@grorg/storybook": [
+        "libs/storybook/src/index.ts"
+      ],
+      "@grorg/styles": [
+        "libs/styles/src/index.ts"
+      ],
+      "@grorg/tests": [
+        "libs/tests/src/index.ts"
+      ],
+      "@grorg/types": [
+        "libs/types/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

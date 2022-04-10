@@ -16,14 +16,14 @@ import {
   QueryList,
 } from '@angular/core';
 import { OptionComponent, OptionModule } from '../option/option.component';
-import { MaterialIconModule } from '@grorg/atoms/icons';
+import { MaterialIconModule } from '@grorg/atoms-icons';
 import { CommonModule } from '@angular/common';
 import { defer, merge, Observable } from 'rxjs';
 import { startWith, switchMap, take, tap } from 'rxjs/operators';
 import { BooleanInput, EqualsFn, Nullable, OnChangeFn, OnTouchedFn, TypedControlValueAccessor } from '@grorg/types';
 import { NgControl } from '@angular/forms';
 import { CoerceBoolean } from '@grorg/decorators';
-import { slideDownUp } from '@grorg/atoms/animations';
+import { slideDownUp } from '@grorg/atoms-animations';
 
 @Component({
   selector: 'gro-select',
